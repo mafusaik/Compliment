@@ -40,6 +40,16 @@
                 android:value="androidx.startup"
                 tools:node="remove" />
         </provider>
+
+        <receiver android:name=".receivers.NotificationReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.example.compliment.NOTIFY" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

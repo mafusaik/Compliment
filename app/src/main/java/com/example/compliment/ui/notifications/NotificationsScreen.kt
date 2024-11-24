@@ -2,11 +2,13 @@ package com.example.compliment.ui.notifications
 
 import android.Manifest
 import android.app.Activity
+import android.app.AlarmManager
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
+import android.os.PowerManager
 import android.provider.Settings
 import android.util.Log
 import androidx.activity.compose.ManagedActivityResultLauncher
@@ -32,6 +34,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.example.compliment.data.model.NotificationSchedule
 import com.example.compliment.extensions.showToast
+import com.example.compliment.models.ScheduleItem
 import com.example.compliment.ui.notifications.dialog.ScheduleDialog
 import org.koin.androidx.compose.koinViewModel
 import java.util.Locale
@@ -40,6 +43,8 @@ import java.util.Locale
 fun NotificationsScreen() {
     val context = LocalContext.current
     val viewModel = koinViewModel<NotificationsViewModel>()
+
+   // val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
     val lifecycleOwner = LocalLifecycleOwner.current
     val lifecycleState by lifecycleOwner.lifecycle.currentStateFlow.collectAsState()
@@ -60,6 +65,14 @@ fun NotificationsScreen() {
         } else {
             Log.i("PERMISSION", "denied")
             viewModel.onNotificationPermissionDenied()
+        }
+    }
+
+    LaunchedEffect(schedules) {
+        schedules.forEach { schedule ->
+            if (schedule.isActive) {
+                viewModel.startNotification(context, schedule)
+            }
         }
     }
 
@@ -173,8 +186,30 @@ fun NotificationsScreen() {
                     viewModel.onNotificationPermissionDenied()
                 }
             } else viewModel.onNotificationPermissionGranted()
+
+
+// Для воркменеджера надо оформить эту проверку (если с будильником не получится)
+            if (!isIgnoringBatteryOptimizations(context)) {
+                context.showToast("For stable operation of notifications, it is necessary to disable battery optimization.")
+                val intent = Intent(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS)
+                context.startActivity(intent)
+            }
+
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+//                if (!alarmManager.canScheduleExactAlarms()) {
+//                    Intent().also { intent ->
+//                        intent.action = Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM
+//                        context.startActivity(intent)
+//                    }
+//                }
+//            }
         }
     }
+}
+
+private fun isIgnoringBatteryOptimizations(context: Context): Boolean {
+    val powerManager = context.getSystemService(Context.POWER_SERVICE) as PowerManager
+    return powerManager.isIgnoringBatteryOptimizations(context.packageName)
 }
 
 private fun checkAndRequestPermission(

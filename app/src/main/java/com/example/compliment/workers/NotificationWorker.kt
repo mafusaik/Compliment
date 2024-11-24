@@ -1,6 +1,7 @@
 package com.example.compliment.workers
 
 import android.annotation.SuppressLint
+import android.app.Notification
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
@@ -23,6 +24,8 @@ class NotificationWorker(
 ) : CoroutineWorker(context, params) {
 
     override suspend fun doWork(): Result {
+        val notificationId = System.currentTimeMillis().toInt()
+
         val daysString = inputData.getString("days") ?: return Result.failure()
         val days = daysString.split(",").map { DayOfWeek.valueOf(it) }.toSet()
         Log.i("NOTIFICATIONS", "doWork $days")
@@ -30,15 +33,14 @@ class NotificationWorker(
 
         val currentDay = LocalDate.now().dayOfWeek
         if (currentDay in days) {
-            Log.i("NOTIFICATIONS", "sendNotification")
-            sendNotification(randomCompliment)
+            sendNotification(randomCompliment, notificationId)
         }
 
         return Result.success()
     }
 
     @SuppressLint("MissingPermission")
-    private fun sendNotification(message: String) {
+    private fun sendNotification(message: String, notificationId: Int) {
         val notificationManager = NotificationManagerCompat.from(applicationContext)
 
         notificationManager.createNotificationChannel(createChannel())
@@ -48,7 +50,6 @@ class NotificationWorker(
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
 
-
         val pendingIntent = PendingIntent.getActivity(
             applicationContext,
             0,
@@ -56,15 +57,18 @@ class NotificationWorker(
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
 
-        val notification = NotificationCompat.Builder(applicationContext, Constants.CHANNEL_ID)
+        val notification = createNotification(message, pendingIntent)
+
+        notificationManager.notify(notificationId, notification)
+    }
+
+    private fun createNotification(message: String, pendingIntent: PendingIntent): Notification {
+        return NotificationCompat.Builder(applicationContext, Constants.CHANNEL_ID)
             .setContentText(message)
             .setSmallIcon(android.R.drawable.ic_dialog_info)
             .setAutoCancel(true)
             .setContentIntent(pendingIntent)
             .build()
-
-        val notificationId = System.currentTimeMillis().toInt()
-        notificationManager.notify(notificationId, notification)
     }
 
     private fun createChannel() =

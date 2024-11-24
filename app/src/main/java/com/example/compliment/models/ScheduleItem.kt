@@ -1,4 +1,4 @@
-package com.example.compliment.ui.notifications
+package com.example.compliment.models
 
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.background
