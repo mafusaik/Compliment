@@ -1,5 +1,6 @@
 package com.example.compliment
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -21,15 +22,13 @@ class MainActivity : ComponentActivity() {
 
             MaterialTheme {
                 Surface {
-                    var textState by rememberSaveable { mutableStateOf(notificationText) }
-                    if (textState.isNotEmpty()) {
-                        LaunchedEffect(Unit) {
-                            textState = ""
-                        }
-                    }
-                    MainScreen(textState)
+                    MainScreen(notificationText)
                 }
             }
         }
+    }
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
     }
 }

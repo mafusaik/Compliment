@@ -1,0 +1,49 @@
+package com.example.compliment.ui.home
+
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.compliment.data.repositories.ComplimentsRepository
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
+
+interface SystemClipboard {
+
+    fun copyToClipboard(text: String)
+}
+
+class HomeViewModel(
+    private val repository: ComplimentsRepository,
+    private val clipboard: SystemClipboard,
+) : ViewModel() {
+
+    private val _isTextVisible = MutableStateFlow(false)
+
+    val state: StateFlow<HomeState> = _isTextVisible
+        .combine(repository.currentCompliment()) { isTextVisible, compliment ->
+            HomeState(isTextVisible, compliment)
+        }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(stopTimeoutMillis = 5000), HomeState.Initial)
+
+    fun onGetComplimentClicked() {
+        viewModelScope.launch {
+            _isTextVisible.value = false
+            delay(300)
+
+            repository.nextCompliment()
+            _isTextVisible.value = true
+        }
+    }
+
+    fun onComplimentClicked() {
+        clipboard.copyToClipboard(state.value.compliment)
+    }
+
+}

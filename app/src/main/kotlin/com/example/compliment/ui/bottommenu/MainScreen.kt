@@ -12,7 +12,7 @@ import com.example.compliment.ui.home.HomeScreen
 import com.example.compliment.ui.notifications.NotificationsScreen
 
 @Composable
-fun MainScreen(notificationText: String) {
+fun MainScreen(initialText: String) {
     val navController = rememberNavController()
     Scaffold(
         bottomBar = {
@@ -25,7 +25,7 @@ fun MainScreen(notificationText: String) {
             modifier = Modifier.padding(innerPadding)
         ) {
             composable(Screen.Home.route) { backStackEntry ->
-                HomeScreen(notificationText = notificationText)
+                HomeScreen(initialCompliment = initialText)
             }
             composable(Screen.Notifications.route) { NotificationsScreen() }
         }
