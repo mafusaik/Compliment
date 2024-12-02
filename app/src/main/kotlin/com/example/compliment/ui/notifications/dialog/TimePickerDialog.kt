@@ -1,5 +1,6 @@
 package com.example.compliment.ui.notifications.dialog
 
+import android.util.Log
 import android.widget.Toast
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.FastOutSlowInEasing
@@ -41,6 +42,11 @@ fun ScheduleDialog(
     val context = LocalContext.current
     val calendar = Calendar.getInstance()
 
+//    val recompositionCount = remember { mutableStateOf(0) }
+//    recompositionCount.value++
+//
+//    Log.d("RecompositionTracker", "ScheduleDialog count: ${recompositionCount.value}")
+
 
     val (hour, minute) = existingData?.time?.let {time->
         time.split(":").map { it.toInt() }
@@ -66,8 +72,8 @@ fun ScheduleDialog(
         text = {
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 WheelTimePicker(
-                    initialHour = selectedHour,
-                    initialMinute = selectedMinute,
+                    initialHour = hour,
+                    initialMinute = minute,
                     onHourSelected = { hour ->
                         selectedHour = hour
                     },
