@@ -1,14 +1,11 @@
 package com.example.compliment.data.repositories
 
 import android.content.Context
-import android.util.Log
 import com.example.compliment.R
 import com.example.compliment.data.sharedprefs.PrefsManager
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.emptyFlow
 import kotlin.random.Random
 
 internal class ComplimentsRepositoryImpl(private val context: Context) : ComplimentsRepository {
@@ -18,7 +15,7 @@ internal class ComplimentsRepositoryImpl(private val context: Context) : Complim
     private val complimentSet = LinkedHashSet<String>()
     private val maxSize = 20 // Максимальное количество комплиментов которые не будут повторяться
 
-    private val currentCompliment = MutableStateFlow(complimentSet.lastOrNull() ?: "")
+    private val currentCompliment = MutableStateFlow(prefsManager.recentCompliments.lastOrNull() ?: "")
 
     override fun currentCompliment(): Flow<String> {
         return currentCompliment.asStateFlow()
@@ -50,6 +47,11 @@ internal class ComplimentsRepositoryImpl(private val context: Context) : Complim
         complimentSet.add(compliment)
         prefsManager.recentCompliments = complimentSet
         currentCompliment.value = compliment
+    }
+
+    override suspend fun restoreCompliments(){
+        val recentCompliments = prefsManager.recentCompliments
+        complimentSet.addAll(recentCompliments)
     }
 
 }

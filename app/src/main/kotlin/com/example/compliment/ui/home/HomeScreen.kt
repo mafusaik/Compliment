@@ -17,7 +17,6 @@ import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -25,12 +24,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleEventObserver
-import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import org.koin.androidx.compose.koinViewModel
-import org.koin.core.parameter.parametersOf
 
 @Composable
 fun HomeScreen(initialCompliment: String) {
@@ -38,6 +33,7 @@ fun HomeScreen(initialCompliment: String) {
     val state by viewModel.state.collectAsStateWithLifecycle()
     HomeScreen(
         state,
+        initialCompliment,
         onComplimentClicked = { viewModel.onComplimentClicked() },
         onGetCompliment = { viewModel.onGetComplimentClicked() }
     )
@@ -46,25 +42,24 @@ fun HomeScreen(initialCompliment: String) {
 @Composable
 private fun HomeScreen(
     state: HomeState,
+    initialCompliment: String,
     onGetCompliment: () -> Unit,
     onComplimentClicked: () -> Unit
 ) {
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
-        // Центрируем текст по вертикали и горизонтали
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(bottom = 80.dp), // Отступ снизу для кнопки
+                .padding(bottom = 80.dp),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            // Анимация появления текста
             AnimatedVisibility(
                 visible = state.isTextVisible,
-                enter = fadeIn(), // Анимация появления
-                exit = fadeOut() // Анимация исчезновения
+                enter = fadeIn(),
+                exit = fadeOut()
             ) {
                 Box(
                     modifier = Modifier
@@ -72,16 +67,16 @@ private fun HomeScreen(
                         .height(300.dp)
                         .padding(horizontal = 20.dp)
                         .clickable { onComplimentClicked() },
-                    contentAlignment = Alignment.Center // Центрируем текст
+                    contentAlignment = Alignment.Center
                 ) {
                     Text(
-                        text = state.compliment,
+                        text = initialCompliment.ifEmpty { state.compliment },
                         style = LocalTextStyle.current.copy(
                             fontSize = 26.sp,
                             color = Color.Black,
                             textAlign = TextAlign.Center
                         ),
-                        textAlign = TextAlign.Center // Центрируем текст
+                        textAlign = TextAlign.Center
                     )
                 }
             }
@@ -104,13 +99,13 @@ private fun GetCompliment(
         modifier = Modifier
             .then(modifier)
             .padding(bottom = 40.dp, start = 20.dp, end = 20.dp)
-            .height(70.dp) // Высота кнопки
-            .fillMaxWidth(), // Занимает всю ширину
-        shape = RoundedCornerShape(50.dp) // Делаем кнопку округлой
+            .height(70.dp)
+            .fillMaxWidth(),
+        shape = RoundedCornerShape(50.dp)
     ) {
         Text(
             text = "Получить комплимент",
-            style = MaterialTheme.typography.bodyLarge, // Можно использовать шрифт из темы
+            style = MaterialTheme.typography.bodyLarge,
             color = Color.White,
             textAlign = TextAlign.Center
         )
