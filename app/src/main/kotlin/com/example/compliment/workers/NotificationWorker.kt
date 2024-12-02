@@ -29,7 +29,7 @@ class NotificationWorker(
         val daysString = inputData.getString("days") ?: return Result.failure()
         val days = daysString.split(",").map { DayOfWeek.valueOf(it) }.toSet()
         Log.i("NOTIFICATIONS", "doWork $days")
-        val randomCompliment = repository.getCompliment()
+        val randomCompliment = repository.nextCompliment()
 
         val currentDay = LocalDate.now().dayOfWeek
         if (currentDay in days) {
@@ -52,7 +52,7 @@ class NotificationWorker(
 
         val pendingIntent = PendingIntent.getActivity(
             applicationContext,
-            0,
+            notificationId,
             intent,
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )

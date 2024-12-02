@@ -147,7 +147,7 @@ class NotificationsViewModel(
 //            val randomCompliment = complimentRepository.getCompliment()
 //
 //            val intent = Intent("com.example.compliment.NOTIFY").apply {
-//                setClass(context, NotificationReceiver::class.java)
+//                setClass(context, NotificationReceiver::class.kotlin)
 //                data = Uri.parse("scheme://time/${schedule.time}")
 //                putExtra("schedule_time", schedule.time)
 //                putExtra("days", schedule.daysOfWeek.joinToString(","))
@@ -181,7 +181,7 @@ class NotificationsViewModel(
 //        alarmManager: AlarmManager
 //    ) {
 //        val intent = Intent("com.example.compliment.NOTIFY").apply {
-//            setClass(context, NotificationReceiver::class.java)
+//            setClass(context, NotificationReceiver::class.kotlin)
 //            data = Uri.parse("scheme://time/${schedule.time}")
 //            putExtra("schedule_time", schedule.time)
 //            putExtra("days", schedule.daysOfWeek.joinToString(","))

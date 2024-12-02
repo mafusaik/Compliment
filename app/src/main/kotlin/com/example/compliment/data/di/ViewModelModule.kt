@@ -6,7 +6,6 @@ import com.example.compliment.ui.notifications.NotificationsViewModel
 import com.example.compliment.ui.home.HomeViewModel
 
 
-
 val viewModelModule = module {
     viewModelOf(::NotificationsViewModel)
     viewModelOf(::HomeViewModel)

@@ -6,6 +6,7 @@ val dataModule = module {
     includes(
         repositoryModule,
         workerModule,
-        roomModule
+        roomModule,
+        clipboardModule
     )
 }
