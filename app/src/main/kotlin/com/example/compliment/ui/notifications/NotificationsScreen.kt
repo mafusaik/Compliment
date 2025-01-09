@@ -2,142 +2,197 @@ package com.example.compliment.ui.notifications
 
 import android.Manifest
 import android.app.Activity
-import android.app.AlarmManager
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
-import android.os.PowerManager
 import android.provider.Settings
 import android.util.Log
 import androidx.activity.compose.ManagedActivityResultLauncher
 import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.example.compliment.R
 import com.example.compliment.data.model.NotificationSchedule
-import com.example.compliment.extensions.showToast
-import com.example.compliment.models.ScheduleItem
+import com.example.compliment.models.NotificationsEvent
+import com.example.compliment.models.NotificationsUiState
 import com.example.compliment.ui.notifications.dialog.ScheduleDialog
+import com.example.compliment.ui.theme.Black
+import com.example.compliment.ui.theme.RedDark
+import com.example.compliment.ui.theme.WhiteBackground
+import kotlinx.coroutines.delay
 import org.koin.androidx.compose.koinViewModel
 import java.util.Locale
 
 @Composable
 fun NotificationsScreen() {
-    val context = LocalContext.current
     val viewModel = koinViewModel<NotificationsViewModel>()
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+   // val schedules by viewModel.localSchedules.collectAsStateWithLifecycle()
 
-   // val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-
-    val lifecycleOwner = LocalLifecycleOwner.current
-    val lifecycleState by lifecycleOwner.lifecycle.currentStateFlow.collectAsState()
-
-    val selectedDays by viewModel.selectedDays.collectAsState()
-    val isPermissionGranted by viewModel.isPermissionGranted.collectAsState()
-    val schedules by viewModel.schedules.collectAsState()
-    var showScheduleDialog by remember { mutableStateOf(false) }
-    var showPermissionDialog by remember { mutableStateOf(false) }
-    var currentScheduleData by remember { mutableStateOf<NotificationSchedule?>(null) }
-
-    val launcher = rememberLauncherForActivityResult(
-        ActivityResultContracts.RequestPermission()
-    ) { isGranted: Boolean ->
-        if (isGranted) {
-            Log.i("PERMISSION", "granted")
-            viewModel.onNotificationPermissionGranted()
-        } else {
-            Log.i("PERMISSION", "denied")
-            viewModel.onNotificationPermissionDenied()
+    NotificationsScreen(
+        uiState = uiState,
+      //  schedules = schedules,
+        onEvent = { event ->
+            viewModel.handleEvent(event)
         }
+    )
+}
+
+@Composable
+private fun NotificationsScreen(
+    uiState: NotificationsUiState,
+  //  schedules: List<NotificationSchedule>,
+    onEvent: (NotificationsEvent) -> Unit
+) {
+//     val schedules by remember { derivedStateOf { uiState.schedules } }
+    val schedules = uiState.schedules
+    Log.d("RecompositionTracker", "NotificationsScreen recomposed ${schedules}")
+    val context = LocalContext.current
+
+    val launcherRequest = rememberLauncherForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { isGranted ->
+        onEvent(NotificationsEvent.PermissionResult(isGranted))
     }
 
-    LaunchedEffect(schedules) {
-        schedules.forEach { schedule ->
-            if (schedule.isActive) {
-                viewModel.startNotification(context, schedule)
+    val launcherToSetting = rememberLauncherForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) {
+        val isGranted = checkPermission(context)
+        Log.i("PERMISSION", "launcher granted $isGranted")
+        onEvent(NotificationsEvent.PermissionResult(isGranted))
+    }
+
+    LaunchedEffect(key1 = true) {
+        delay(500)
+        val isGranted = checkPermission(context)
+        onEvent(NotificationsEvent.PermissionResult(isGranted))
+        Log.i("PERMISSION", "LaunchedEffect $isGranted")
+    }
+
+    val lifecycle = LocalLifecycleOwner.current.lifecycle
+
+    DisposableEffect(lifecycle) {
+        val observer = LifecycleEventObserver { _, event ->
+            if (event == Lifecycle.Event.ON_STOP) {
+                onEvent(NotificationsEvent.SaveSchedules)
             }
+        }
+        lifecycle.addObserver(observer)
+        onDispose {
+            lifecycle.removeObserver(observer)
         }
     }
 
     Scaffold(
         floatingActionButton = {
-            FloatingActionButton(onClick = {
-                currentScheduleData = null
-                showScheduleDialog = true
-            }) {
-                Icon(Icons.Default.Add, contentDescription = "Add Time")
+            FloatingActionButton(
+                onClick = {
+                    onEvent(NotificationsEvent.ShowAddScheduleDialog(true))
+                },
+                modifier = Modifier
+                    .padding(bottom = 78.dp, end = 8.dp)
+                    .size(84.dp),
+                containerColor = MaterialTheme.colorScheme.surfaceContainer,
+                contentColor = MaterialTheme.colorScheme.primary
+            ) {
+                Icon(painterResource(R.drawable.icon_cross), contentDescription = "Add Time")
             }
         },
-        floatingActionButtonPosition = FabPosition.Center
+        contentColor = RedDark,
+        floatingActionButtonPosition = FabPosition.End,
+        containerColor = Color.Transparent
     ) { paddingValues ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(paddingValues)
-                .padding(16.dp)
+                .padding(start = 24.dp, end = 24.dp, top = 48.dp, bottom = 74.dp)
         ) {
             Text(
-                text = "Selected Notification Times",
-                fontSize = 24.sp,
-                modifier = Modifier.padding(bottom = 8.dp)
+                text = stringResource(R.string.title_reminders),
+                fontSize = 30.sp,
+                color = MaterialTheme.colorScheme.onSecondary,
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 8.dp)
             )
 
             if (schedules.isEmpty()) {
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(16.dp),
+                        .padding(paddingValues),
                     contentAlignment = Alignment.Center
                 ) {
                     Text(
-                        "This is empty for now, create a new reminder",
+                        stringResource(R.string.empty_reminders),
                         fontSize = 18.sp,
-                        color = Color.Gray
+                        color = MaterialTheme.colorScheme.tertiary
                     )
                 }
             } else {
-                LazyColumn {
-                    items(schedules.toList(), key = { it.time }) { schedule ->
-                        val isActive = schedule.isActive
-                        ScheduleItem(
-                            schedule = schedule,
-                            isChecked = isActive,
-                            onCheckedChange = { isChecked ->
-                                if (isPermissionGranted){
-                                    viewModel.updateScheduleState(schedule, isChecked)
-                                    if (isChecked) viewModel.startNotification(context, schedule)
-                                    else viewModel.cancelNotification(context, schedule.time)
-                                }else{
-                                    checkAndRequestPermission(context, launcher) { showPermissionDialog = it }
-                                }
+                LazyColumn(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(Color.Transparent)
+                ) {
+                    items(schedules.toList(), key = { it.time.hashCode() }) { schedule ->
+                        Log.d("RecompositionTracker", "LazyColumn items")
+//                        val isActive by rememberUpdatedState(schedule.isActive)
+                        var isActive by remember { mutableStateOf(schedule.isActive) }
 
+                        ScheduleItem(
+                            schedule = schedule.copy(isActive = isActive),
+                            onCheckedChange = { isChecked ->
+                                isActive = isChecked
+                                if (uiState.isPermissionGranted) {
+                                    if (isChecked) onEvent(
+                                        NotificationsEvent.EnableSchedule(schedule)
+                                    )
+                                    else onEvent(NotificationsEvent.DisableSchedule(schedule))
+                                } else {
+                                    checkAndRequestPermission(
+                                        context,
+                                        launcherRequest,
+                                    ) { onEvent(NotificationsEvent.ShowPermissionDialog(true)) }
+                                }
                             },
                             onDelete = {
-                                viewModel.deleteTimeSchedule(schedule)
-                                viewModel.cancelNotification(context, schedule.time)
+                                onEvent(NotificationsEvent.DeleteSchedule(schedule))
                             },
                             onEdit = {
-                                currentScheduleData = schedule
-                                showScheduleDialog = true
+                                onEvent(NotificationsEvent.ShowAddScheduleDialog(true, schedule))
                             }
                         )
+
+                        if (schedule == schedules.toList().last()) {
+                            Spacer(Modifier.height(120.dp))
+                        }
                     }
                 }
             }
@@ -145,71 +200,40 @@ fun NotificationsScreen() {
             Spacer(modifier = Modifier.weight(1f))
         }
 
-        if (showScheduleDialog) {
-            if (isPermissionGranted)
-                ScheduleDialog(
-                    existingData = currentScheduleData,
-                    currentSelectedDays = selectedDays,
-                    onTimeSelected = { hour, minute, days ->
-                        val time = String.format(Locale.getDefault(), "%02d:%02d", hour, minute)
-                        viewModel.saveSelectedDays(days)
-                        currentScheduleData?.let {
-                            viewModel.deleteTimeSchedule(it)
-                        }
-                        viewModel.addSchedule(time, days, true)
-                        showScheduleDialog = false
-                    },
-                    onDismiss = { showScheduleDialog = false }
-                )
-            else checkAndRequestPermission(context, launcher) { showPermissionDialog = it }
+        if (uiState.showScheduleDialog) {
+            ScheduleDialog(
+                existingData = uiState.currentScheduleData,
+                currentSelectedDays = uiState.selectedDays,
+                onTimeSelected = { hour, minute, days ->
+                    val time = String.format(Locale.getDefault(), "%02d:%02d", hour, minute)
+
+                    if (uiState.currentScheduleData == null) {
+                        onEvent(NotificationsEvent.CreateSchedule(time, days))
+                    } else {
+                        val updatedSchedule =
+                            uiState.currentScheduleData.copy(time = time, daysOfWeek = days)
+                        onEvent(
+                            NotificationsEvent.EditSchedule(
+                                uiState.currentScheduleData,
+                                updatedSchedule
+                            )
+                        )
+                    }
+                    onEvent(NotificationsEvent.ShowAddScheduleDialog(false))
+                },
+                onDismiss = { onEvent(NotificationsEvent.ShowAddScheduleDialog(false)) }
+            )
         }
 
-        if (showPermissionDialog) {
-            PermissionDeniedDialog(context, onDismiss = {
-                showPermissionDialog = false
-                showScheduleDialog = false
-            })
-        }
-    }
-
-    LaunchedEffect(lifecycleState) {
-        Log.i("PERMISSION", "LaunchedEffect")
-        if (lifecycleState == Lifecycle.State.STARTED){
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                launcher.launch(Manifest.permission.POST_NOTIFICATIONS)
-                val isGranted = ContextCompat.checkSelfPermission(
-                    context, Manifest.permission.POST_NOTIFICATIONS
-                ) == PackageManager.PERMISSION_GRANTED
-                if (isGranted) {
-                    viewModel.onNotificationPermissionGranted()
-                } else {
-                    viewModel.onNotificationPermissionDenied()
-                }
-            } else viewModel.onNotificationPermissionGranted()
-
-
-// Для воркменеджера надо оформить эту проверку (если с будильником не получится)
-            if (!isIgnoringBatteryOptimizations(context)) {
-                context.showToast("For stable operation of notifications, it is necessary to disable battery optimization.")
-                val intent = Intent(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS)
-                context.startActivity(intent)
-            }
-
-//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-//                if (!alarmManager.canScheduleExactAlarms()) {
-//                    Intent().also { intent ->
-//                        intent.action = Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM
-//                        context.startActivity(intent)
-//                    }
-//                }
-//            }
+        if (uiState.showPermissionDialog) {
+            PermissionDeniedDialog(
+                context,
+                launcherToSetting,
+                onDismiss = {
+                    onEvent(NotificationsEvent.ShowPermissionDialog(false))
+                })
         }
     }
-}
-
-private fun isIgnoringBatteryOptimizations(context: Context): Boolean {
-    val powerManager = context.getSystemService(Context.POWER_SERVICE) as PowerManager
-    return powerManager.isIgnoringBatteryOptimizations(context.packageName)
 }
 
 private fun checkAndRequestPermission(
@@ -223,46 +247,69 @@ private fun checkAndRequestPermission(
         )
 
         if (shouldShowRationale) {
-            context.showToast("We need permission to send notifications. Please grant it.")
-            launcher.launch(Manifest.permission.POST_NOTIFICATIONS)
-        } else {
             onShow(true)
+        } else {
+            launcher.launch(Manifest.permission.POST_NOTIFICATIONS)
         }
     }
 }
 
+private fun checkPermission(context: Context): Boolean {
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+        ContextCompat.checkSelfPermission(
+            context, Manifest.permission.POST_NOTIFICATIONS
+        ) == PackageManager.PERMISSION_GRANTED
+    } else true
+}
+
 @Composable
-fun PermissionDeniedDialog(context: Context, onDismiss: () -> Unit) {
+fun PermissionDeniedDialog(
+    context: Context,
+    launcher: ManagedActivityResultLauncher<Intent, ActivityResult>,
+    onDismiss: () -> Unit
+) {
     val openSettings: () -> Unit = {
-        openAppSettings(context)
+        openAppSettings(context, launcher)
         onDismiss()
     }
     AlertDialog(
         onDismissRequest = onDismiss,
         title = {
-            Text("Permission Needed")
+            Text(
+                text = stringResource(R.string.permission_needed),
+                color = MaterialTheme.colorScheme.onSecondary
+            )
         },
         text = {
-            Text("This permission is required for notifications. Please enable it in the app settings.")
+            Text(stringResource(R.string.text_permission_notifications))
         },
         confirmButton = {
             Button(onClick = openSettings) {
-                Text("Go to Settings")
+                Text(
+                    text = stringResource(R.string.go_settings),
+                    color = MaterialTheme.colorScheme.onSecondary
+                )
             }
         },
         dismissButton = {
             Button(onClick = onDismiss) {
-                Text("Cancel")
+                Text(
+                    text = stringResource(R.string.cancel),
+                    color = MaterialTheme.colorScheme.onSecondary
+                )
             }
         }
     )
 }
 
-fun openAppSettings(context: Context) {
+fun openAppSettings(
+    context: Context,
+    launcher: ManagedActivityResultLauncher<Intent, ActivityResult>
+) {
     val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
-        data = Uri.parse("package:${context.packageName}")
+        data = Uri.fromParts("package", context.packageName, null)
     }
-    context.startActivity(intent)
+    launcher.launch(intent)
 }
 
 

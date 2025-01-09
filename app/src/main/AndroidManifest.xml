@@ -18,6 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Compliment"
         android:enableOnBackInvokedCallback="true"
+        android:windowSoftInputMode="adjustResize"
         tools:targetApi="35">
         <activity
             android:name=".MainActivity"
@@ -45,8 +46,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
-            </intent-filter>
-            <intent-filter>
                 <action android:name="com.example.compliment.NOTIFY" />
             </intent-filter>
         </receiver>

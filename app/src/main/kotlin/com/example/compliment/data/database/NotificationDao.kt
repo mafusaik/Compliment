@@ -20,6 +20,9 @@ interface NotificationDao {
     @Update
     suspend fun update(schedule: NotificationSchedule)
 
+    @Update
+    suspend fun updateAll(schedules: List<NotificationSchedule>)
+
     @Delete
     suspend fun delete(schedule: NotificationSchedule)
 }

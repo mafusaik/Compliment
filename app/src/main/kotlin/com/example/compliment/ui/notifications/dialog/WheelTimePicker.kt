@@ -3,37 +3,36 @@ package com.example.compliment.ui.notifications.dialog
 import android.util.Log
 import androidx.compose.foundation.gestures.snapping.rememberSnapFlingBehavior
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.compliment.extensions.floorMod
+import com.example.compliment.ui.theme.Black
+import com.example.compliment.ui.theme.GreyLight
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.util.Locale
 import kotlin.math.abs
 
 @Composable
@@ -48,63 +47,44 @@ fun WheelTimePicker(
 
 //    val recompositionCount = remember { mutableStateOf(0) }
 //    recompositionCount.value++
-//
-//    Log.d("RecompositionTracker", "WheelTimePicker count: ${recompositionCount.value}")
 
-    Box(modifier = Modifier.fillMaxWidth()) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 24.dp, vertical = 32.dp),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            InfiniteWheel(
-                range = 0..23,
-                initialTime = initialHour + 1,
-                onItemSelected = { hour ->
-                    hourDebounceScope.launch {
-                        delay(300)
-                        onHourSelected(hour)
-                    }
+    Log.d("RecompositionTracker", "WheelTimePicker recompositionCount")
+
+    Row(
+        modifier = Modifier
+            .wrapContentSize()
+            .padding(horizontal = 24.dp, vertical = 16.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        InfiniteWheel(
+            range = 0..23,
+            initialTime = initialHour + 1,
+            onItemSelected = { hour ->
+                hourDebounceScope.launch {
+                    delay(300)
+                    onHourSelected(hour)
                 }
-            )
-
-            Text(
-                ":", fontSize = 32.sp,
-                modifier = Modifier
-                    .padding(horizontal = 0.dp)
-                    .width(50.dp),
-                textAlign = TextAlign.Center
-            )
-
-            InfiniteWheel(
-                range = 0..59,
-                initialTime = initialMinute + 1,
-                onItemSelected = { minute ->
-                    minuteDebounceScope.launch {
-                        delay(300)
-                        onMinuteSelected(minute)
-                    }
-                }
-            )
-        }
-
-        HorizontalDivider(
-            color = Color.Gray,
-            thickness = 1.dp,
-            modifier = Modifier
-                .align(Alignment.Center)
-                .fillMaxWidth(0.9f)
-                .offset(y = (-20).dp)
+            }
         )
-        HorizontalDivider(
-            color = Color.Gray,
+
+        VerticalDivider(
+            color = MaterialTheme.colorScheme.surface,
             thickness = 1.dp,
             modifier = Modifier
-                .align(Alignment.Center)
-                .fillMaxWidth(0.9f)
-                .offset(y = 16.dp)
+                .height(160.dp)
+                .padding(horizontal = 16.dp)
+        )
+
+        InfiniteWheel(
+            range = 0..59,
+            initialTime = initialMinute + 1,
+            onItemSelected = { minute ->
+                minuteDebounceScope.launch {
+                    delay(300)
+                    onMinuteSelected(minute)
+                }
+            }
         )
     }
 }
@@ -135,14 +115,14 @@ fun InfiniteWheel(
     }
 
 
-    val recompositionCount = remember { mutableStateOf(0) }
-    recompositionCount.value++
-    Log.d("RecompositionTracker", "InfiniteWheel count: ${recompositionCount.value}")
+//    val recompositionCount = remember { mutableStateOf(0) }
+//    recompositionCount.value++
+    Log.d("RecompositionTracker", "InfiniteWheel recomposition")
 
     LazyColumn(
         state = listState,
         flingBehavior = snapFlingBehavior,
-        modifier = Modifier
+        modifier = Modifier.wrapContentSize()
             .height(160.dp)
             .width(50.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -154,9 +134,10 @@ fun InfiniteWheel(
             val value = range.elementAt(actualIndex)
             val isSelected = index == selectedIndex.value
             Text(
-                text = value.toString(),
+                text = String.format(Locale.getDefault(), "%02d", value),
                 fontSize = if (isSelected) 26.sp else 20.sp,
-                color = if (isSelected) Color.Black else Color.Gray,
+                color = if (isSelected) MaterialTheme.colorScheme.onSecondary
+                else MaterialTheme.colorScheme.surface,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 0.dp),
@@ -176,5 +157,15 @@ fun InfiniteWheel(
                 }
             }
     }
+}
 
+@Preview(showBackground = true)
+@Composable
+fun PreviewWheelTimePicker() {
+    WheelTimePicker(
+        0,
+        0,
+        onHourSelected = {},
+        onMinuteSelected = {}
+    )
 }

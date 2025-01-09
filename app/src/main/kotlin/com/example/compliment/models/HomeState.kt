@@ -1,4 +1,4 @@
-package com.example.compliment.ui.home
+package com.example.compliment.models
 
 data class HomeState(
     val isTextVisible: Boolean,

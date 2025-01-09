@@ -1,34 +1,36 @@
 package com.example.compliment.ui.theme
 
 import androidx.compose.material3.Typography
-import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.sp
+import com.example.compliment.R
 
-// Set of Material typography styles to start with
-val Typography = Typography(
-    bodyLarge = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
-        fontSize = 16.sp,
-        lineHeight = 24.sp,
-        letterSpacing = 0.5.sp
-    )
-    /* Other default text styles to override
-    titleLarge = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
-        fontSize = 22.sp,
-        lineHeight = 28.sp,
-        letterSpacing = 0.sp
-    ),
-    labelSmall = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Medium,
-        fontSize = 11.sp,
-        lineHeight = 16.sp,
-        letterSpacing = 0.5.sp
-    )
-    */
+val customFontFamily = FontFamily(Font(R.font.lato_regular))
+val customFontFamilyCursive = FontFamily(Font(R.font.caveat_regular))
+private val defaultTypography = Typography()
+
+val customTypography = Typography(
+    displayLarge = defaultTypography.displayLarge.copy(fontFamily = customFontFamily),
+    displayMedium = defaultTypography.displayMedium.copy(fontFamily = customFontFamily),
+    displaySmall =defaultTypography.displaySmall.copy(fontFamily = customFontFamily),
+    headlineLarge = defaultTypography.headlineLarge.copy(fontFamily = customFontFamily),
+    headlineMedium = defaultTypography.headlineMedium.copy(fontFamily = customFontFamily),
+    headlineSmall = defaultTypography.headlineSmall.copy(fontFamily = customFontFamily),
+
+    titleLarge = defaultTypography.titleLarge.copy(fontFamily = customFontFamily),
+    titleMedium = defaultTypography.titleMedium.copy(fontFamily = customFontFamily),
+    titleSmall = defaultTypography.titleSmall.copy(fontFamily = customFontFamily),
+
+    bodyLarge = defaultTypography.bodyLarge.copy(fontFamily = customFontFamily),
+    bodyMedium = defaultTypography.bodyMedium.copy(fontFamily = customFontFamily),
+    bodySmall = defaultTypography.bodySmall.copy(fontFamily = customFontFamily),
+
+    labelLarge = defaultTypography.labelLarge.copy(fontFamily = customFontFamily),
+    labelMedium = defaultTypography.labelMedium.copy(fontFamily = customFontFamily),
+    labelSmall = defaultTypography.labelSmall.copy(fontFamily = customFontFamily)
 )
+//    bodyLarge = TextStyle(
+//        fontFamily = customFontFamily,
+//        fontWeight = FontWeight.Normal,
+//        fontSize = 16.sp,
+//    )

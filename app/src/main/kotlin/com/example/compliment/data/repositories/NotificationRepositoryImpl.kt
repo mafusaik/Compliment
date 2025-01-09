@@ -18,6 +18,10 @@ class NotificationRepositoryImpl(private val notificationDao: NotificationDao) :
         notificationDao.update(schedule)
     }
 
+    override suspend fun updateSchedules(schedules: List<NotificationSchedule>){
+        notificationDao.updateAll(schedules)
+    }
+
     override suspend fun deleteSchedule(schedule: NotificationSchedule){
         notificationDao.delete(schedule)
     }

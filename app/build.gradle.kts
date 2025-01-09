@@ -53,6 +53,10 @@ android {
 }
 
 dependencies {
+    //Coil
+    implementation(libs.coil.compose)
+    implementation(libs.coil.svg)
+
     //WorkManager
     implementation(libs.workmanager.coroutines)
 

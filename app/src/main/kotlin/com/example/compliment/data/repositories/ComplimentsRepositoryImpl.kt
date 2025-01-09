@@ -1,28 +1,39 @@
 package com.example.compliment.data.repositories
 
 import android.content.Context
+import android.content.res.Configuration
+import android.util.Log
 import com.example.compliment.R
 import com.example.compliment.data.sharedprefs.PrefsManager
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import java.util.Locale
 import kotlin.random.Random
 
-internal class ComplimentsRepositoryImpl(private val context: Context) : ComplimentsRepository {
-
-    private val prefsManager = PrefsManager(context)
-
+internal class ComplimentsRepositoryImpl(newContext: Context) : ComplimentsRepository {
+    private var context: Context = newContext
+    private var prefsManager = PrefsManager(context)
     private val complimentSet = LinkedHashSet<String>()
-    private val maxSize = 20 // Максимальное количество комплиментов которые не будут повторяться
 
-    private val currentCompliment = MutableStateFlow(prefsManager.recentCompliments.lastOrNull() ?: "")
+
+    private val maxSize =
+        if (prefsManager.isForWomen) 100 else 50 // Максимальное количество комплиментов которые не будут повторяться
+
+    private val currentCompliment =
+        MutableStateFlow(prefsManager.recentCompliments.lastOrNull() ?: "")
 
     override fun currentCompliment(): Flow<String> {
         return currentCompliment.asStateFlow()
     }
 
     override suspend fun nextCompliment(): String {
-        val compliments = context.resources.getStringArray(R.array.compliments)
+        val compliments = if (prefsManager.isForWomen){
+            context.resources.getStringArray(R.array.compliments_women)
+        } else {
+            context.resources.getStringArray(R.array.compliments_men)
+        }
         val recentCompliments = prefsManager.recentCompliments
         complimentSet.addAll(recentCompliments)
 
@@ -49,9 +60,17 @@ internal class ComplimentsRepositoryImpl(private val context: Context) : Complim
         currentCompliment.value = compliment
     }
 
-    override suspend fun restoreCompliments(){
+    override suspend fun restoreCompliments() {
         val recentCompliments = prefsManager.recentCompliments
-        complimentSet.addAll(recentCompliments)
+        if (recentCompliments.isNotEmpty()) complimentSet.addAll(recentCompliments)
+        else complimentSet.add(nextCompliment())
     }
 
+
+    override suspend fun changeComplimentLang(newContext: Context) {
+        context = newContext
+        prefsManager = PrefsManager(context)
+        prefsManager.recentCompliments = emptySet()
+        nextCompliment()
+    }
 }

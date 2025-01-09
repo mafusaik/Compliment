@@ -1,58 +1,67 @@
 package com.example.compliment.ui.theme
 
 import android.app.Activity
-import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
-import androidx.compose.material3.dynamicDarkColorScheme
-import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.platform.LocalContext
-
-private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
-)
-
-private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
-
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
-)
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 
 @Composable
-fun ComplimentTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+fun MyAppTheme(
+    isDarkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
-    val colorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-            val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-        }
+    val colors = if (isDarkTheme) DarkColorScheme else LightColorScheme
+    val window = (LocalContext.current as? Activity)?.window
 
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
+    SideEffect {
+        window?.let {
+            WindowCompat.getInsetsController(window, window.decorView).apply {
+                systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+                hide(WindowInsetsCompat.Type.navigationBars())
+                if (isDarkTheme) isAppearanceLightStatusBars = false
+                else isAppearanceLightStatusBars = true
+            }
+        }
     }
 
     MaterialTheme(
-        colorScheme = colorScheme,
-        typography = Typography,
+        colorScheme = colors,
+        typography = customTypography,
         content = content
     )
 }
+
+private val DarkColorScheme = darkColorScheme(
+    primary = WhiteBackground,
+    onPrimary = DarkBlue,
+    secondary = DarkBlue,
+    onSecondary = WhiteBackground,
+    background = DarkBlue,
+    onSurface = Grey,
+    surface = GreyLight,
+    error = RedError,
+    tertiary = DarkBlueLight,
+    surfaceContainer = DarkBlueLight,
+    inverseSurface = DarkBlueLight
+)
+
+private val LightColorScheme = lightColorScheme(
+    primary = RedDark,
+    onPrimary = WhiteBackground,
+    secondary = WhiteBackground,
+    onSecondary = Black,
+    background = WhiteBackground,
+    onSurface = Grey,
+    surface = GreyLight,
+    error = RedError,
+    tertiary = Grey,
+    surfaceContainer = WhiteEgg,
+    inverseSurface = GreyLight
+)

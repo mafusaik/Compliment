@@ -10,5 +10,7 @@ interface NotificationRepository {
 
     suspend fun updateSchedule(schedule: NotificationSchedule)
 
+    suspend fun updateSchedules(schedules: List<NotificationSchedule>)
+
     suspend fun deleteSchedule(schedule: NotificationSchedule)
 }

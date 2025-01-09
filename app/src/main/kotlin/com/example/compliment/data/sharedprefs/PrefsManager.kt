@@ -7,35 +7,42 @@ class PrefsManager(context:Context) {
     private val prefs =
             context.getSharedPreferences(PREFERENCES_NAME_TOKEN, Context.MODE_PRIVATE)
 
-    var enabledNotifications: Boolean
-        get() = prefs.getBoolean(KEY_ENABLED_NOTIFICATIONS, false)
-        set(value) {
-            prefs.edit().putBoolean(KEY_ENABLED_NOTIFICATIONS, value).apply()
-        }
-
-    var selectedDays: Set<String>
-        get() = prefs.getStringSet(KEY_SELECTED_DAYS, emptySet()) ?: emptySet()
-        set(value) {
-            prefs.edit().putStringSet(KEY_SELECTED_DAYS, value).apply()
-        }
-
-    var selectedTimes: Set<String>
-        get() = prefs.getStringSet(KEY_SELECTED_TIMES, emptySet()) ?: emptySet()
-        set(value) {
-            prefs.edit().putStringSet(KEY_SELECTED_TIMES, value).apply()
-        }
-
     var recentCompliments: Set<String>
         get() = prefs.getStringSet(KEY_RECENT_COMPLIMENTS, emptySet()) ?: emptySet()
         set(value) {
             prefs.edit().putStringSet(KEY_RECENT_COMPLIMENTS, value).apply()
         }
 
+    var isExactTime: Boolean
+        get() = prefs.getBoolean(KEY_EXACT_TIME, false)
+        set(value) {
+            prefs.edit().putBoolean(KEY_EXACT_TIME, value).apply()
+        }
+
+    var isDarkTheme: Boolean
+        get() = prefs.getBoolean(KEY_DARK_THEME, false)
+        set(value) {
+            prefs.edit().putBoolean(KEY_DARK_THEME, value).apply()
+        }
+
+    var currentLanguage: String
+        get() = prefs.getString(KEY_LANGUAGE, "en") ?: "en"
+        set(value) {
+            prefs.edit().putString(KEY_LANGUAGE, value).apply()
+        }
+
+    var isForWomen: Boolean
+        get() = prefs.getBoolean(KEY_WOMEN, true)
+        set(value) {
+            prefs.edit().putBoolean(KEY_WOMEN, value).apply()
+        }
+
     private companion object{
         private const val PREFERENCES_NAME_TOKEN = "setting_storage_token"
-        private const val KEY_ENABLED_NOTIFICATIONS = "key_enabled_notifications"
-        private const val KEY_SELECTED_DAYS = "key_selected_days"
-        private const val KEY_SELECTED_TIMES = "key_selected_times"
         private const val KEY_RECENT_COMPLIMENTS = "key_recent_compliments"
+        private const val KEY_EXACT_TIME = "key_exact_time"
+        private const val KEY_DARK_THEME = "key_dark_theme"
+        private const val KEY_LANGUAGE = "key_current_language"
+        private const val KEY_WOMEN = "key_is_women"
     }
 }
