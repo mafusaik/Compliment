@@ -60,9 +60,6 @@ dependencies {
     implementation(libs.coil.compose)
     implementation(libs.coil.svg)
 
-    //WorkManager
-    implementation(libs.workmanager.coroutines)
-
     // Room
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)

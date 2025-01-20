@@ -1,6 +1,7 @@
 package com.example.compliment.data.sharedprefs;
 
 import android.content.Context
+import java.util.Locale
 
 class PrefsManager(context:Context) {
 
@@ -26,7 +27,7 @@ class PrefsManager(context:Context) {
         }
 
     var currentLanguage: String
-        get() = prefs.getString(KEY_LANGUAGE, "en") ?: "en"
+        get() = prefs.getString(KEY_LANGUAGE, Locale.getDefault().language) ?: "en"
         set(value) {
             prefs.edit().putString(KEY_LANGUAGE, value).apply()
         }

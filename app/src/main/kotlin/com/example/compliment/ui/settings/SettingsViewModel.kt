@@ -2,22 +2,17 @@ package com.example.compliment.ui.settings
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.example.compliment.data.repositories.ComplimentsRepository
 import com.example.compliment.data.repositories.SettingsRepository
 import com.example.compliment.data.sharedprefs.PrefsManager
 import com.example.compliment.models.SettingsEvent
 import com.example.compliment.models.SettingsUiState
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
-import kotlinx.coroutines.launch
 
 class SettingsViewModel(
     private val repository: SettingsRepository,
-    private val complimentRepository: ComplimentsRepository,
     private val prefsManager: PrefsManager
 ) : ViewModel() {
     private val _uiState = MutableStateFlow(SettingsUiState())
@@ -52,7 +47,7 @@ class SettingsViewModel(
                 _uiState.update { it.copy(isForWomen = event.isForWomen) }
             }
             is SettingsEvent.SelectLanguage -> {
-                Log.i("SETTINGS", "SettingsEvent.SelectLanguage ${event.language}")
+               // Log.i("SETTINGS", "SettingsEvent.SelectLanguage ${event.language}")
                 prefsManager.currentLanguage = event.language
                 repository.setIsRecreate(true)
                 _uiState.update { it.copy(selectedLanguage = event.language, restartRequired = true) }

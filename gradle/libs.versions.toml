@@ -14,7 +14,6 @@ room = "2.6.1"
 ksp = "2.0.20-1.0.25"
 coroutines = "1.8.1"
 koinBom = "3.5.6"
-workmanager = "2.10.0"
 coil = "3.0.4"
 immutable = "0.3.8"
 
@@ -23,8 +22,6 @@ immutable-collections = { module = "org.jetbrains.kotlinx:kotlinx-collections-im
 
 coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" }
 coil-svg = { module = "io.coil-kt.coil3:coil-svg", version.ref = "coil" }
-
-workmanager-coroutines = {group = "androidx.work", name = "work-runtime-ktx", version.ref = "workmanager"}
 
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }

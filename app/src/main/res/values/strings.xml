@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Compliment</string>
-    <string name="title_select_days">Select Days of the Week</string>
-    <string name="title_select_time">Select Time</string>
     <string name="message_no_selected_day">Please select at least one day</string>
     <string name="compliment_copied">compliment copied</string>
     <string name="permission_needed">Permission Needed</string>

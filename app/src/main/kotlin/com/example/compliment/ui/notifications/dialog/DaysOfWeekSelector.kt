@@ -29,6 +29,8 @@ import androidx.compose.ui.unit.dp
 import kotlinx.collections.immutable.ImmutableSet
 import kotlinx.collections.immutable.toImmutableSet
 import java.time.DayOfWeek
+import java.time.format.TextStyle
+import java.util.Locale
 
 @Composable
 fun DaysOfWeekSelector(
@@ -58,7 +60,7 @@ fun DaysOfWeekSelector(
     ) {
         daysOfWeek.forEach { day ->
             DayOfWeekCheckbox(
-                day = day.name.take(2),
+                day = day.getDisplayName(TextStyle.SHORT, Locale.getDefault()).take(2).uppercase(),
                 isSelected = selectedDays.contains(day),
                 onCheckedChange = { isSelected ->
                     selectedDays = if (isSelected) {

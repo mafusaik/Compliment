@@ -9,6 +9,6 @@ data class SettingsUiState(
     val isExactTimeEnabled: Boolean = false,
     val isForWomen: Boolean = true,
     val showPermissionDialog: Boolean = false,
-    val selectedLanguage: String = Locale.getDefault().language,
+    val selectedLanguage: String = "en",
     val restartRequired: Boolean = false
 )

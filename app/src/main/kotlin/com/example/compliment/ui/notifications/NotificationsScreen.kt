@@ -247,8 +247,9 @@ fun EmptyContentBox(paddingValues: PaddingValues) {
     ) {
         Text(
             stringResource(R.string.empty_reminders),
-            fontSize = 18.sp,
-            color = MaterialTheme.colorScheme.tertiary
+            fontSize = 20.sp,
+            color = MaterialTheme.colorScheme.tertiary,
+            textAlign = TextAlign.Center
         )
     }
 }

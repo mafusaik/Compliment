@@ -36,7 +36,6 @@ import com.example.compliment.ui.elements.CustomSwitch
 @Composable
 fun ScheduleItem(
     schedule: NotificationScheduleWithFlow,
-  //  textColor: Color,
     daysText: String,
     onCheckedChange: (Boolean) -> Unit,
     onDelete: () -> Unit,
@@ -45,26 +44,12 @@ fun ScheduleItem(
     val swipeState = rememberSwipeToDismissBoxState()
     val checkedState = schedule.isActive.collectAsStateWithLifecycle(false)
 
-   // val textColor = getTextColor(isActive = checkedState.value)
-   // val textColor = MaterialTheme.colorScheme.tertiary
-
     Log.d("RecompositionTracker", "NotificationItem recomposed")
 
     val icon = painterResource(R.drawable.icon_delete)
     val alignment: Alignment = Alignment.CenterEnd
 
     val colorBackground: Color = MaterialTheme.colorScheme.error
-
-//    val colorError: Color = MaterialTheme.colorScheme.error
-//    val colorBackground by remember(swipeState.dismissDirection) {
-//        derivedStateOf {
-//            when (swipeState.dismissDirection) {
-//                SwipeToDismissBoxValue.EndToStart -> colorError
-//                SwipeToDismissBoxValue.Settled -> Color.Transparent
-//                SwipeToDismissBoxValue.StartToEnd -> Color.Transparent
-//            }
-//        }
-//    }
 
     SwipeToDismissBox(
         modifier = Modifier.animateContentSize(),

@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Комплимент</string>
-    <string name="title_select_days">Выберите дни недели</string>
-    <string name="title_select_time">Выберите время</string>
     <string name="message_no_selected_day">Пожалуйста, выберите хотя бы один день</string>
     <string name="compliment_copied">Комплимент скопирован</string>
     <string name="permission_needed">Требуется разрешение</string>

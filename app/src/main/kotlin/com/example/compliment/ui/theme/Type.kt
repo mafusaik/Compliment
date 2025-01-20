@@ -29,8 +29,3 @@ val customTypography = Typography(
     labelMedium = defaultTypography.labelMedium.copy(fontFamily = customFontFamily),
     labelSmall = defaultTypography.labelSmall.copy(fontFamily = customFontFamily)
 )
-//    bodyLarge = TextStyle(
-//        fontFamily = customFontFamily,
-//        fontWeight = FontWeight.Normal,
-//        fontSize = 16.sp,
-//    )
