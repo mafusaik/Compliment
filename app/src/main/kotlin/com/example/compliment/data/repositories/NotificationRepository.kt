@@ -1,16 +1,28 @@
 package com.example.compliment.data.repositories
 
+import androidx.compose.runtime.Immutable
 import com.example.compliment.data.model.NotificationSchedule
+import com.example.compliment.models.NotificationScheduleWithFlow
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.ImmutableSet
 import kotlinx.coroutines.flow.Flow
+import java.time.DayOfWeek
 
+@Immutable
 interface NotificationRepository {
-    suspend fun addSchedule(schedule: NotificationSchedule)
+    suspend fun addSchedule(schedule: NotificationSchedule): Long
 
-    fun getSchedules(): Flow<List<NotificationSchedule>>
+    fun getSchedules(): ImmutableList<NotificationScheduleWithFlow>
 
-    suspend fun updateSchedule(schedule: NotificationSchedule)
+    suspend fun updateScheduleDays(time: String, days: ImmutableSet<DayOfWeek>)
 
     suspend fun updateSchedules(schedules: List<NotificationSchedule>)
 
-    suspend fun deleteSchedule(schedule: NotificationSchedule)
+    suspend fun deleteSchedule(time: String)
+
+    suspend fun updateScheduleState(time: String, isActive: Boolean)
+
+    fun getFlowIsActive(time: String): Flow<Boolean>
+
+    suspend fun getNotificationSchedule(time: String): NotificationSchedule?
 }

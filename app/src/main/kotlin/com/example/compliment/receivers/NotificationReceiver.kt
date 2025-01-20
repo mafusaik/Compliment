@@ -11,9 +11,11 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.example.compliment.MainActivity
 import com.example.compliment.alarm.AlarmScheduler
+import com.example.compliment.data.model.NotificationSchedule
 import com.example.compliment.data.repositories.ComplimentsRepository
 import com.example.compliment.data.repositories.NotificationRepository
 import com.example.compliment.utils.Constants
+import kotlinx.collections.immutable.toImmutableSet
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -50,7 +52,7 @@ class NotificationReceiver : BroadcastReceiver() {
                         sendNotification(context, message)
                     }
                     time?.let {
-                        alarmScheduler.createRepeatSchedule(time, days)
+                        alarmScheduler.createRepeatSchedule(time, days.toImmutableSet())
                     }
                     job.cancel()
                 }
@@ -59,13 +61,11 @@ class NotificationReceiver : BroadcastReceiver() {
                 Log.i("NotificationReceiver", "action BOOT")
                 scope.launch(Dispatchers.IO) {
                     notificationRepository.getSchedules()
-                        .collectLatest { list->
-                        list.forEach {schedule->
-                            alarmScheduler.createSchedule(schedule)
+                        .onEach {schedule->
+                            alarmScheduler.createSchedule(schedule.time, schedule.daysOfWeek)
                         }
-                    }
-                    job.cancel()
                 }
+                    job.cancel()
             }
         }
 

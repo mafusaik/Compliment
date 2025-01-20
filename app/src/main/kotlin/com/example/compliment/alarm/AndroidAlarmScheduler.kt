@@ -11,6 +11,7 @@ import com.example.compliment.data.model.NotificationSchedule
 import com.example.compliment.data.sharedprefs.PrefsManager
 import com.example.compliment.receivers.NotificationReceiver
 import com.example.compliment.utils.Constants
+import kotlinx.collections.immutable.ImmutableSet
 import java.time.DayOfWeek
 import java.time.LocalDateTime
 import java.time.ZoneId
@@ -27,10 +28,10 @@ class AndroidAlarmScheduler(
     }
 
     @SuppressLint("ScheduleExactAlarm")
-    override fun createSchedule(schedule: NotificationSchedule) {
-        val intent = getIntent(schedule.time, schedule.daysOfWeek)
-        val pendingIntent = getPendingIntent(intent, schedule.time, schedule.daysOfWeek)
-        val firstTriggerTime = calculateDelay(schedule.time, true)
+    override fun createSchedule(time: String, daysOfWeek: ImmutableSet<DayOfWeek>) {
+        val intent = getIntent(time, daysOfWeek)
+        val pendingIntent = getPendingIntent(intent, time)
+        val firstTriggerTime = calculateDelay(time, true)
 
         if (prefsManager.isExactTime) {
             alarmManager.setExactAndAllowWhileIdle(
@@ -48,13 +49,13 @@ class AndroidAlarmScheduler(
             Log.i("NOTIFICATIONS", "schedule NOT EXACT")
         }
 
-        Log.i("NOTIFICATIONS", "Notification scheduled for first ${schedule.time} pendingIntent $pendingIntent")
+        Log.i("NOTIFICATIONS", "Notification scheduled for first ${time} pendingIntent $pendingIntent")
     }
 
     @SuppressLint("ScheduleExactAlarm")
-    override fun createRepeatSchedule(time: String, daysOfWeek: Set<DayOfWeek>) {
+    override fun createRepeatSchedule(time: String, daysOfWeek: ImmutableSet<DayOfWeek>) {
         val intent = getIntent(time, daysOfWeek)
-        val pendingIntent = getPendingIntent(intent, time, daysOfWeek)
+        val pendingIntent = getPendingIntent(intent, time)
         val newDelay = calculateDelay(time, false)
 
         if (prefsManager.isExactTime) {
@@ -76,13 +77,13 @@ class AndroidAlarmScheduler(
         Log.i("NOTIFICATIONS", "Notification scheduled repeat for $time pendingIntent $pendingIntent")
     }
 
-    override fun cancel(schedule: NotificationSchedule) {
-        val intent = getIntent(schedule.time, schedule.daysOfWeek)
-        val pendingIntent = getPendingIntent(intent, schedule.time, schedule.daysOfWeek)
+    override fun cancel(time: String, daysOfWeek: ImmutableSet<DayOfWeek>) {
+        val intent = getIntent(time, daysOfWeek)
+        val pendingIntent = getPendingIntent(intent, time)
 
         alarmManager.cancel(pendingIntent)
         pendingIntent.cancel()
-        Log.i("NOTIFICATIONS", "Notification cancelled for ${schedule.time} pendingIntent $pendingIntent")
+        Log.i("NOTIFICATIONS", "Notification cancelled for ${time} pendingIntent $pendingIntent")
     }
 
     private fun calculateDelay(time:String, isInitial: Boolean): Long {
@@ -107,7 +108,7 @@ class AndroidAlarmScheduler(
             .toEpochMilli() - delay
     }
 
-    private fun getIntent(time: String, daysOfWeek: Set<DayOfWeek>): Intent{
+    private fun getIntent(time: String, daysOfWeek: ImmutableSet<DayOfWeek>): Intent{
         return Intent(context, NotificationReceiver::class.java).apply {
             action = Constants.KEY_NOTIFICATION_FILTER
             putExtra(Constants.KEY_TIME, time)
@@ -118,7 +119,6 @@ class AndroidAlarmScheduler(
     private fun getPendingIntent(
         intent: Intent,
         time: String,
-        daysOfWeek: Set<DayOfWeek>
     ): PendingIntent {
        // val uniqueId = (time + daysOfWeek).hashCode()
         val uniqueId = time.replace(":", "").toInt()

@@ -22,8 +22,12 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.minimumInteractiveComponentSize
 import androidx.compose.material3.rememberSwipeToDismissBoxState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -31,42 +35,46 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.compliment.R
 import com.example.compliment.data.model.NotificationSchedule
+import com.example.compliment.models.NotificationScheduleWithFlow
 import com.example.compliment.ui.elements.CustomSwitch
 import java.time.format.TextStyle
 import java.util.Locale
 
 @Composable
 fun ScheduleItem(
-    schedule: NotificationSchedule,
+    schedule: NotificationScheduleWithFlow,
+  //  textColor: Color,
+    daysText: String,
     onCheckedChange: (Boolean) -> Unit,
     onDelete: () -> Unit,
     onEdit: () -> Unit,
 ) {
     val swipeState = rememberSwipeToDismissBoxState()
-    val checkedState = remember { mutableStateOf(schedule.isActive) }
+    val checkedState = schedule.isActive.collectAsStateWithLifecycle(false)
 
-    val textColor = if (checkedState.value) MaterialTheme.colorScheme.onSecondary
-    else MaterialTheme.colorScheme.inverseSurface
+   // val textColor = getTextColor(isActive = checkedState.value)
+   // val textColor = MaterialTheme.colorScheme.tertiary
 
-    Log.d("RecompositionTracker", "NotificationItem recomposed ${schedule.time}")
+    Log.d("RecompositionTracker", "NotificationItem recomposed")
 
     val icon = painterResource(R.drawable.icon_delete)
     val alignment: Alignment = Alignment.CenterEnd
-    var colorBackground: Color = MaterialTheme.colorScheme.error
 
-    when (swipeState.dismissDirection) {
-        SwipeToDismissBoxValue.EndToStart -> {
-            colorBackground = MaterialTheme.colorScheme.error
-        }
+    val colorBackground: Color = MaterialTheme.colorScheme.error
 
-        SwipeToDismissBoxValue.Settled -> {
-            colorBackground = Color.Transparent
-        }
-
-        SwipeToDismissBoxValue.StartToEnd -> {}
-    }
+//    val colorError: Color = MaterialTheme.colorScheme.error
+//    val colorBackground by remember(swipeState.dismissDirection) {
+//        derivedStateOf {
+//            when (swipeState.dismissDirection) {
+//                SwipeToDismissBoxValue.EndToStart -> colorError
+//                SwipeToDismissBoxValue.Settled -> Color.Transparent
+//                SwipeToDismissBoxValue.StartToEnd -> Color.Transparent
+//            }
+//        }
+//    }
 
     SwipeToDismissBox(
         modifier = Modifier.animateContentSize(),
@@ -85,7 +93,8 @@ fun ScheduleItem(
                         .minimumInteractiveComponentSize()
                         .padding(end = 24.dp),
                     painter = icon,
-                    contentDescription = null
+                    contentDescription = null,
+                    tint = Color.Unspecified
                 )
             }
         }
@@ -112,24 +121,19 @@ fun ScheduleItem(
                     Text(
                         text = schedule.time,
                         fontSize = 18.sp,
-                        color = textColor,
+                        color = if (checkedState.value) MaterialTheme.colorScheme.onSecondary
+                        else MaterialTheme.colorScheme.inverseSurface,
                         style = MaterialTheme.typography.bodyLarge
                     )
                     Text(
-                        text = if (schedule.daysOfWeek.size == 7) {
-                            stringResource(id = R.string.every_day)
-                        } else {
-                            schedule.daysOfWeek.joinToString(", ") {
-                                it.getDisplayName(TextStyle.SHORT, Locale.getDefault()).uppercase()
-                            }
-                        },
+                        text = daysText,
                         fontSize = 14.sp,
-                        color = textColor
+                        color = if (checkedState.value) MaterialTheme.colorScheme.onSecondary
+                        else MaterialTheme.colorScheme.inverseSurface
                     )
                 }
 
                 CustomSwitch(checkedState.value) {
-                    checkedState.value = it
                     onCheckedChange(it)
                 }
             }
@@ -141,10 +145,8 @@ fun ScheduleItem(
             onDelete()
         }
 
-        SwipeToDismissBoxValue.StartToEnd -> {
-        }
+        SwipeToDismissBoxValue.StartToEnd -> {}
 
-        SwipeToDismissBoxValue.Settled -> {
-        }
+        SwipeToDismissBoxValue.Settled -> {}
     }
 }

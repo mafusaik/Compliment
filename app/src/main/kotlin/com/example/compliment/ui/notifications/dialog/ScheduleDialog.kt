@@ -1,7 +1,6 @@
 package com.example.compliment.ui.notifications.dialog
 
 import android.util.Log
-import android.widget.Toast
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.tween
@@ -10,7 +9,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material3.HorizontalDivider
@@ -37,18 +35,18 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import com.example.compliment.R
-import com.example.compliment.data.model.NotificationSchedule
-import com.example.compliment.ui.theme.Black
-import com.example.compliment.ui.theme.GreyLight
-import com.example.compliment.ui.theme.WhiteBackground
+import com.example.compliment.extensions.showToast
+import com.example.compliment.models.NotificationScheduleWithFlow
+import kotlinx.collections.immutable.ImmutableSet
+import kotlinx.collections.immutable.persistentSetOf
 import java.time.DayOfWeek
 import java.util.Calendar
 
 @Composable
 fun ScheduleDialog(
-    existingData: NotificationSchedule? = null,
-    currentSelectedDays: Set<DayOfWeek>,
-    onTimeSelected: (hour: Int, minute: Int, Set<DayOfWeek>) -> Unit,
+    existingData: NotificationScheduleWithFlow? = null,
+    currentSelectedDays: ImmutableSet<DayOfWeek>,
+    onTimeSelected: (hour: Int, minute: Int, ImmutableSet<DayOfWeek>) -> Unit,
     onDismiss: () -> Unit
 ) {
     val context = LocalContext.current
@@ -62,8 +60,8 @@ fun ScheduleDialog(
 
     val days = existingData?.daysOfWeek ?: currentSelectedDays
 
-    var selectedHour by remember { mutableIntStateOf(hour) }
-    var selectedMinute by remember { mutableIntStateOf(minute) }
+    val selectedHour = remember { mutableIntStateOf(hour) }
+    val selectedMinute = remember { mutableIntStateOf(minute) }
     var selectedDays by remember { mutableStateOf(days) }
     val shakeAnimation = remember { Animatable(0f) }
     var isShaking by remember { mutableStateOf(false) }
@@ -87,14 +85,11 @@ fun ScheduleDialog(
                     existingData,
                     onConfirm = {
                         if (selectedDays.isEmpty()) {
-                            Toast.makeText(
-                                context,
-                                context.getString(R.string.message_no_selected_day),
-                                Toast.LENGTH_SHORT
-                            ).show()
+                            context.showToast(context.getString(R.string.message_no_selected_day))
                             isShaking = true
                         } else {
-                            onTimeSelected(selectedHour, selectedMinute, selectedDays)
+                            Log.i("SELECTED_ITEM", "confirm ${selectedHour.intValue} ${selectedMinute.intValue}")
+                            onTimeSelected(selectedHour.intValue, selectedMinute.intValue, selectedDays)
                         }
                     },
                     onDismiss = {
@@ -112,10 +107,10 @@ fun ScheduleDialog(
                     initialHour = hour,
                     initialMinute = minute,
                     onHourSelected = { hour ->
-                        selectedHour = hour
+                        selectedHour.intValue = hour
                     },
                     onMinuteSelected = { minute ->
-                        selectedMinute = minute
+                        selectedMinute.intValue = minute
                     }
                 )
 
@@ -158,7 +153,7 @@ fun ScheduleDialog(
 
 @Composable
 fun CustomTitle(
-    existingData: NotificationSchedule? = null,
+    existingData: NotificationScheduleWithFlow? = null,
     onConfirm: () -> Unit,
     onDismiss: () -> Unit
 ){
@@ -204,7 +199,7 @@ fun CustomTitle(
 fun PreviewTimePickerDialog() {
     ScheduleDialog(
         null,
-        emptySet(),
+        persistentSetOf(),
         onTimeSelected = { _, _, _ ->
         },
         onDismiss = {

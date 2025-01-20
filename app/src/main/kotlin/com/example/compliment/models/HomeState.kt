@@ -1,5 +1,8 @@
 package com.example.compliment.models
 
+import androidx.compose.runtime.Immutable
+
+@Immutable
 data class HomeState(
     val isTextVisible: Boolean,
     val compliment: String,

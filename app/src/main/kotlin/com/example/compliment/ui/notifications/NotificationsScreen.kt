@@ -1,7 +1,6 @@
 package com.example.compliment.ui.notifications
 
 import android.Manifest
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -14,11 +13,30 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Button
+import androidx.compose.material3.FabPosition
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -29,33 +47,33 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.compliment.R
-import com.example.compliment.data.model.NotificationSchedule
+import com.example.compliment.models.NotificationScheduleWithFlow
 import com.example.compliment.models.NotificationsEvent
 import com.example.compliment.models.NotificationsUiState
 import com.example.compliment.ui.notifications.dialog.ScheduleDialog
-import com.example.compliment.ui.theme.Black
 import com.example.compliment.ui.theme.RedDark
 import com.example.compliment.ui.theme.WhiteBackground
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.ImmutableSet
 import kotlinx.coroutines.delay
 import org.koin.androidx.compose.koinViewModel
+import java.time.DayOfWeek
+import java.time.format.TextStyle
 import java.util.Locale
 
 @Composable
 fun NotificationsScreen() {
     val viewModel = koinViewModel<NotificationsViewModel>()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-   // val schedules by viewModel.localSchedules.collectAsStateWithLifecycle()
 
     NotificationsScreen(
         uiState = uiState,
-      //  schedules = schedules,
         onEvent = { event ->
             viewModel.handleEvent(event)
         }
@@ -65,19 +83,12 @@ fun NotificationsScreen() {
 @Composable
 private fun NotificationsScreen(
     uiState: NotificationsUiState,
-  //  schedules: List<NotificationSchedule>,
     onEvent: (NotificationsEvent) -> Unit
 ) {
-//     val schedules by remember { derivedStateOf { uiState.schedules } }
-    val schedules = uiState.schedules
-    Log.d("RecompositionTracker", "NotificationsScreen recomposed ${schedules}")
-    val context = LocalContext.current
+    val schedules = rememberUpdatedState(uiState.schedules)
 
-    val launcherRequest = rememberLauncherForActivityResult(
-        ActivityResultContracts.RequestPermission()
-    ) { isGranted ->
-        onEvent(NotificationsEvent.PermissionResult(isGranted))
-    }
+    Log.d("RecompositionTracker", "NotificationsScreen recomposed")
+    val context = LocalContext.current
 
     val launcherToSetting = rememberLauncherForActivityResult(
         ActivityResultContracts.StartActivityForResult()
@@ -95,7 +106,6 @@ private fun NotificationsScreen(
     }
 
     val lifecycle = LocalLifecycleOwner.current.lifecycle
-
     DisposableEffect(lifecycle) {
         val observer = LifecycleEventObserver { _, event ->
             if (event == Lifecycle.Event.ON_STOP) {
@@ -142,59 +152,12 @@ private fun NotificationsScreen(
                     .padding(bottom = 8.dp)
             )
 
-            if (schedules.isEmpty()) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(paddingValues),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Text(
-                        stringResource(R.string.empty_reminders),
-                        fontSize = 18.sp,
-                        color = MaterialTheme.colorScheme.tertiary
-                    )
-                }
+            if (schedules.value.isEmpty()) {
+                EmptyContentBox(paddingValues)
             } else {
-                LazyColumn(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .background(Color.Transparent)
-                ) {
-                    items(schedules.toList(), key = { it.time.hashCode() }) { schedule ->
-                        Log.d("RecompositionTracker", "LazyColumn items")
-//                        val isActive by rememberUpdatedState(schedule.isActive)
-                        var isActive by remember { mutableStateOf(schedule.isActive) }
-
-                        ScheduleItem(
-                            schedule = schedule.copy(isActive = isActive),
-                            onCheckedChange = { isChecked ->
-                                isActive = isChecked
-                                if (uiState.isPermissionGranted) {
-                                    if (isChecked) onEvent(
-                                        NotificationsEvent.EnableSchedule(schedule)
-                                    )
-                                    else onEvent(NotificationsEvent.DisableSchedule(schedule))
-                                } else {
-                                    checkAndRequestPermission(
-                                        context,
-                                        launcherRequest,
-                                    ) { onEvent(NotificationsEvent.ShowPermissionDialog(true)) }
-                                }
-                            },
-                            onDelete = {
-                                onEvent(NotificationsEvent.DeleteSchedule(schedule))
-                            },
-                            onEdit = {
-                                onEvent(NotificationsEvent.ShowAddScheduleDialog(true, schedule))
-                            }
-                        )
-
-                        if (schedule == schedules.toList().last()) {
-                            Spacer(Modifier.height(120.dp))
-                        }
-                    }
-                }
+                LazyColumnContent(schedules.value, onEvent = { event ->
+                   onEvent(event)
+                })
             }
 
             Spacer(modifier = Modifier.weight(1f))
@@ -236,21 +199,57 @@ private fun NotificationsScreen(
     }
 }
 
-private fun checkAndRequestPermission(
-    context: Context,
-    launcher: ManagedActivityResultLauncher<String, Boolean>,
-    onShow: (Boolean) -> Unit
-) {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-        val shouldShowRationale = ActivityCompat.shouldShowRequestPermissionRationale(
-            context as Activity, Manifest.permission.POST_NOTIFICATIONS
-        )
+@Composable
+fun LazyColumnContent(schedules: ImmutableList<NotificationScheduleWithFlow>, onEvent: (NotificationsEvent) -> Unit) {
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.Transparent)
+    ) {
+        items(schedules, key = { it.time }) { schedule ->
+            Log.d("RecompositionTracker", "LazyColumn items")
 
-        if (shouldShowRationale) {
-            onShow(true)
-        } else {
-            launcher.launch(Manifest.permission.POST_NOTIFICATIONS)
+            val daysText = getTextDays(daysOfWeek = schedule.daysOfWeek)
+
+            ScheduleItem(
+                schedule = schedule,
+                daysText = daysText,
+                onCheckedChange = { isChecked ->
+                    if (isChecked) onEvent(
+                        NotificationsEvent.EnableSchedule(schedule.time, schedule.daysOfWeek)
+                    )
+                    else onEvent(NotificationsEvent.DisableSchedule(schedule.time, schedule.daysOfWeek))
+                },
+                onDelete = {
+                    onEvent(NotificationsEvent.DeleteSchedule(schedule.time, schedule.daysOfWeek))
+                },
+                onEdit = {
+                    onEvent(NotificationsEvent.ShowAddScheduleDialog(true, schedule))
+                }
+            )
         }
+        item {
+            Spacer(
+                Modifier
+                    .height(120.dp)
+            )
+        }
+    }
+}
+
+@Composable
+fun EmptyContentBox(paddingValues: PaddingValues) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(paddingValues),
+        contentAlignment = Alignment.Center
+    ) {
+        Text(
+            stringResource(R.string.empty_reminders),
+            fontSize = 18.sp,
+            color = MaterialTheme.colorScheme.tertiary
+        )
     }
 }
 
@@ -287,7 +286,7 @@ fun PermissionDeniedDialog(
             Button(onClick = openSettings) {
                 Text(
                     text = stringResource(R.string.go_settings),
-                    color = MaterialTheme.colorScheme.onSecondary
+                    color = WhiteBackground
                 )
             }
         },
@@ -295,7 +294,7 @@ fun PermissionDeniedDialog(
             Button(onClick = onDismiss) {
                 Text(
                     text = stringResource(R.string.cancel),
-                    color = MaterialTheme.colorScheme.onSecondary
+                    color = WhiteBackground
                 )
             }
         }
@@ -312,6 +311,16 @@ fun openAppSettings(
     launcher.launch(intent)
 }
 
+@Composable
+fun getTextDays(daysOfWeek: ImmutableSet<DayOfWeek>): String{
+    return if (daysOfWeek.size == 7) {
+        stringResource(id = R.string.every_day)
+    } else {
+        daysOfWeek.joinToString(", ") {
+            it.getDisplayName(TextStyle.SHORT, Locale.getDefault()).uppercase()
+        }
+    }
+}
 
 @Preview(showBackground = true)
 @Composable

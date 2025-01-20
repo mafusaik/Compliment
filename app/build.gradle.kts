@@ -53,6 +53,9 @@ android {
 }
 
 dependencies {
+    //Immutable
+    implementation(libs.immutable.collections)
+
     //Coil
     implementation(libs.coil.compose)
     implementation(libs.coil.svg)

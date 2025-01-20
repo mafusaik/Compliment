@@ -1,5 +1,6 @@
 package com.example.compliment.ui.home
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.compliment.data.clipboard.SystemClipboard
@@ -11,6 +12,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
@@ -22,7 +24,8 @@ class HomeViewModel(
     private val _isTextVisible = MutableStateFlow(true)
 
     val state: StateFlow<HomeState> = _isTextVisible
-        .combine(repository.currentCompliment()) { isTextVisible, compliment ->
+        .combine(repository.currentCompliment().distinctUntilChanged()) { isTextVisible, compliment ->
+            Log.i("RecompositionTracker", "viewmodel state $compliment")
             HomeState(isTextVisible, compliment)
         }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(stopTimeoutMillis = 5000), HomeState.Initial)
@@ -45,6 +48,10 @@ class HomeViewModel(
 
     fun onComplimentClicked() {
         clipboard.copyToClipboard(state.value.compliment)
+    }
+
+    fun setInitCompliment(compliment: String) {
+      repository.setCompliment(compliment)
     }
 
 }

@@ -19,7 +19,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -28,10 +27,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.compliment.extensions.floorMod
-import com.example.compliment.ui.theme.Black
-import com.example.compliment.ui.theme.GreyLight
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.debounce
 import java.util.Locale
 import kotlin.math.abs
 
@@ -42,8 +38,6 @@ fun WheelTimePicker(
     onHourSelected: (hour: Int) -> Unit,
     onMinuteSelected: (minute: Int) -> Unit
 ) {
-    val hourDebounceScope = rememberCoroutineScope()
-    val minuteDebounceScope = rememberCoroutineScope()
 
 //    val recompositionCount = remember { mutableStateOf(0) }
 //    recompositionCount.value++
@@ -61,10 +55,7 @@ fun WheelTimePicker(
             range = 0..23,
             initialTime = initialHour + 1,
             onItemSelected = { hour ->
-                hourDebounceScope.launch {
-                    delay(300)
                     onHourSelected(hour)
-                }
             }
         )
 
@@ -80,10 +71,7 @@ fun WheelTimePicker(
             range = 0..59,
             initialTime = initialMinute + 1,
             onItemSelected = { minute ->
-                minuteDebounceScope.launch {
-                    delay(300)
                     onMinuteSelected(minute)
-                }
             }
         )
     }
@@ -148,12 +136,13 @@ fun InfiniteWheel(
 
     LaunchedEffect(listState) {
         snapshotFlow { listState.isScrollInProgress }
+            .debounce(150)
             .collect { isScrolling ->
                 if (!isScrolling) {
                     val centerIndex = selectedIndex.value
                     val actualValue = (centerIndex - middleItemIndex).floorMod(visibleItems)
                     onItemSelected(range.elementAt(actualValue))
-                    Log.i("SELECTED_ITEM", "$actualValue")
+                    Log.i("SELECTED_ITEM", "$actualValue    ${range.elementAt(actualValue)}")
                 }
             }
     }

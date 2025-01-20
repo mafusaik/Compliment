@@ -9,21 +9,19 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.Stable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
+@Stable
 fun CustomSwitch(
     isChecked: Boolean,
     onCheckedChange: (Boolean) -> Unit
 ) {
-    val isActive = remember { mutableStateOf(isChecked) }
     Switch(
-        checked = isActive.value,
+        checked = isChecked,
         onCheckedChange = {
-            isActive.value = it
             onCheckedChange(it)
         },
         colors = SwitchDefaults.colors(

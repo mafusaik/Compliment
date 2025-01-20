@@ -57,6 +57,10 @@ internal class ComplimentsRepositoryImpl(newContext: Context) : ComplimentsRepos
         }
         complimentSet.add(compliment)
         prefsManager.recentCompliments = complimentSet
+        setCompliment(compliment)
+    }
+
+    override fun setCompliment(compliment: String) {
         currentCompliment.value = compliment
     }
 

@@ -21,21 +21,20 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.compliment.R
 import com.example.compliment.extensions.showToast
 import com.example.compliment.models.HomeState
-import com.example.compliment.ui.theme.WhiteBackground
 import com.example.compliment.ui.theme.customFontFamilyCursive
 import org.koin.androidx.compose.koinViewModel
 
@@ -44,15 +43,24 @@ fun HomeScreen(initialCompliment: String, innerPadding: PaddingValues) {
     val context = LocalContext.current
     val viewModel = koinViewModel<HomeViewModel>()
     val state by viewModel.state.collectAsStateWithLifecycle()
+
+    LaunchedEffect(key1 = initialCompliment) {
+        if (initialCompliment.isNotEmpty()) {
+            viewModel.setInitCompliment(initialCompliment)
+        }
+    }
+    Log.d("RecompositionTracker", "HomeScreen recomposed ${state.compliment} $initialCompliment")
+
     HomeScreen(
         innerPadding,
         state,
-        initialCompliment,
         onComplimentClicked = {
             context.showToast(context.getString(R.string.compliment_copied))
             viewModel.onComplimentClicked()
         },
-        onGetCompliment = { viewModel.onGetComplimentClicked() }
+        onGetCompliment = {
+            viewModel.onGetComplimentClicked()
+        }
     )
 }
 
@@ -60,10 +68,10 @@ fun HomeScreen(initialCompliment: String, innerPadding: PaddingValues) {
 private fun HomeScreen(
     innerPadding: PaddingValues,
     state: HomeState,
-    initialCompliment: String,
     onGetCompliment: () -> Unit,
     onComplimentClicked: () -> Unit
 ) {
+
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -108,7 +116,7 @@ private fun HomeScreen(
                     contentAlignment = Alignment.Center
                 ) {
                     Text(
-                        text = initialCompliment.ifEmpty { state.compliment },
+                        text = state.compliment,
                         style = LocalTextStyle.current.copy(
                             fontSize = 38.sp,
                             lineHeight = 32.sp,
@@ -123,7 +131,7 @@ private fun HomeScreen(
         }
 
         GetCompliment(
-            onClick = onGetCompliment,
+            onClick = remember { onGetCompliment } ,
             Modifier.align(Alignment.BottomCenter)
         )
     }

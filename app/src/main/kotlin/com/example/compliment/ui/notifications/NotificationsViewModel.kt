@@ -7,18 +7,17 @@ import com.example.compliment.alarm.AlarmScheduler
 import com.example.compliment.data.model.NotificationSchedule
 import com.example.compliment.data.repositories.NotificationRepository
 import com.example.compliment.data.repositories.SettingsRepository
+import com.example.compliment.models.NotificationScheduleWithFlow
 import com.example.compliment.models.NotificationsEvent
 import com.example.compliment.models.NotificationsUiState
+import kotlinx.collections.immutable.ImmutableSet
+import kotlinx.collections.immutable.toImmutableList
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.debounce
-import kotlinx.coroutines.flow.distinctUntilChanged
-import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import java.time.DayOfWeek
@@ -32,8 +31,6 @@ class NotificationsViewModel(
     private val _uiState = MutableStateFlow(NotificationsUiState())
     val uiState: StateFlow<NotificationsUiState> = this._uiState.asStateFlow()
 
-//    private val _localSchedules = MutableStateFlow<List<NotificationSchedule>>(emptyList())
-//    val localSchedules: StateFlow<List<NotificationSchedule>> = _localSchedules.asStateFlow()
 
     init {
         loadSavedSettings()
@@ -43,37 +40,57 @@ class NotificationsViewModel(
     fun handleEvent(event: NotificationsEvent) {
         when (event) {
             is NotificationsEvent.EnableSchedule -> {
-               // updateScheduleState(event.schedule, true)
-                startSchedule(event.schedule)
+                if (_uiState.value.isPermissionGranted) {
+                    updateScheduleState(event.time, true)
+                    startSchedule(event.time, event.days)
+                } else {
+                    _uiState.update { it.copy(showPermissionDialog = true) }
+                }
             }
 
             is NotificationsEvent.DisableSchedule -> {
-              //  updateScheduleState(event.schedule, false)
-                cancelSchedule(event.schedule)
+                if (_uiState.value.isPermissionGranted) {
+                    updateScheduleState(event.time, false)
+                    cancelSchedule(event.time, event.days)
+                } else {
+                    _uiState.update { it.copy(showPermissionDialog = true) }
+                }
             }
 
             is NotificationsEvent.DeleteSchedule -> {
-                deleteTimeSchedule(event.schedule)
+                deleteScheduleInState(event.time)
+                deleteTimeSchedule(event.time, event.days)
             }
 
             is NotificationsEvent.CreateSchedule -> {
-                val isActive = this._uiState.value.isPermissionGranted
-                addSchedule(event.time, event.days, isActive)
-                this._uiState.update { it.copy(selectedDays = event.days) }
+                val isActive = _uiState.value.isPermissionGranted
+                viewModelScope.launch(Dispatchers.IO) {
+                    if (addSchedule(event.time, event.days, isActive) > 0) {
+                        addScheduleInState(event.time, event.days)
+                    }
+                }
             }
 
             is NotificationsEvent.EditSchedule -> {
-                if (event.schedule != null && event.schedule.time != event.oldSchedule.time) {
-                    deleteTimeSchedule(event.oldSchedule)
-                    addSchedule(
-                        event.schedule.time,
-                        event.schedule.daysOfWeek,
-                        event.schedule.isActive
-                    )
-                    this._uiState.update { it.copy(selectedDays = event.schedule.daysOfWeek) }
-                } else if (event.schedule != null) {
-                    updateScheduleState(event.schedule, event.schedule.isActive)
+                viewModelScope.launch(Dispatchers.IO) {
+                    val schedule = event.schedule
+                    val oldTime = event.oldSchedule.time
+                    if (schedule != null && schedule.time != oldTime) {
+                        deleteTimeSchedule(oldTime, schedule.daysOfWeek)
+                        val itemId = addSchedule(
+                            schedule.time,
+                            schedule.daysOfWeek,
+                            schedule.isActive.first()
+                        )
+                        if (itemId > 0) {
+                            updateScheduleInState(oldTime, schedule.time, schedule.daysOfWeek)
+                        }
+                    } else if (schedule != null) {
+                        updateSchedule(schedule.time, schedule.daysOfWeek)
+                        updateScheduleInState(oldTime, schedule.time, schedule.daysOfWeek)
+                    }
                 }
+
             }
 
             is NotificationsEvent.SaveSchedules -> {
@@ -114,129 +131,129 @@ class NotificationsViewModel(
         viewModelScope.launch {
             settingsRepository.getIsExactTimeFlow().collectLatest {
                 Log.i("SETTINGS", "change isExact $it")
-//                localSchedules.value.forEach { schedule ->
-//                    cancelSchedule(schedule)
-//                    startSchedule(schedule)
-//                }
-                this@NotificationsViewModel._uiState.value.schedules.forEach { schedule->
-                    cancelSchedule(schedule)
-                    startSchedule(schedule)
+                this@NotificationsViewModel._uiState.value.schedules.forEach { schedule ->
+                    cancelSchedule(schedule.time, schedule.daysOfWeek)
+                    startSchedule(schedule.time, schedule.daysOfWeek)
                 }
             }
         }
     }
 
     private fun loadSavedSettings() {
+        viewModelScope.launch(Dispatchers.IO) {
+            val listSchedules = notificationRepository.getSchedules()
+            _uiState.update { state ->
+                state.copy(schedules = listSchedules)
+            }
+
+//            notificationRepository.getSchedules()
+//                .distinctUntilChanged()
+//                .flowOn(Dispatchers.IO)
+//                .collectLatest { listSchedules ->
+//                    _uiState.update { state ->
+//                        state.copy(schedules = listSchedules)
+//                    }
+//                }
+        }
+    }
+
+    private fun disableAllNotifications() {
         viewModelScope.launch {
-            notificationRepository.getSchedules()
-                .map { it.toSet() }
-                .distinctUntilChanged { old, new -> old == new }
-                .flowOn(Dispatchers.IO)
-                .collectLatest {
-//                    _localSchedules.emit(it.toList())
-                    this@NotificationsViewModel._uiState.update { state ->
-                        state.copy(schedules = it.toSet())
-                    }
+            _uiState.value.schedules
+                .forEach {
+                    updateScheduleState(it.time, false)
                 }
         }
     }
 
-
-    private fun disableAllNotifications() {
-//        localSchedules.value.forEach { schedule ->
-////            cancelSchedule(schedule)
-////            startSchedule(schedule)
-//        }
-        this._uiState.value.schedules.forEach {
-            updateScheduleState(it, false)
+    private fun deleteTimeSchedule(time: String, days: ImmutableSet<DayOfWeek>) {
+        viewModelScope.launch(Dispatchers.IO) {
+            cancelSchedule(time, days)
+            notificationRepository.deleteSchedule(time)
         }
     }
 
-
-    private fun deleteTimeSchedule(schedule: NotificationSchedule) {
+    private fun updateScheduleState(time: String, isActive: Boolean) {
         viewModelScope.launch(Dispatchers.IO) {
-            cancelSchedule(schedule)
-            notificationRepository.deleteSchedule(schedule)
+            notificationRepository.updateScheduleState(time, isActive)
         }
     }
 
-
-    private fun updateScheduleState(schedule: NotificationSchedule, isActive: Boolean) {
-//        _localSchedules.update { currentList ->
-//            currentList.map {
-//                if (it.time == schedule.time) schedule.copy(isActive = isActive)
-//                else it
-//            }
-//        }
+    private fun updateSchedule(time: String, days: ImmutableSet<DayOfWeek>) {
         viewModelScope.launch(Dispatchers.IO) {
-            val newSchedule = schedule.copy(isActive = isActive)
-            notificationRepository.updateSchedule(newSchedule)
+
+            Log.i("UPDATE_SCHEDULE", "upd ${notificationRepository.getNotificationSchedule(time)}")
+            Log.i("UPDATE_SCHEDULE", "upd ${days}")
+            notificationRepository.updateScheduleDays(time, days)
+        }
+    }
+
+    private fun addScheduleInState(time: String, days: ImmutableSet<DayOfWeek>) {
+        val mutableList = _uiState.value.schedules.toMutableList()
+        if (mutableList.none { it.time == time }) {
+            val isActiveFlow = notificationRepository.getFlowIsActive(time)
+            mutableList.add(NotificationScheduleWithFlow(time, days, isActiveFlow))
+            _uiState.update {
+                it.copy(schedules = mutableList.toImmutableList())
+            }
+        }
+    }
+
+    private fun deleteScheduleInState(time: String) {
+        val mutableList = _uiState.value.schedules.filter { it.time != time }
+        _uiState.update {
+            it.copy(schedules = mutableList.toImmutableList())
+        }
+    }
+
+    private fun updateScheduleInState(
+        oldTime: String,
+        time: String,
+        days: ImmutableSet<DayOfWeek>
+    ) {
+        val mutableList = _uiState.value.schedules.filter { it.time != oldTime }.toMutableList()
+        if (mutableList.none { it.time == time }) {
+            val isActiveFlow = notificationRepository.getFlowIsActive(time)
+            mutableList.add(NotificationScheduleWithFlow(time, days, isActiveFlow))
+            _uiState.update {
+                it.copy(schedules = mutableList.toImmutableList())
+            }
         }
     }
 
     private fun saveChanges() {
         viewModelScope.launch {
-        //    notificationRepository.updateSchedules(_localSchedules.value)
+            notificationRepository.updateSchedules(_uiState.value.schedules.mapToNotificationScheduleList())
         }
     }
 
-    private fun addSchedule(time: String, days: Set<DayOfWeek>, isActive: Boolean) {
-        viewModelScope.launch(Dispatchers.IO) {
-            val schedule = NotificationSchedule(time, days, isActive)
-            notificationRepository.addSchedule(schedule)
-            startSchedule(schedule)
-        }
+    private suspend fun addSchedule(
+        time: String,
+        days: ImmutableSet<DayOfWeek>,
+        isActive: Boolean
+    ): Long {
+        startSchedule(time, days)
+        val schedule = NotificationSchedule(time, days, isActive)
+        return notificationRepository.addSchedule(schedule)
     }
 
-    private fun startSchedule(schedule: NotificationSchedule) {
-        Log.i("NOTIFICATIONS", "scheduleNotifications $schedule")
+    private fun startSchedule(time: String, daysOfWeek: ImmutableSet<DayOfWeek>) {
+        Log.i("NOTIFICATIONS", "scheduleNotifications $time")
         viewModelScope.launch {
-            alarmScheduler.createSchedule(schedule)
+            alarmScheduler.createSchedule(time, daysOfWeek)
         }
     }
 
-    private fun cancelSchedule(schedule: NotificationSchedule) {
-        alarmScheduler.cancel(schedule)
+    private fun cancelSchedule(time: String, daysOfWeek: ImmutableSet<DayOfWeek>) {
+        alarmScheduler.cancel(time, daysOfWeek)
     }
 
-//    fun startSchedule(context: Context, schedule: NotificationSchedule) {
-//        Log.i("NOTIFICATIONS", "scheduleNotifications $schedule")
-//        viewModelScope.launch {
-//            alarmScheduler.schedule(schedule)
-//        }
+    private suspend fun List<NotificationScheduleWithFlow>.mapToNotificationScheduleList(): List<NotificationSchedule> {
+        return this.map { it.mapToNotificationSchedule() }
+    }
 
-
-//        val workManager = WorkManager.getInstance(context)
-//        cancelNotification(context, schedule.time)
-//
-//            val (hour, minute) = schedule.time.split(":").map { it.toInt() }
-//            val daysAsString = schedule.daysOfWeek.map { it.name }.toSet()
-//            val delay = calculateInitialDelay(hour, minute)
-//
-//            val workRequest = PeriodicWorkRequestBuilder<NotificationWorker>(1, TimeUnit.DAYS)
-//                .setInitialDelay(delay, TimeUnit.MILLISECONDS)
-//                .setInputData(workDataOf("days" to daysAsString.joinToString(",")))
-//                .addTag("notification")
-//                .build()
-//
-//            workManager.enqueueUniquePeriodicWork(
-//                "notification_${schedule.time}",
-//                ExistingPeriodicWorkPolicy.UPDATE,
-//                workRequest
-//            )
-//    }
-
-//    fun cancelSchedule(context: Context, schedule: NotificationSchedule) {
-//        val workManager = WorkManager.getInstance(context)
-//        workManager.cancelUniqueWork("notification_$time")
-//        Log.i("NOTIFICATIONS", "Notification cancelled for $time")
-//    }
-
-//    private fun cancelAllNotification(schedules: Set<NotificationSchedule>) {
-//        schedules.forEach {
-//            cancelSchedule(it)
-//        }
-//    }
-
+    private suspend fun NotificationScheduleWithFlow.mapToNotificationSchedule(): NotificationSchedule {
+        return NotificationSchedule(time, daysOfWeek, isActive.first())
+    }
 
 }

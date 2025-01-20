@@ -85,10 +85,7 @@ fun BottomNavigationBar(navController: NavController) {
                     modifier = Modifier
                         .padding(5.dp)
                         .clip(RoundedCornerShape(12.dp))
-                        .background(
-                            //   if (currentRoute == screen.route) RedDark else Color.Transparent,
-                            backgroundColor
-                        )
+                        .background(backgroundColor)
                 )
             }
         }
