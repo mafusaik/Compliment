@@ -7,7 +7,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.SystemClock
 import android.util.Log
-import com.example.compliment.data.model.NotificationSchedule
 import com.example.compliment.data.sharedprefs.PrefsManager
 import com.example.compliment.receivers.NotificationReceiver
 import com.example.compliment.utils.Constants

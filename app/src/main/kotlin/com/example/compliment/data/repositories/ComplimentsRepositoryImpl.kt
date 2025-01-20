@@ -1,15 +1,11 @@
 package com.example.compliment.data.repositories
 
 import android.content.Context
-import android.content.res.Configuration
-import android.util.Log
 import com.example.compliment.R
 import com.example.compliment.data.sharedprefs.PrefsManager
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import java.util.Locale
 import kotlin.random.Random
 
 internal class ComplimentsRepositoryImpl(newContext: Context) : ComplimentsRepository {

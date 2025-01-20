@@ -21,16 +21,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.example.compliment.R
 import com.example.compliment.navigation.Screen
-import com.example.compliment.ui.theme.RedDark
-import com.example.compliment.ui.theme.WhiteBackground
 
 @Composable
 fun BottomNavigationBar(navController: NavController) {

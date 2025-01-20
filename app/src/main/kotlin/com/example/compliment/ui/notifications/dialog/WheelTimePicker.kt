@@ -27,7 +27,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.compliment.extensions.floorMod
-import kotlinx.coroutines.flow.debounce
 import java.util.Locale
 import kotlin.math.abs
 
@@ -38,9 +37,6 @@ fun WheelTimePicker(
     onHourSelected: (hour: Int) -> Unit,
     onMinuteSelected: (minute: Int) -> Unit
 ) {
-
-//    val recompositionCount = remember { mutableStateOf(0) }
-//    recompositionCount.value++
 
     Log.d("RecompositionTracker", "WheelTimePicker recompositionCount")
 
@@ -55,7 +51,7 @@ fun WheelTimePicker(
             range = 0..23,
             initialTime = initialHour + 1,
             onItemSelected = { hour ->
-                    onHourSelected(hour)
+                onHourSelected(hour)
             }
         )
 
@@ -71,7 +67,7 @@ fun WheelTimePicker(
             range = 0..59,
             initialTime = initialMinute + 1,
             onItemSelected = { minute ->
-                    onMinuteSelected(minute)
+                onMinuteSelected(minute)
             }
         )
     }
@@ -102,15 +98,13 @@ fun InfiniteWheel(
         }
     }
 
-
-//    val recompositionCount = remember { mutableStateOf(0) }
-//    recompositionCount.value++
     Log.d("RecompositionTracker", "InfiniteWheel recomposition")
 
     LazyColumn(
         state = listState,
         flingBehavior = snapFlingBehavior,
-        modifier = Modifier.wrapContentSize()
+        modifier = Modifier
+            .wrapContentSize()
             .height(160.dp)
             .width(50.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -136,13 +130,13 @@ fun InfiniteWheel(
 
     LaunchedEffect(listState) {
         snapshotFlow { listState.isScrollInProgress }
-            .debounce(150)
             .collect { isScrolling ->
+                Log.i("SELECTED_ITEM", "$isScrolling")
                 if (!isScrolling) {
                     val centerIndex = selectedIndex.value
                     val actualValue = (centerIndex - middleItemIndex).floorMod(visibleItems)
-                    onItemSelected(range.elementAt(actualValue))
-                    Log.i("SELECTED_ITEM", "$actualValue    ${range.elementAt(actualValue)}")
+                    onItemSelected(actualValue)
+                  //  Log.i("SELECTED_ITEM", "$actualValue = ${range.elementAt(actualValue)}")
                 }
             }
     }

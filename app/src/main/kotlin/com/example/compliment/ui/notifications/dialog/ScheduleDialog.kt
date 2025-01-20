@@ -41,6 +41,7 @@ import kotlinx.collections.immutable.ImmutableSet
 import kotlinx.collections.immutable.persistentSetOf
 import java.time.DayOfWeek
 import java.util.Calendar
+import java.util.Locale
 
 @Composable
 fun ScheduleDialog(
@@ -168,7 +169,6 @@ fun CustomTitle(
                 painter = painterResource(id = R.drawable.icon_dialog_cross),
                 contentDescription = stringResource(R.string.cancel),
                 tint = MaterialTheme.colorScheme.onSecondary,
-
             )
         }
 
@@ -179,7 +179,8 @@ fun CustomTitle(
             text = if (existingData == null) stringResource(R.string.new_schedule)
             else stringResource(R.string.edit_schedule),
             textAlign = TextAlign.Center,
-            fontSize = 22.sp,
+            fontSize = if (Locale.getDefault().language == "en") 22.sp
+            else 20.sp,
             color = MaterialTheme.colorScheme.onSecondary
         )
 

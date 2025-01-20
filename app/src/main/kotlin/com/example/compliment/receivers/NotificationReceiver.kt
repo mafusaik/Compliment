@@ -11,7 +11,6 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.example.compliment.MainActivity
 import com.example.compliment.alarm.AlarmScheduler
-import com.example.compliment.data.model.NotificationSchedule
 import com.example.compliment.data.repositories.ComplimentsRepository
 import com.example.compliment.data.repositories.NotificationRepository
 import com.example.compliment.utils.Constants
@@ -19,7 +18,6 @@ import kotlinx.collections.immutable.toImmutableSet
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.java.KoinJavaComponent.inject
 import java.time.DayOfWeek
