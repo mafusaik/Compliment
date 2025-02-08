@@ -8,15 +8,15 @@ plugins {
 }
 
 android {
-    namespace = "com.example.compliment"
+    namespace = "com.glazer.compliment"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.compliment"
+        applicationId = "com.glazer.compliment"
         minSdk = 26
         targetSdk = 35
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 3
+        versionName = "1.01"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {

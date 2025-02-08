@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.glazer.compliment">
 
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
@@ -33,7 +34,7 @@
         </activity>
         <provider
             android:name="androidx.startup.InitializationProvider"
-            android:authorities="com.example.compliment.androidx-startup"
+            android:authorities="com.glazer.compliment.androidx-startup"
             android:exported="false"
             tools:node="merge">
             <meta-data
