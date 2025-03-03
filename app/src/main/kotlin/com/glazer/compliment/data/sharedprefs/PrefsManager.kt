@@ -1,4 +1,4 @@
-package com.glazer.compliment.data.sharedprefs;
+package com.glazer.compliment.data.sharedprefs
 
 import android.content.Context
 import com.glazer.compliment.utils.Constants
