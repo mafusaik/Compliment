@@ -23,8 +23,8 @@ fun MyAppTheme(
     SideEffect {
         window?.let {
             WindowCompat.getInsetsController(window, window.decorView).apply {
-                systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
-                hide(WindowInsetsCompat.Type.navigationBars())
+//                systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+//                hide(WindowInsetsCompat.Type.navigationBars())
                 if (isDarkTheme) isAppearanceLightStatusBars = false
                 else isAppearanceLightStatusBars = true
             }

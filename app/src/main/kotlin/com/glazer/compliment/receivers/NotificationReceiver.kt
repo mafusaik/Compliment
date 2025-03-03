@@ -10,6 +10,7 @@ import androidx.core.app.NotificationChannelCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.glazer.compliment.MainActivity
+import com.glazer.compliment.R
 import com.glazer.compliment.alarm.AlarmScheduler
 import com.glazer.compliment.data.repositories.ComplimentsRepository
 import com.glazer.compliment.data.repositories.NotificationRepository
@@ -88,7 +89,7 @@ class NotificationReceiver : BroadcastReceiver() {
 
         val notification = NotificationCompat.Builder(context, Constants.CHANNEL_ID)
             .setContentText(message)
-            .setSmallIcon(android.R.drawable.ic_dialog_info)
+            .setSmallIcon(R.drawable.logo_notify)
             .setAutoCancel(true)
             .setContentIntent(pendingIntent)
             .build()

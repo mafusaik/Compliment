@@ -58,6 +58,7 @@ import com.glazer.compliment.extensions.setAppLocale
 import com.glazer.compliment.models.SettingsEvent
 import com.glazer.compliment.models.SettingsUiState
 import com.glazer.compliment.ui.elements.CustomSwitch
+import com.glazer.compliment.utils.Constants
 import org.koin.androidx.compose.koinViewModel
 import org.koin.core.parameter.parametersOf
 
@@ -84,7 +85,19 @@ fun SettingsScreen(
     val context = LocalContext.current
     val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
+    val startGender =
+        if (uiState.selectedGender == Constants.GENDER_WOMEN) stringResource(R.string.for_women)
+        else stringResource(R.string.for_men)
+
     val selectedLanguage by remember { mutableStateOf(uiState.selectedLanguage) }
+    val startLanguage = selectedLanguage.langCodeToLang(context)
+
+    val genders = listOf(stringResource(R.string.for_women), stringResource(R.string.for_men))
+    val languages =
+        listOf(stringResource(R.string.lang_english), stringResource(R.string.lang_russian))
+
+    val labelLang = stringResource(R.string.language)
+    val labelGender = stringResource(R.string.gender)
 
     val launcherToSetting = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.StartActivityForResult()
@@ -112,14 +125,14 @@ fun SettingsScreen(
         SettingsItem(
             stringResource(R.string.enable_dark_theme),
             uiState.isDarkThemeEnabled
-        ){
+        ) {
             onEvent(SettingsEvent.ToggleDarkTheme(it))
         }
 
         SettingsItem(
             stringResource(R.string.enable_exact_notification_time),
             uiState.isExactTimeEnabled
-        ){ isChecked ->
+        ) { isChecked ->
             onEvent(
                 SettingsEvent.ToggleExactTime(
                     isHasPermission(alarmManager),
@@ -128,15 +141,13 @@ fun SettingsScreen(
             )
         }
 
-        SettingsItem(
-            if (uiState.isForWomen) stringResource(R.string.for_women)
-            else stringResource(R.string.for_men),
-            uiState.isForWomen
-        ){
-            onEvent(SettingsEvent.ToggleForWomen(it))
+        ValueSelector(labelGender, startGender, genders) { gender ->
+            val value = if (gender == context.getString(R.string.for_women)) Constants.GENDER_WOMEN
+            else Constants.GENDER_MEN
+            onEvent(SettingsEvent.SelectGender(value))
         }
 
-        LanguageSelector(context, selectedLanguage) { language ->
+        ValueSelector(labelLang, startLanguage, languages) { language ->
             val languageCode = language.langToLangCode(context)
             context.setAppLocale(languageCode)
             onEvent(SettingsEvent.SelectLanguage(languageCode))
@@ -171,7 +182,7 @@ fun SettingsItem(
     title: String,
     isChecked: Boolean,
     onCheckedChange: (Boolean) -> Unit
-){
+) {
     Row(
         modifier = Modifier.fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically
@@ -227,16 +238,13 @@ fun PermissionDialog(
 }
 
 @Composable
-fun LanguageSelector(
-    context: Context,
-    langCode: String,
-    onLanguageChange: (String) -> Unit
+fun ValueSelector(
+    label: String,
+    startValue: String,
+    listValues: List<String>,
+    onValueChange: (String) -> Unit
 ) {
     var isDropdownExpanded by remember { mutableStateOf(false) }
-    val languages =
-        listOf(stringResource(R.string.lang_english), stringResource(R.string.lang_russian))
-
-    val currentLanguage = langCode.langCodeToLang(context)
 
     ExposedDropdownMenuBox(
         expanded = isDropdownExpanded,
@@ -252,11 +260,11 @@ fun LanguageSelector(
         }
 
         OutlinedTextField(
-            value = currentLanguage,
+            value = startValue,
             onValueChange = { },
             label = {
                 Text(
-                    text = stringResource(R.string.language),
+                    text = label,
                     fontSize = 16.sp
                 )
             },
@@ -290,18 +298,18 @@ fun LanguageSelector(
             },
             containerColor = MaterialTheme.colorScheme.surfaceContainer
         ) {
-            languages.forEach { language ->
+            listValues.forEach { value ->
                 DropdownMenuItem(
                     text = {
                         Text(
-                            text = language,
+                            text = value,
                             fontSize = 20.sp,
                             color = MaterialTheme.colorScheme.onSecondary
                         )
                     },
                     onClick = {
-                        if (language != currentLanguage) {
-                            onLanguageChange(language)
+                        if (value != startValue) {
+                            onValueChange(value)
                         }
                         isDropdownExpanded = false
                         focusManager.clearFocus()

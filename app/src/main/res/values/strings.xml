@@ -18,12 +18,13 @@
     <string name="new_schedule">New reminder</string>
     <string name="edit_schedule">Edit reminder</string>
     <string name="confirm">Confirm</string>
-    <string name="lang_russian">Russian</string>
-    <string name="lang_english">English</string>
+    <string name="lang_russian" translatable="false">Русский</string>
+    <string name="lang_english" translatable="false">English</string>
     <string name="title_nice_day">It\'s a great day to say kind words!</string>
     <string name="get_compliment">Get a compliment</string>
     <string name="empty_reminders">This is empty for now, create a new reminder</string>
     <string name="language">Language</string>
+    <string name="gender">Gender</string>
     <string name="every_day">Every day</string>
 
     <string-array name="compliments_women">

@@ -3,6 +3,7 @@ package com.glazer.compliment.data.repositories
 import android.content.Context
 import com.glazer.compliment.R
 import com.glazer.compliment.data.sharedprefs.PrefsManager
+import com.glazer.compliment.utils.Constants
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -15,7 +16,7 @@ internal class ComplimentsRepositoryImpl(newContext: Context) : ComplimentsRepos
 
 
     private val maxSize =
-        if (prefsManager.isForWomen) 100 else 50 // Максимальное количество комплиментов которые не будут повторяться
+        if (prefsManager.currentGender == Constants.GENDER_WOMEN) 100 else 50 // Максимальное количество комплиментов которые не будут повторяться
 
     private val currentCompliment =
         MutableStateFlow(prefsManager.recentCompliments.lastOrNull() ?: "")
@@ -25,7 +26,7 @@ internal class ComplimentsRepositoryImpl(newContext: Context) : ComplimentsRepos
     }
 
     override suspend fun nextCompliment(): String {
-        val compliments = if (prefsManager.isForWomen){
+        val compliments = if (prefsManager.currentGender == Constants.GENDER_WOMEN){
             context.resources.getStringArray(R.array.compliments_women)
         } else {
             context.resources.getStringArray(R.array.compliments_men)

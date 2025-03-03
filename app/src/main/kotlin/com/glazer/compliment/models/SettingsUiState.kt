@@ -6,7 +6,7 @@ import androidx.compose.runtime.Immutable
 data class SettingsUiState(
     val isDarkThemeEnabled: Boolean = false,
     val isExactTimeEnabled: Boolean = false,
-    val isForWomen: Boolean = true,
+    val selectedGender: String = "",
     val showPermissionDialog: Boolean = false,
     val selectedLanguage: String = "en",
     val restartRequired: Boolean = false

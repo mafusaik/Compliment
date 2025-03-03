@@ -1,6 +1,7 @@
 package com.glazer.compliment.data.sharedprefs;
 
 import android.content.Context
+import com.glazer.compliment.utils.Constants
 import java.util.Locale
 
 class PrefsManager(context:Context) {
@@ -32,10 +33,10 @@ class PrefsManager(context:Context) {
             prefs.edit().putString(KEY_LANGUAGE, value).apply()
         }
 
-    var isForWomen: Boolean
-        get() = prefs.getBoolean(KEY_WOMEN, true)
+    var currentGender: String
+        get() = prefs.getString(KEY_GENDER, Constants.GENDER_WOMEN) ?: Constants.GENDER_WOMEN
         set(value) {
-            prefs.edit().putBoolean(KEY_WOMEN, value).apply()
+            prefs.edit().putString(KEY_GENDER, value).apply()
         }
 
     private companion object{
@@ -44,6 +45,6 @@ class PrefsManager(context:Context) {
         private const val KEY_EXACT_TIME = "key_exact_time"
         private const val KEY_DARK_THEME = "key_dark_theme"
         private const val KEY_LANGUAGE = "key_current_language"
-        private const val KEY_WOMEN = "key_is_women"
+        private const val KEY_GENDER = "key_gender"
     }
 }

@@ -15,8 +15,8 @@ android {
         applicationId = "com.glazer.compliment"
         minSdk = 26
         targetSdk = 35
-        versionCode = 3
-        versionName = "1.01"
+        versionCode = 5
+        versionName = "1.02"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -26,7 +26,7 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"

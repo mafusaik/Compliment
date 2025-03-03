@@ -18,12 +18,11 @@
     <string name="new_schedule">Новое напоминание</string>
     <string name="edit_schedule">Изменить напоминание</string>
     <string name="confirm">Подтвердить</string>
-    <string name="lang_russian">Русский</string>
-    <string name="lang_english">Английский</string>
     <string name="title_nice_day">Отличный день, чтобы сказать добрые слова!</string>
     <string name="get_compliment">Получить комплимент</string>
     <string name="empty_reminders">Сейчас здесь пусто, создайте новое напоминание</string>
     <string name="language">Язык</string>
+    <string name="gender">Пол</string>
     <string name="every_day">Каждый день</string>
 
     <string-array name="compliments_women">
