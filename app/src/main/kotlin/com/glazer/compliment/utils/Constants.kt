@@ -10,4 +10,6 @@ object Constants {
     const val GENDER_WOMEN = "key_women"
     const val GENDER_MEN = "key_men"
 
+    const val DELAY = 300
+
 }
