@@ -6,7 +6,6 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.util.Log
-import androidx.core.app.NotificationChannelCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.glazer.compliment.MainActivity
@@ -67,14 +66,11 @@ class NotificationReceiver : BroadcastReceiver() {
                     job.cancel()
             }
         }
-
     }
 
     @SuppressLint("MissingPermission")
     private fun sendNotification(context: Context, message: String) {
         val notificationManager = NotificationManagerCompat.from(context)
-
-        notificationManager.createNotificationChannel(createChannel())
 
         val intent = Intent(context, MainActivity::class.java).apply {
             putExtra(Constants.KEY_NOTIFICATION_TEXT, message)
@@ -97,12 +93,4 @@ class NotificationReceiver : BroadcastReceiver() {
         val notificationId = System.currentTimeMillis().toInt()
         notificationManager.notify(notificationId, notification)
     }
-
-    private fun createChannel() =
-        NotificationChannelCompat.Builder(
-            Constants.CHANNEL_ID,
-            NotificationManagerCompat.IMPORTANCE_DEFAULT
-        )
-            .setName("Reminders")
-            .build()
 }

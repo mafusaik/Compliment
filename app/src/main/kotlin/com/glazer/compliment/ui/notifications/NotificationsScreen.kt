@@ -1,6 +1,7 @@
 package com.glazer.compliment.ui.notifications
 
 import android.Manifest
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -24,8 +25,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.Button
 import androidx.compose.material3.FabPosition
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
@@ -47,6 +46,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
@@ -56,9 +56,10 @@ import com.glazer.compliment.R
 import com.glazer.compliment.models.NotificationScheduleWithFlow
 import com.glazer.compliment.models.NotificationsEvent
 import com.glazer.compliment.models.NotificationsUiState
+import com.glazer.compliment.ui.notifications.dialog.PermissionDeniedDialog
 import com.glazer.compliment.ui.notifications.dialog.ScheduleDialog
 import com.glazer.compliment.ui.theme.RedDark
-import com.glazer.compliment.ui.theme.WhiteBackground
+import com.glazer.compliment.utils.Constants
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.ImmutableSet
 import kotlinx.coroutines.delay
@@ -98,10 +99,21 @@ private fun NotificationsScreen(
         onEvent(NotificationsEvent.PermissionResult(isGranted))
     }
 
+    val permissionLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { isGranted: Boolean ->
+        Log.i("PERMISSION", "Permission granted: $isGranted")
+        onEvent(NotificationsEvent.PermissionResult(isGranted))
+    }
+
+
     LaunchedEffect(key1 = true) {
         delay(500)
         val isGranted = checkPermission(context)
         onEvent(NotificationsEvent.PermissionResult(isGranted))
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU && !isGranted){
+            permissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+        }
         Log.i("PERMISSION", "LaunchedEffect $isGranted")
     }
 
@@ -260,46 +272,6 @@ private fun checkPermission(context: Context): Boolean {
             context, Manifest.permission.POST_NOTIFICATIONS
         ) == PackageManager.PERMISSION_GRANTED
     } else true
-}
-
-@Composable
-fun PermissionDeniedDialog(
-    context: Context,
-    launcher: ManagedActivityResultLauncher<Intent, ActivityResult>,
-    onDismiss: () -> Unit
-) {
-    val openSettings: () -> Unit = {
-        openAppSettings(context, launcher)
-        onDismiss()
-    }
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        title = {
-            Text(
-                text = stringResource(R.string.permission_needed),
-                color = MaterialTheme.colorScheme.onSecondary
-            )
-        },
-        text = {
-            Text(stringResource(R.string.text_permission_notifications))
-        },
-        confirmButton = {
-            Button(onClick = openSettings) {
-                Text(
-                    text = stringResource(R.string.go_settings),
-                    color = WhiteBackground
-                )
-            }
-        },
-        dismissButton = {
-            Button(onClick = onDismiss) {
-                Text(
-                    text = stringResource(R.string.cancel),
-                    color = WhiteBackground
-                )
-            }
-        }
-    )
 }
 
 fun openAppSettings(

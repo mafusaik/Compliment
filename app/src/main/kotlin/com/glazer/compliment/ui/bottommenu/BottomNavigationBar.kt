@@ -7,6 +7,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
@@ -38,16 +39,16 @@ fun BottomNavigationBar(navController: NavController) {
 
     Box(
         modifier = Modifier
-            .fillMaxWidth()
             .padding(24.dp)
+            .navigationBarsPadding()
             .shadow(8.dp, RoundedCornerShape(16.dp))
             .clip(RoundedCornerShape(16.dp))
     ) {
         NavigationBar(
             modifier = Modifier
-                .background(Color.Transparent)
-                .padding(bottom = 0.dp)
-                .height(60.dp),
+                .fillMaxWidth()
+                .height(60.dp)
+                .background(Color.Transparent),
             containerColor = MaterialTheme.colorScheme.background,
         ) {
             items.forEach { screen ->

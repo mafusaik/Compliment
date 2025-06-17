@@ -21,8 +21,6 @@ fun MyAppTheme(
     SideEffect {
         window?.let {
             WindowCompat.getInsetsController(window, window.decorView).apply {
-//                systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
-//                hide(WindowInsetsCompat.Type.navigationBars())
                 if (isDarkTheme) isAppearanceLightStatusBars = false
                 else isAppearanceLightStatusBars = true
             }
@@ -47,7 +45,8 @@ private val DarkColorScheme = darkColorScheme(
     error = RedError,
     tertiary = DarkBlueLight,
     surfaceContainer = DarkBlueLight,
-    inverseSurface = DarkBlueLight
+    inverseSurface = DarkBlueLight,
+    inverseOnSurface = Grey
 )
 
 private val LightColorScheme = lightColorScheme(
@@ -61,5 +60,6 @@ private val LightColorScheme = lightColorScheme(
     error = RedError,
     tertiary = Grey,
     surfaceContainer = WhiteEgg,
-    inverseSurface = GreyLight
+    inverseSurface = GreyLight,
+    inverseOnSurface = WhiteBackground
 )

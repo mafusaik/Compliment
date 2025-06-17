@@ -169,5 +169,10 @@ private fun GetCompliment(
 @Preview(showBackground = true)
 @Composable
 fun PreviewHomeScreen() {
-    HomeScreen("hello", PaddingValues())
+    HomeScreen(
+        PaddingValues(),
+        HomeState(true, "hello"),
+        onComplimentClicked = {},
+        onGetCompliment = {}
+    )
 }

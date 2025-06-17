@@ -119,7 +119,6 @@ class AndroidAlarmScheduler(
         intent: Intent,
         time: String,
     ): PendingIntent {
-       // val uniqueId = (time + daysOfWeek).hashCode()
         val uniqueId = time.replace(":", "").toInt()
         Log.i("NOTIFICATIONS", "PendingIntent uniqueId $uniqueId")
         return PendingIntent.getBroadcast(

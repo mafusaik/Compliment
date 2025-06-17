@@ -189,6 +189,7 @@ fun SettingsItem(
     ) {
         Text(
             text = title,
+            color = MaterialTheme.colorScheme.onSecondary,
             fontSize = 20.sp,
             style = MaterialTheme.typography.bodyMedium,
             modifier = Modifier.weight(1f)

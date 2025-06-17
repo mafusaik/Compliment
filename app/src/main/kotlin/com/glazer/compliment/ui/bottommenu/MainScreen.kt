@@ -6,17 +6,23 @@ import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.navigation.NavGraphBuilder
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -41,85 +47,125 @@ fun MainScreen(initialText: String) {
     val isDarkTheme by viewModel.isDarkTheme.collectAsState()
     val screenOrder = listOf(Screen.Home.route, Screen.Notifications.route, Screen.Settings.route)
 
-    Log.d("RecompositionTracker", "MainScreen recomposition")
-
     LaunchedEffect(Unit) {
         viewModel.checkRecreate(context)
     }
 
+    MainScreenContent(
+        navController = navController,
+        isDarkTheme = isDarkTheme,
+        screenOrder = screenOrder,
+        composableContent = appNavGraph(navController, PaddingValues(0.dp), initialText)
+    )
+}
+
+@Composable
+fun MainScreenContent(
+    navController: NavHostController,
+    isDarkTheme: Boolean,
+    screenOrder: List<String>,
+    composableContent: NavGraphBuilder.() -> Unit
+) {
+
+    Log.d("RecompositionTracker", "MainScreen recomposition")
+
     MyAppTheme(isDarkTheme = isDarkTheme) {
         Scaffold(
-            modifier = Modifier,
+            modifier = Modifier.fillMaxSize(),
             bottomBar = {
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-
-                ) {
-                    BottomNavigationBar(navController = navController)
-                }
+                BottomNavigationBar(navController = navController)
             }
         ) { innerPadding ->
-            Box(
-                Modifier.fillMaxSize()
-            ) {
-                Image(
-                    painter = if(isDarkTheme) painterResource(R.drawable.background_dark_gradient)
-                        else painterResource(R.drawable.background_red_gradient),
-                    contentDescription = null,
-                    modifier = Modifier.fillMaxSize(),
-                    contentScale = ContentScale.Crop
-                )
+        Box(
+            Modifier.fillMaxSize()
+        ) {
+            Image(
+                painter = if (isDarkTheme) painterResource(R.drawable.background_dark_gradient)
+                else painterResource(R.drawable.background_red_gradient),
+                contentDescription = null,
+                modifier = Modifier.fillMaxSize(),
+                contentScale = ContentScale.Crop
+            )
 
-                NavHost(
-                    navController = navController,
-                    startDestination = Screen.Home.route,
-                    modifier = Modifier,
-                    enterTransition = {
-                        val fromIndex = screenOrder.indexOf(initialState.destination.route)
-                        val toIndex = screenOrder.indexOf(targetState.destination.route)
-                        val direction = toIndex.compareTo(fromIndex) // 1 - вправо, -1 - влево
+            NavHost(
+                navController = navController,
+                startDestination = Screen.Home.route,
+                modifier = Modifier,
+                enterTransition = {
+                    val fromIndex = screenOrder.indexOf(initialState.destination.route)
+                    val toIndex = screenOrder.indexOf(targetState.destination.route)
+                    val direction = toIndex.compareTo(fromIndex) // 1 - вправо, -1 - влево
 
-                        slideInHorizontally(
-                            animationSpec = tween(durationMillis = Constants.DELAY)
-                        ) { fullWidth -> if (direction > 0) fullWidth else -fullWidth }
-                    },
-                    exitTransition = {
-                        val fromIndex = screenOrder.indexOf(initialState.destination.route)
-                        val toIndex = screenOrder.indexOf(targetState.destination.route)
-                        val direction = toIndex.compareTo(fromIndex)
+                    slideInHorizontally(
+                        animationSpec = tween(durationMillis = Constants.DELAY)
+                    ) { fullWidth -> if (direction > 0) fullWidth else -fullWidth }
+                },
+                exitTransition = {
+                    val fromIndex = screenOrder.indexOf(initialState.destination.route)
+                    val toIndex = screenOrder.indexOf(targetState.destination.route)
+                    val direction = toIndex.compareTo(fromIndex)
 
-                        slideOutHorizontally(
-                            animationSpec = tween(durationMillis = Constants.DELAY)
-                        ) { fullWidth -> if (direction > 0) -fullWidth else fullWidth }
-                    },
-                    popEnterTransition = {
-                        val fromIndex = screenOrder.indexOf(initialState.destination.route)
-                        val toIndex = screenOrder.indexOf(targetState.destination.route)
-                        val direction = toIndex.compareTo(fromIndex)
+                    slideOutHorizontally(
+                        animationSpec = tween(durationMillis = Constants.DELAY)
+                    ) { fullWidth -> if (direction > 0) -fullWidth else fullWidth }
+                },
+                popEnterTransition = {
+                    val fromIndex = screenOrder.indexOf(initialState.destination.route)
+                    val toIndex = screenOrder.indexOf(targetState.destination.route)
+                    val direction = toIndex.compareTo(fromIndex)
 
-                        slideInHorizontally(
-                            animationSpec = tween(durationMillis = Constants.DELAY)
-                        ) { fullWidth -> if (direction > 0) fullWidth else -fullWidth }
-                    },
-                    popExitTransition = {
-                        val fromIndex = screenOrder.indexOf(initialState.destination.route)
-                        val toIndex = screenOrder.indexOf(targetState.destination.route)
-                        val direction = toIndex.compareTo(fromIndex)
+                    slideInHorizontally(
+                        animationSpec = tween(durationMillis = Constants.DELAY)
+                    ) { fullWidth -> if (direction > 0) fullWidth else -fullWidth }
+                },
+                popExitTransition = {
+                    val fromIndex = screenOrder.indexOf(initialState.destination.route)
+                    val toIndex = screenOrder.indexOf(targetState.destination.route)
+                    val direction = toIndex.compareTo(fromIndex)
 
-                        slideOutHorizontally(
-                            animationSpec = tween(durationMillis = Constants.DELAY)
-                        ) { fullWidth -> if (direction > 0) -fullWidth else fullWidth }
-                    }
-                ) {
-                    composable(Screen.Home.route) { backStackEntry ->
-                        HomeScreen(initialCompliment = initialText, innerPadding)
-                    }
-                    composable(Screen.Notifications.route) { NotificationsScreen() }
-                    composable(Screen.Settings.route) { SettingsScreen() }
+                    slideOutHorizontally(
+                        animationSpec = tween(durationMillis = Constants.DELAY)
+                    ) { fullWidth -> if (direction > 0) -fullWidth else fullWidth }
+                },
+                builder = composableContent
+            )
+        }
+
+    }
+}
+}
+
+fun appNavGraph(
+    navController: NavHostController,
+    innerPadding: PaddingValues,
+    initialText: String
+): NavGraphBuilder.() -> Unit = {
+    composable(Screen.Home.route) {
+        HomeScreen(initialCompliment = initialText, innerPadding)
+    }
+    composable(Screen.Notifications.route) {
+        NotificationsScreen()
+    }
+    composable(Screen.Settings.route) {
+        SettingsScreen()
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun MainScreenContentPreview() {
+    val navController = rememberNavController()
+
+    MainScreenContent(
+        navController = navController,
+        isDarkTheme = false,
+        screenOrder = emptyList(),
+        composableContent = {
+            composable(Screen.Home.route) {
+                Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                    Text("Preview: Home")
                 }
             }
-
         }
-    }
+    )
 }

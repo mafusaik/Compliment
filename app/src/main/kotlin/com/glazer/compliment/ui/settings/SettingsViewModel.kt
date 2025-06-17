@@ -43,17 +43,11 @@ class SettingsViewModel(
             is SettingsEvent.ToggleExactTime -> {
                 checkPermissionAndToggle(event.hasPermission, event.isEnable)
             }
-//            is SettingsEvent.ToggleForWomen -> {
-//                prefsManager.isForWomen = event.isForWomen
-//                _uiState.update { it.copy(isForWomen = event.isForWomen) }
-//            }
             is SettingsEvent.SelectGender -> {
-                // Log.i("SETTINGS", "SettingsEvent.SelectLanguage ${event.language}")
                 prefsManager.currentGender = event.gender
                 _uiState.update { it.copy(selectedGender = event.gender) }
             }
             is SettingsEvent.SelectLanguage -> {
-               // Log.i("SETTINGS", "SettingsEvent.SelectLanguage ${event.language}")
                 prefsManager.currentLanguage = event.language
                 repository.setIsRecreate(true)
                 _uiState.update { it.copy(selectedLanguage = event.language, restartRequired = true) }

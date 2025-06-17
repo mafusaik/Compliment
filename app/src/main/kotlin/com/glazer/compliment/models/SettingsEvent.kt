@@ -8,8 +8,6 @@ sealed class SettingsEvent {
     data class ToggleDarkTheme(val isDark: Boolean) : SettingsEvent()
     @Immutable
     data class ToggleExactTime(val hasPermission: Boolean, val isEnable: Boolean) : SettingsEvent()
-//    @Immutable
-//    data class ToggleForWomen(val isForWomen: Boolean) : SettingsEvent()
     @Immutable
     data class SelectGender(val gender: String) : SettingsEvent()
     @Immutable
