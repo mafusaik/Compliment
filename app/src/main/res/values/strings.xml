@@ -20,6 +20,14 @@
     <string name="confirm">Confirm</string>
     <string name="lang_russian" translatable="false">Русский</string>
     <string name="lang_english" translatable="false">English</string>
+    <string name="lang_french" translatable="false">Français</string>
+    <string name="lang_german" translatable="false">Deutsch</string>
+    <string name="lang_italian" translatable="false">Italiano</string>
+    <string name="lang_hindi" translatable="false">हिन्दी</string>
+    <string name="lang_kazakh" translatable="false">Қазақ тілі</string>
+    <string name="lang_spanish" translatable="false">Español</string>
+    <string name="lang_belarusian" translatable="false">Беларуская</string>
+    <string name="lang_ukrainian" translatable="false">Українська</string>
     <string name="title_nice_day">It\'s a great day to say kind words!</string>
     <string name="get_compliment">Get a compliment</string>
     <string name="empty_reminders">This is empty for now, create a new reminder</string>

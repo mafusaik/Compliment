@@ -1,12 +1,14 @@
 package com.glazer.compliment.data.repositories
 
 import android.content.Context
+import android.content.res.Configuration
 import com.glazer.compliment.R
 import com.glazer.compliment.data.sharedprefs.PrefsManager
 import com.glazer.compliment.utils.Constants
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import java.util.Locale
 import kotlin.random.Random
 
 internal class ComplimentsRepositoryImpl(newContext: Context) : ComplimentsRepository {
@@ -26,10 +28,15 @@ internal class ComplimentsRepositoryImpl(newContext: Context) : ComplimentsRepos
     }
 
     override suspend fun nextCompliment(): String {
-        val compliments = if (prefsManager.currentGender == Constants.GENDER_WOMEN){
-            context.resources.getStringArray(R.array.compliments_women)
+        val locale = Locale.forLanguageTag(prefsManager.currentLanguage)
+        val config = Configuration(context.resources.configuration)
+        config.setLocale(locale)
+        val localizedContext = context.createConfigurationContext(config)
+
+        val compliments = if (prefsManager.currentGender == Constants.GENDER_WOMEN) {
+            localizedContext.resources.getStringArray(R.array.compliments_women)
         } else {
-            context.resources.getStringArray(R.array.compliments_men)
+            localizedContext.resources.getStringArray(R.array.compliments_men)
         }
         val recentCompliments = prefsManager.recentCompliments
         complimentSet.addAll(recentCompliments)

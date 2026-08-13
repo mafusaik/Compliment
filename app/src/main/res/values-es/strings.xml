@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Complimento</string>
+    <string name="message_no_selected_day">Por favor, seleccione al menos un día</string>
+    <string name="compliment_copied">cumplido copiado</string>
+    <string name="permission_needed">Permiso necesario</string>
+    <string name="text_permission_notifications">Este permiso es necesario para las notificaciones. Por favor, habilítelo en los ajustes de la aplicación.</string>
+    <string name="text_permission_exact_alarm">Se requiere permiso para habilitar alarmas precisas. Puede habilitarlo en el software.</string>
+    <string name="go_settings">Ir a Ajustes</string>
+    <string name="cancel">Cancelar</string>
+    <string name="title_settings">Ajustes</string>
+    <string name="title_reminders">Recordatorios</string>
+    <string name="title_compliments">Cumplidos</string>
+    <string name="enable_dark_theme">Activar tema oscuro</string>
+    <string name="enable_exact_notification_time">Activar hora de notificación exacta</string>
+    <string name="for_women">Cumplidos para mujeres</string>
+    <string name="for_men">Cumplidos para hombres</string>
+    <string name="new_schedule">Nuevo recordatorio</string>
+    <string name="edit_schedule">Editar recordatorio</string>
+    <string name="confirm">Confirmar</string>
+    <string name="title_nice_day">¡Es un gran día para decir palabras amables!</string>
+    <string name="get_compliment">Recibir un cumplido</string>
+    <string name="empty_reminders">Esto está vacío por ahora, crea un nuevo recordatorio</string>
+    <string name="language">Idioma</string>
+    <string name="gender">Género</string>
+    <string name="every_day">Todos los días</string>
+
+    <string-array name="compliments_women">
+        <item>¡Te ves absolutamente impresionante hoy!</item>
+        <item>¡Tu sonrisa ilumina el mundo!</item>
+        <item>¡Eres increíblemente talentosa!</item>
+        <item>¡Siempre es un placer hablar contigo!</item>
+        <item>¡Tu amabilidad hace del mundo un lugar mejor!</item>
+        <item>¡Tienes una fuerza asombrosa!</item>
+        <item>¡Inspiras a todos a tu alrededor!</item>
+        <item>¡Estar contigo me hace querer ser mejor!</item>
+        <item>¡Haces que el mundo sea más brillante!</item>
+        <item>¡Sabes cómo apoyar en los momentos difíciles!</item>
+        <item>¡Tu energía es muy alentadora!</item>
+        <item>¡Siempre sabes cómo animar a la gente!</item>
+        <item>¡Eres una verdadera estrella!</item>
+        <item>¡Tu estilo es increíble!</item>
+        <item>¡Tienes un sentido del humor excepcional!</item>
+        <item>¡Estar contigo me hace reír hasta llorar!</item>
+        <item>¡Eres única e irrepetible!</item>
+        <item>¡Eres tan cariñosa y atenta!</item>
+        <item>¡Tu bondad no tiene límites!</item>
+        <item>¡Eres el ejemplo perfecto de fuerza y belleza femenina!</item>
+        <item>¡Iluminas todo a tu alrededor con solo estar presente!</item>
+        <item>¡Tus ojos brillan como estrellas!</item>
+        <item>¡Tu confianza es inspiradora!</item>
+        <item>¡Eres la encarnación de la ternura y la belleza!</item>
+        <item>¡Eres una verdadera musa para todos nosotros!</item>
+        <item>¡Tu sonrisa puede calentar hasta el día más frío!</item>
+        <item>¡Contigo, cualquier tarea parece fácil!</item>
+        <item>¡Tu presencia hace del mundo un lugar mejor!</item>
+        <item>¡Eres el epítome de la elegancia y la gracia!</item>
+        <item>¡Tus ideas siempre son tan creativas y únicas!</item>
+        <item>¡Inspiras grandeza en los demás!</item>
+        <item>¡Eres hermosa no solo por fuera sino también por dentro!</item>
+        <item>¡Estás llena de sorpresas y misterios!</item>
+        <item>¡Combinas armoniosamente fuerza y ternura!</item>
+        <item>¡Tienes una capacidad única para encontrar el lado positivo en cualquier situación!</item>
+        <item>¡Estar contigo siempre es interesante y divertido!</item>
+        <item>¡Traes tanta alegría a este mundo!</item>
+        <item>¡Eres un verdadero modelo a seguir!</item>
+        <item>¡Eres una verdadera reina!</item>
+        <item>¡Tu sentido del estilo es impecable!</item>
+        <item>¡Siempre ves lo mejor en las personas!</item>
+        <item>¡Eres increíblemente sabia y perspicaz!</item>
+        <item>¡Eres una maravillosa oyente y conversadora!</item>
+        <item>¡Inspiras a los demás a actuar de la mejor manera posible!</item>
+        <item>¡Transformas los momentos ordinarios en algo mágico!</item>
+        <item>¡Siempre aportas luz a cualquier grupo en el que estés!</item>
+        <item>¡Haces que el mundo sea más acogedor y cálido!</item>
+        <item>¡Ves la belleza en las pequeñas cosas!</item>
+        <item>¡Contigo, cada evento se convierte en una celebración!</item>
+        <item>¡Tienes un magnetismo increíble!</item>
+        <item>¡Eres la encarnación de la armonía y la comodidad!</item>
+        <item>¡Estar contigo es fácil y placentero!</item>
+        <item>¡Tu valentía es inspiradora!</item>
+        <item>¡Posees una gracia especial!</item>
+        <item>¡Tus ojos son tan expresivos!</item>
+        <item>¡Siempre eres tan encantadora!</item>
+        <item>¡Sabes cómo crear confort a tu alrededor!</item>
+        <item>¡Eres la persona más dulce que conozco!</item>
+        <item>¡Tu voz es como música para los oídos!</item>
+        <item>¡Tienes un corazón fuerte y bondadoso!</item>
+        <item>¡Tu amor por la vida es inspirador!</item>
+        <item>¡Contigo, me siento verdaderamente vivo!</item>
+        <item>¡Encuentras alegría en las pequeñas cosas!</item>
+        <item>¡Eres un verdadero milagro!</item>
+        <item>¡Irradias tanto calor!</item>
+        <item>¡Eres una verdadera romántica!</item>
+        <item>¡Tu sonrisa ilumina mi mundo!</item>
+        <item>¡Mereces solo lo mejor en la vida!</item>
+        <item>¡Llenas el mundo de luz!</item>
+        <item>¡Haces mis días más brillantes!</item>
+        <item>¡Siempre encuentras alegría en cada día!</item>
+        <item>¡Eres una inspiración!</item>
+        <item>¡Eres una fuente de luz y alegría!</item>
+        <item>¡Contigo, me siento feliz!</item>
+        <item>¡Puedes mejorar cualquier día con solo una mirada!</item>
+        <item>¡Tienes el poder de cambiar el mundo para mejor!</item>
+        <item>¡Traes tanta felicidad a todos los que te rodean!</item>
+        <item>¡Llevas una inmensa fuerza interior dentro de ti!</item>
+        <item>¡Tu sonrisa hace que todo a tu alrededor sea más brillante!</item>
+        <item>¡Cada momento contigo es único!</item>
+        <item>¡Eres el epítome de la comodidad y la calidez!</item>
+        <item>¡Me das inspiración!</item>
+        <item>¡Estás llena de sorpresas y delicias inesperadas!</item>
+        <item>¡Me haces más feliz cada día!</item>
+        <item>¡Eres una persona increíble!</item>
+        <item>¡Eres mi musa!</item>
+        <item>¡Eres como un rayo de sol en un día nublado!</item>
+        <item>¡Estás llena de una fuerza y una gracia increíbles!</item>
+        <item>¡Siempre encuentras una salida a cualquier situación!</item>
+        <item>¡Traes tanta felicidad a este mundo!</item>
+        <item>¡Tienes una verdadera sabiduría femenina!</item>
+        <item>¡Siempre te ves elegante y a la moda!</item>
+        <item>¡Haces el mundo un poco mejor!</item>
+        <item>¡Siempre eres cariñosa y atenta!</item>
+        <item>¡Irradias confianza!</item>
+        <item>¡Eres mi orgullo y alegría!</item>
+        <item>¡Iluminas mi vida con tu sonrisa!</item>
+        <item>¡Le das sentido a mi vida!</item>
+        <item>¡Cada día contigo es especial!</item>
+        <item>¡Eres un verdadero diamante que brilla en la oscuridad!</item>
+        <item>¡Posees un encanto único!</item>
+        <item>¡Tu pasión por la vida es inspiradora!</item>
+        <item>¡Siempre encuentras las palabras adecuadas!</item>
+        <item>¡Me haces sentir importante!</item>
+        <item>¡Tienes un fino sentido del tacto!</item>
+        <item>¡Contigo, el mundo se siente más tranquilo!</item>
+        <item>¡Transformas los desafíos en oportunidades!</item>
+        <item>¡Eres mi estrella más brillante!</item>
+        <item>¡Tu amor por la gente es impresionante!</item>
+        <item>¡Siempre me entiendes sin palabras!</item>
+        <item>¡Haces mi vida más plena!</item>
+        <item>¡Me traes alegría con cada palabra que dices!</item>
+        <item>¡Siempre me apoyas cuando lo necesito!</item>
+        <item>¡Tienes un gusto exquisito!</item>
+        <item>¡Notas la belleza incluso en las cosas ordinarias!</item>
+        <item>¡Añades magia a cada momento!</item>
+        <item>¡Contigo, realmente puedo ser yo mismo!</item>
+        <item>¡Eres una verdadera rareza en este mundo!</item>
+        <item>¡Haces que cada encuentro sea inolvidable!</item>
+        <item>¡Sabes cómo dar calor solo porque sí!</item>
+        <item>¡Tu generosidad de espíritu es asombrosa!</item>
+        <item>¡Siempre encuentras la fuerza para una nueva victoria!</item>
+        <item>¡Haces el mundo mejor solo por estar aquí!</item>
+        <item>¡Me inspiras a ser mejor!</item>
+        <item>¡Eres tan extraordinaria e interesante!</item>
+        <item>¡Cada día contigo está lleno de significado!</item>
+        <item>¡Eres realmente una persona única!</item>
+        <item>¡Sabes escuchar y entender!</item>
+        <item>¡Eres como un rayo de sol en un día gris!</item>
+        <item>¡Me inspiras a ser más valiente!</item>
+        <item>¡Eres como música para el alma!</item>
+        <item>¡Traes armonía a mi vida!</item>
+        <item>¡Tus consejos siempre son tan sabios y útiles!</item>
+        <item>¡Eres un verdadero regalo del destino!</item>
+        <item>¡Tu ternura y fuerza son una combinación única!</item>
+        <item>¡Estar contigo siempre es fácil y placentero!</item>
+        <item>¡Siempre encuentras lo mejor en cada persona!</item>
+        <item>¡Eres como un lugar acogedor al que siempre quiero volver!</item>
+        <item>¡Siempre sabes cómo apoyar!</item>
+        <item>¡Eres tan dulce y cariñosa!</item>
+        <item>¡Traes felicidad a la vida de todos los que te rodean!</item>
+        <item>¡Eres una creación asombrosa de la naturaleza!</item>
+        <item>¡Eres una verdadera belleza!</item>
+        <item>¡Mereces solo lo mejor!</item>
+        <item>¡Siempre te ves increíble!</item>
+        <item>¡Irradias calor y cuidado!</item>
+        <item>¡Eres realmente una heroína en mi vida!</item>
+        <item>¡Eres la encarnación de la perfección!</item>
+        <item>Eres increíble: tu sinceridad y fuerza de carácter hacen que cada momento que paso contigo sea inspirador.</item>
+        <item>Eres como una estrella brillante que ilumina el camino más oscuro y ayuda a creer en lo mejor.</item>
+        <item>Cuando estás cerca, siento que puedo superar cualquier dificultad; ¡tu fe en mí me eleva!</item>
+        <item>¡Tu amabilidad no tiene límites, y eso te hace verdaderamente única!</item>
+        <item>Notas las pequeñas cosas que la mayoría pasaría por alto, y esa cualidad tuya hace que el mundo sea especial.</item>
+        <item>Cada conversación contigo es como una verdadera aventura; ¡percibes todo lo que te rodea de forma tan sutil y sabia!</item>
+        <item>Aportas armonía y paz dondequiera que vayas, como un soplo de aire fresco en el ajetreo del día.</item>
+        <item>Tienes una capacidad mágica para escuchar; contigo, me siento escuchado y comprendido como nunca antes.</item>
+        <item>Cada una de tus sonrisas ilumina el día y parece invitar a un mundo lleno de calidez y sinceridad.</item>
+        <item>Contigo, me siento más vivo, inspirado y lleno de ideas; tu energía es contagiosa para todos a tu alrededor.</item>
+        <item>Tu fuerza y tu ternura se mezclan tan armoniosamente que a veces parece que eres una obra de arte.</item>
+        <item>Puedes mostrar belleza incluso en las cosas más simples, haciendo que mire el mundo de otra manera.</item>
+        <item>Eres de esas personas con las que basta con estar en silencio y disfrutar del momento.</item>
+        <item>Creas confort dondequiera que estés, y esa es una cualidad rara y hermosa.</item>
+        <item>Cada palabra que dices está llena de bondad y calidez, y siempre me siento mejor después de hablar contigo.</item>
+        <item>Eres la encarnación de la armonía y la ternura, y al mirarte, quiero ser más amable y atento con el mundo.</item>
+        <item>Tu confianza me inspira a ser mejor y a alcanzar nuevas metas.</item>
+        <item>Traes a mi vida una sensación de comodidad y confort que no se puede fingir; es tu verdadero don.</item>
+        <item>Tu apoyo es invaluable para mí: eres como un puente que siempre conduce a la decisión correcta.</item>
+        <item>Eres increíblemente sabia, y siempre tengo curiosidad por conocer tu perspectiva sobre cualquier situación; está llena de ideas.</item>
+        <item>Cuando estoy contigo, siempre siento sinceridad y pureza, que tanto faltan en el mundo moderno.</item>
+        <item>Sabes cómo inspirar, y esa inspiración viene del corazón; tu sinceridad siempre se gana a la gente.</item>
+        <item>Eres como un rayo de sol primaveral, que trae calidez y esperanza incluso en los días más sombríos.</item>
+        <item>Contigo, el tiempo vuela sin darnos cuenta, porque cada minuto está lleno de sinceridad y alegría.</item>
+        <item>Tienes un talento especial para crear conexiones reales con la gente, y eso no tiene precio.</item>
+        <item>Tu amabilidad y cuidado hacen del mundo un lugar mejor, y estoy orgulloso de conocerte.</item>
+        <item>Eres una de esas personas que dejan huella en los corazones; tu alma es increíblemente bella.</item>
+        <item>Contigo puedo hablar de cualquier cosa, y siempre siento que nuestra conexión es especial.</item>
+        <item>Eres la encarnación de la feminidad y la sabiduría, y a menudo me pregunto cómo logras combinar todo tan armoniosamente.</item>
+        <item>Traes tanto sentido y alegría a mi vida que cada día que paso contigo se convierte en una celebración.</item>
+        <item>Tu sonrisa es como el sol después de la lluvia, siempre trae calidez y luz.</item>
+        <item>Tienes una capacidad increíble para crear un mundo a tu alrededor lleno de paz y confort.</item>
+        <item>Tu energía carga a los demás de positividad, y nunca me canso de estar a tu lado.</item>
+        <item>Sabes ver la luz en las cosas más simples, y eso me hace creer en los milagros.</item>
+        <item>Eres una inspiración para muchos, y me hace feliz que estés en mi vida.</item>
+        <item>Tu fe en lo mejor siempre me inspira a superar todas las dificultades y a seguir avanzando.</item>
+        <item>Sabes dar alegría con tanta sinceridad que es imposible no notarlo.</item>
+        <item>Me recuerdas que todo es posible en este mundo si mantienes la fe y te mantienes fiel a ti misma.</item>
+        <item>Tu generosidad de alma no tiene límites, y atesoro cada momento que paso contigo.</item>
+        <item>Eres el tipo de persona que inspira creencia en el bien y la luz en este mundo.</item>
+        <item>Tus ojos brillan como estrellas, y cada mirada llena el alma de calidez y tranquilidad.</item>
+        <item>Tienes el don especial de ser verdaderamente honesta y abierta; esa es una cualidad rara.</item>
+        <item>Contigo puedo soñar con cualquier cosa y no temer que mis sueños no se cumplan.</item>
+        <item>Eres como una estrella guía, que siempre me lleva por el camino más brillante.</item>
+        <item>Eres tan hermosa no solo por fuera sino también por dentro, y eso te hace realmente increíble.</item>
+        <item>Tus palabras siempre apoyan e inspiran, y ese es un don que no se le da a cualquiera.</item>
+        <item>Creas una atmósfera de calidez y confort incluso en las situaciones más mundanas.</item>
+        <item>Siempre eres sincera y abierta, y me siento verdaderamente feliz de estar contigo.</item>
+        <item>Sabes cómo apoyar e inspirar, incluso cuando todo a tu alrededor parece complicado y confuso.</item>
+        <item>Eres la persona más luminosa que conozco, y eso llena mi vida de sentido y alegría.</item>
+    </string-array>
+
+    <string-array name="compliments_men">
+        <item>¡Eres guapo!</item>
+        <item>¡Eres un hombre de verdad!</item>
+        <item>¡Eres increíble!</item>
+        <item>¡Eres asombroso!</item>
+        <item>¡Te ves genial!</item>
+        <item>¡Eres un verdadero héroe!</item>
+        <item>¡Eres simplemente genial!</item>
+        <item>¡Eres el mejor!</item>
+        <item>¡Eres fuerte y seguro de ti mismo!</item>
+        <item>¡Eres simplemente impresionante!</item>
+        <item>¡Eres muy inteligente!</item>
+        <item>¡Eres elegante!</item>
+        <item>¡Eres fuego!</item>
+        <item>¡Eres el rey!</item>
+        <item>¡Eres un gran tipo!</item>
+        <item>¡Eres mi héroe!</item>
+        <item>¡Eres simplemente clase!</item>
+        <item>¡Eres un chico guapo!</item>
+        <item>¡Eres simplemente fantástico!</item>
+        <item>Tienes una fuerza que inspira.</item>
+        <item>Tu confianza hace que este mundo sea mejor.</item>
+        <item>Contigo, siempre puedo contar con apoyo.</item>
+        <item>Inspiras grandes hazañas.</item>
+        <item>Tu amabilidad te hace verdaderamente fuerte.</item>
+        <item>Sabes cómo encontrar una salida a cualquier situación.</item>
+        <item>Tu fuerza reside en la calma y la confianza.</item>
+        <item>Aportas confianza y luz a cualquier momento.</item>
+        <item>Contigo, siempre es interesante y fácil.</item>
+        <item>Eres un modelo a seguir.</item>
+        <item>Tu cuidado por los demás no tiene límites.</item>
+        <item>Siempre te mantienes fiel a ti mismo.</item>
+        <item>Tus palabras siempre están llenas de significado y fuerza.</item>
+        <item>Contigo, es fácil y cómodo ser yo mismo.</item>
+        <item>Das confianza con solo estar ahí.</item>
+        <item>Siempre sabes lo que hay que hacer en el momento adecuado.</item>
+        <item>Tu energía inspira éxito en los demás.</item>
+        <item>Sabes cómo apoyar en los momentos más difíciles.</item>
+        <item>Eres alguien que siempre inspira a hacer más.</item>
+        <item>Tienes una rara combinación de fuerza y dulzura.</item>
+        <item>Contigo, no da miedo seguir adelante.</item>
+        <item>Eres la encarnación de la sabiduría masculina.</item>
+        <item>Sabes cómo ser sincero en cualquier situación.</item>
+        <item>Tu confianza siempre inspira admiración.</item>
+        <item>Eres un ejemplo de cómo ser fuerte y amable al mismo tiempo.</item>
+        <item>Tu energía siempre crea una atmósfera de confort.</item>
+        <item>Siempre sabes cómo hacer que un momento sea especial.</item>
+        <item>Gracias por estar en mi vida; contigo, el mundo se vuelve más brillante y seguro.</item>
+        <item>Estoy agradecida de poder contar contigo.</item>
+        <item>Gracias por estar aquí.</item>
+        <item>Gracias por ser mío.</item>
+        <item>Estoy tan agradecida al destino por haberte conocido.</item>
+        <item>Contigo me siento segura; gracias por tu confianza y cuidado.</item>
+        <item>Gracias por tu amor y por creer en mí; haces que este mundo sea mejor para mí.</item>
+        <item>Aprecio cada momento que paso contigo; gracias por estar en mi vida.</item>
+        <item>Gracias por llenar mi vida de sentido; eres realmente una persona especial.</item>
+        <item>Soy feliz de estar cerca de alguien como tú; gracias por tu amor y cuidado.</item>
+        <item>Eres increíblemente fuerte: tu determinación y confianza me inspiran y me hacen admirar cada una de tus acciones.</item>
+        <item>Eres como un ancla fiable que me estabiliza y me aporta confianza en los momentos más difíciles.</item>
+        <item>Cuando estás cerca, siento que puedo superar cualquier obstáculo; ¡tu apoyo me da fuerza y fe en mí misma!</item>
+        <item>Tu amabilidad y cuidado son inconmensurables, y eso te convierte en un hombre de verdad en el que puedo confiar.</item>
+        <item>Notas detalles que otros podrían pasar por alto, y tu atención te hace único ante mis ojos.</item>
+        <item>Cada conversación contigo es una experiencia nueva, te tomas todo lo que te rodea con tanta facilidad y confianza, ¡y siempre aprendo algo!</item>
+        <item>Aportas paz y confianza a cualquier situación, como un apoyo en el que siempre se puede confiar.</item>
+        <item>Tienes el don de escuchar y comprender, contigo siempre me siento escuchada y valorada.</item>
+        <item>Tu sonrisa siempre me reconforta y me recuerda que en la vida hay lugar para la calidez y la sinceridad.</item>
+        <item>Con tu presencia a mi lado, me siento más segura, más fuerte y llena de ideas; tu energía es contagiosa para todos a tu alrededor.</item>
+        <item>Eres una combinación de fuerza y ternura masculina, y eso te hace especial ante mis ojos.</item>
+        <item>Puedes ver los méritos incluso en las cosas simples, y me haces ver el mundo desde un ángulo diferente.</item>
+        <item>Eres de esas personas con las que solo quieres sentarte en silencio y disfrutar del momento, aportas paz y serenidad.</item>
+        <item>Creas una atmósfera de confort y seguridad dondequiera que estés, y eso es un verdadero regalo para mí.</item>
+        <item>Cada palabra que dices está llena de fuerza y significado, y después de hablar contigo, siempre me siento mejor e inspirada.</item>
+        <item>Eres la encarnación de la confianza y la bondad masculina, y a tu lado, quiero ser la mejor versión de mí misma.</item>
+        <item>Tu confianza me inspira a alcanzar nuevas metas y a lograr más contigo.</item>
+        <item>Traes confianza y calma a mi vida que no se pueden fingir; es tu verdadero don.</item>
+        <item>Tu apoyo es invaluable para mí: eres como un muro de piedra detrás del cual siempre puedo refugiarme y sentirme segura.</item>
+        <item>Eres increíblemente sabio, y tu visión del mundo siempre está llena de profundidad y significado; siempre me interesa conocer tu perspectiva.</item>
+        <item>A tu lado, siempre hay sinceridad y fiabilidad, cosas que tanto faltan en la vida cotidiana.</item>
+        <item>Sabes cómo inspirar, y esa inspiración proviene de tu calma interior; tu confianza siempre impone respeto.</item>
+        <item>Eres como el sol de invierno, que trae luz y calor incluso en los días más fríos, siempre es más fácil con tu presencia a mi lado.</item>
+        <item>El tiempo vuela sin darnos cuenta contigo, porque cada minuto está lleno de energía, alegría y sentido.</item>
+        <item>Tienes una capacidad única para establecer conexiones reales con la gente, y eso es invaluable para mí.</item>
+        <item>Tu amabilidad y cuidado hacen que este mundo sea mejor, y estoy orgullosa de conocerte y estar cerca de ti.</item>
+        <item>Eres una de esas personas que dejan una profunda huella en el alma; tu fuerza y sabiduría me hipnotizan.</item>
+        <item>Contigo puedo hablar de cualquier cosa, y siempre siento que nuestra conexión es especial y significativa.</item>
+        <item>Encarnas la fuerza y el intelecto masculino, y a menudo me pregunto cómo logras combinar estas cualidades tan armoniosamente.</item>
+        <item>Traes tanto sentido e inspiración a mi vida que cada día que paso contigo se convierte en un evento importante para mí.</item>
+        <item>Tu sonrisa es como una luz en un túnel oscuro, siempre trae calidez y confianza cuando la necesito.</item>
+        <item>Tienes una capacidad increíble para crear una atmósfera de confianza y confort a tu alrededor, lo que me tranquiliza a tu lado.</item>
+        <item>Tu energía me llena de positividad, y nunca me canso de estar a tu lado; eres mi fuente de inspiración.</item>
+        <item>Sabes cómo encontrar luz incluso en las cosas más simples, y eso me hace creer en lo mejor.</item>
+        <item>Eres una inspiración para muchos, y estoy orgullosa de estar cerca de una persona tan increíble como tú.</item>
+        <item>Tu fe en lo mejor siempre me inspira a seguir adelante a pesar de todas las dificultades, porque contigo es más fácil hacerlo.</item>
+        <item>Sabes dar alegría con tanta sinceridad que no se puede ignorar; contigo siempre es cálido y divertido.</item>
+        <item>Me recuerdas que todo es posible en la vida si mantienes la fe y te mantienes fiel a ti mismo, y contigo yo también me vuelvo más fuerte.</item>
+        <item>Tu generosidad de alma no tiene límites, y atesoro cada minuto que paso contigo, es invaluable para mí.</item>
+        <item>Eres una persona que inspira fe en la bondad y la luz en este mundo, y estoy orgullosa de ser parte de tu mundo.</item>
+        <item>Tu mirada llena mi alma de calidez y calma; contigo me siento a gusto.</item>
+        <item>Tienes el raro don de ser sincero y abierto; esto es un verdadero tesoro para mí, siento que puedo ser yo misma contigo.</item>
+        <item>Contigo puedo soñar con cualquier cosa y no temer que los sueños no se cumplan; contigo creo en el futuro.</item>
+        <item>Eres como una estrella guía, que siempre me lleva a lo mejor, y no tengo miedo de seguirte.</item>
+        <item>Eres tan hermoso no solo por fuera sino también por dentro, y eso te hace realmente increíble para mí.</item>
+        <item>Tus palabras siempre apoyan e inspiran, y eso es un verdadero regalo por el cual estoy agradecida.</item>
+        <item>Creas una atmósfera de confianza y confort incluso en las situaciones más ordinarias, y siempre me siento en paz contigo.</item>
+        <item>Siempre eres sincero y abierto, y me siento realmente feliz con tu presencia a mi lado; eres mi fuente de alegría.</item>
+        <item>Sabes cómo apoyar e inspirar, incluso cuando todo a tu alrededor parece confuso, siempre estás ahí y te aprecio por ello.</item>
+        <item>Eres la persona más luminosa que conozco, y esto llena mi vida de alegría y sentido, siempre es fácil contigo.</item>
+    </string-array>
+
+</resources>

@@ -5,7 +5,6 @@ import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.glazer.compliment.MainActivity
@@ -36,7 +35,6 @@ class NotificationReceiver : BroadcastReceiver() {
 
         when (action) {
             Constants.KEY_NOTIFICATION_FILTER -> {
-                Log.i("NotificationReceiver", "action NOTIFICATION")
                 val time = intent.getStringExtra(Constants.KEY_TIME)
                 val daysString = intent.getStringExtra(Constants.KEY_DAYS) ?: ""
                 val days = daysString.split(",").map { DayOfWeek.valueOf(it) }.toSet()
@@ -46,7 +44,6 @@ class NotificationReceiver : BroadcastReceiver() {
 
                     val currentDay = LocalDate.now().dayOfWeek
                     if (currentDay in days) {
-                        Log.d("NotificationReceiver", "sendNotification $time")
                         sendNotification(context, message)
                     }
                     time?.let {
@@ -56,7 +53,6 @@ class NotificationReceiver : BroadcastReceiver() {
                 }
             }
             Constants.KEY_BOOT_FILTER -> {
-                Log.i("NotificationReceiver", "action BOOT")
                 scope.launch(Dispatchers.IO) {
                     notificationRepository.getSchedules()
                         .onEach {schedule->

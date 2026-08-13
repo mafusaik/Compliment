@@ -9,14 +9,14 @@ plugins {
 
 android {
     namespace = "com.glazer.compliment"
-    compileSdk = 35
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "com.glazer.compliment"
         minSdk = 26
-        targetSdk = 35
+        targetSdk = 37
         versionCode = 7
-        versionName = "1.04"
+        versionName = "1.06"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -50,6 +50,8 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    compileSdkMinor = 0
+    buildToolsVersion = "37.0.0"
 }
 
 dependencies {

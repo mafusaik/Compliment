@@ -93,8 +93,11 @@ fun SettingsScreen(
     val startLanguage = selectedLanguage.langCodeToLang(context)
 
     val genders = listOf(stringResource(R.string.for_women), stringResource(R.string.for_men))
-    val languages =
-        listOf(stringResource(R.string.lang_english), stringResource(R.string.lang_russian))
+    val languages = remember(context) {
+        com.glazer.compliment.models.Language.entries.map { lang ->
+            "${lang.flagEmoji} ${context.getString(lang.nameResId)}"
+        }
+    }
 
     val labelLang = stringResource(R.string.language)
     val labelGender = stringResource(R.string.gender)

@@ -3,6 +3,7 @@ package com.glazer.compliment.data.sharedprefs
 import android.content.Context
 import com.glazer.compliment.utils.Constants
 import java.util.Locale
+import androidx.core.content.edit
 
 class PrefsManager(context:Context) {
 
@@ -12,31 +13,31 @@ class PrefsManager(context:Context) {
     var recentCompliments: Set<String>
         get() = prefs.getStringSet(KEY_RECENT_COMPLIMENTS, emptySet()) ?: emptySet()
         set(value) {
-            prefs.edit().putStringSet(KEY_RECENT_COMPLIMENTS, value).apply()
+            prefs.edit { putStringSet(KEY_RECENT_COMPLIMENTS, value) }
         }
 
     var isExactTime: Boolean
         get() = prefs.getBoolean(KEY_EXACT_TIME, false)
         set(value) {
-            prefs.edit().putBoolean(KEY_EXACT_TIME, value).apply()
+            prefs.edit { putBoolean(KEY_EXACT_TIME, value) }
         }
 
     var isDarkTheme: Boolean
         get() = prefs.getBoolean(KEY_DARK_THEME, false)
         set(value) {
-            prefs.edit().putBoolean(KEY_DARK_THEME, value).apply()
+            prefs.edit { putBoolean(KEY_DARK_THEME, value) }
         }
 
     var currentLanguage: String
         get() = prefs.getString(KEY_LANGUAGE, Locale.getDefault().language) ?: "en"
         set(value) {
-            prefs.edit().putString(KEY_LANGUAGE, value).apply()
+            prefs.edit { putString(KEY_LANGUAGE, value) }
         }
 
     var currentGender: String
         get() = prefs.getString(KEY_GENDER, Constants.GENDER_WOMEN) ?: Constants.GENDER_WOMEN
         set(value) {
-            prefs.edit().putString(KEY_GENDER, value).apply()
+            prefs.edit { putString(KEY_GENDER, value) }
         }
 
     private companion object{

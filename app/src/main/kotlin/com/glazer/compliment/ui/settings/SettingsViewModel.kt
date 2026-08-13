@@ -1,6 +1,5 @@
 package com.glazer.compliment.ui.settings
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.glazer.compliment.data.repositories.SettingsRepository
 import com.glazer.compliment.data.sharedprefs.PrefsManager
@@ -19,7 +18,6 @@ class SettingsViewModel(
     val uiState: StateFlow<SettingsUiState> = _uiState.asStateFlow()
 
     init {
-        Log.i("SettingsViewModel", "init")
         loadSavedSettings()
     }
 
@@ -63,7 +61,6 @@ class SettingsViewModel(
     }
 
     private fun checkPermissionAndToggle(hasPermission: Boolean, isEnable: Boolean) {
-        Log.i("SETTINGS", "checkPermission hasPermission $hasPermission")
         if (hasPermission && isEnable) {
             _uiState.update {
                 val isExact = !it.isExactTimeEnabled

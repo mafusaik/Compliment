@@ -6,7 +6,6 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.os.SystemClock
-import android.util.Log
 import com.glazer.compliment.data.sharedprefs.PrefsManager
 import com.glazer.compliment.receivers.NotificationReceiver
 import com.glazer.compliment.utils.Constants
@@ -22,9 +21,6 @@ class AndroidAlarmScheduler(
     private val alarmManager = context.getSystemService(AlarmManager::class.java)
     private val prefsManager = PrefsManager(context)
 
-    init {
-        Log.i("NOTIFICATIONS", "AlarmScheduler init $alarmManager")
-    }
 
     @SuppressLint("ScheduleExactAlarm")
     override fun createSchedule(time: String, daysOfWeek: ImmutableSet<DayOfWeek>) {
@@ -38,17 +34,13 @@ class AndroidAlarmScheduler(
                 SystemClock.elapsedRealtime() + firstTriggerTime,
                 pendingIntent
             )
-            Log.i("NOTIFICATIONS", "schedule EXACT")
         } else {
             alarmManager.setAndAllowWhileIdle(
                 AlarmManager.ELAPSED_REALTIME_WAKEUP,
                 SystemClock.elapsedRealtime() + firstTriggerTime,
                 pendingIntent
             )
-            Log.i("NOTIFICATIONS", "schedule NOT EXACT")
         }
-
-        Log.i("NOTIFICATIONS", "Notification scheduled for first ${time} pendingIntent $pendingIntent")
     }
 
     @SuppressLint("ScheduleExactAlarm")
@@ -63,17 +55,13 @@ class AndroidAlarmScheduler(
                 newDelay,
                 pendingIntent
             )
-            Log.i("NOTIFICATIONS", "scheduleRepeat EXACT")
         } else {
             alarmManager.setAndAllowWhileIdle(
                 AlarmManager.RTC_WAKEUP,
                 newDelay,
                 pendingIntent
             )
-            Log.i("NOTIFICATIONS", "scheduleRepeat NOT EXACT")
         }
-
-        Log.i("NOTIFICATIONS", "Notification scheduled repeat for $time pendingIntent $pendingIntent")
     }
 
     override fun cancel(time: String, daysOfWeek: ImmutableSet<DayOfWeek>) {
@@ -82,7 +70,6 @@ class AndroidAlarmScheduler(
 
         alarmManager.cancel(pendingIntent)
         pendingIntent.cancel()
-        Log.i("NOTIFICATIONS", "Notification cancelled for ${time} pendingIntent $pendingIntent")
     }
 
     private fun calculateDelay(time:String, isInitial: Boolean): Long {
@@ -120,7 +107,6 @@ class AndroidAlarmScheduler(
         time: String,
     ): PendingIntent {
         val uniqueId = time.replace(":", "").toInt()
-        Log.i("NOTIFICATIONS", "PendingIntent uniqueId $uniqueId")
         return PendingIntent.getBroadcast(
             context,
             uniqueId,

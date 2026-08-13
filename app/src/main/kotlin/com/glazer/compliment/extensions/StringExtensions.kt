@@ -1,19 +1,16 @@
 package com.glazer.compliment.extensions
 
 import android.content.Context
-import com.glazer.compliment.R
+import com.glazer.compliment.models.Language
 
 fun String.langToLangCode(context: Context): String {
-    return when(this){
-        context.getString(R.string.lang_english) -> "en"
-       // context.getString(R.string.lang_russian) -> "ru"
-        else -> "ru"
-    }
+    return Language.entries.find { 
+        val name = context.getString(it.nameResId)
+        this == "${it.flagEmoji} $name" || this == name
+    }?.code ?: "en"
 }
 
 fun String.langCodeToLang(context: Context): String {
-    return when(this){
-        "en" -> context.getString(R.string.lang_english)
-        else -> context.getString(R.string.lang_russian)
-    }
+    val language = Language.fromCode(this)
+    return "${language.flagEmoji} ${context.getString(language.nameResId)}"
 }
