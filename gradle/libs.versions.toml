@@ -1,21 +1,21 @@
 [versions]
-agp = "8.13.2"
-kotlin = "2.0.20"
-coreKtx = "1.15.0"
-lifecycleRuntimeKtx = "2.8.4"
-activityCompose = "1.9.2"
-composeBom = "2024.10.00"
+agp = "9.1.1"
+kotlin = "2.4.10"
+coreKtx = "1.19.0"
+lifecycleRuntimeKtx = "2.11.0"
+activityCompose = "1.13.0"
+composeBom = "2026.08.00"
 
-lifecycleCompose="2.8.6"
-serializationVersion = "2.0.10"
-serializationKotlin = "1.7.1"
-navigation = "2.8.4"
-room = "2.6.1"
-ksp = "2.0.20-1.0.25"
-coroutines = "1.8.1"
-koinBom = "3.5.6"
-coil = "3.0.4"
-immutable = "0.3.8"
+lifecycleCompose="2.11.0"
+serializationVersion = "2.4.10"
+serializationKotlin = "1.11.0"
+navigation = "2.9.8"
+room = "2.8.4"
+ksp = "2.3.2"
+coroutines = "1.11.0"
+koinBom = "4.2.2"
+coil = "3.5.0"
+immutable = "0.5.1"
 
 [libraries]
 immutable-collections = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable", version.ref = "immutable" }
@@ -50,10 +50,8 @@ androidx-material3 = { group = "androidx.compose.material3", name = "material3" 
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
-kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 
 serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "serializationVersion" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }

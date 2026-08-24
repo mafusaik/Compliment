@@ -25,6 +25,13 @@
     <string name="gender">Género</string>
     <string name="every_day">Todos los días</string>
 
+    <string name="rate_app">Calificar aplicación</string>
+
+    <string name="rate_app_title">Devuelve la amabilidad</string>
+    <string name="rate_app_description">Ya has recibido de nosotros \uD83D\uDC96 muchas palabras amables, y poco a poco estamos mejorando.\n\nCalifica la aplicación: solo toma 10 segundos y realmente nos inspira ✨</string>
+    <string name="rate_app_button">Calificar ★</string>
+    <string name="rate_app_later">Recordar más tarde</string>
+
     <string-array name="compliments_women">
         <item>¡Te ves absolutamente impresionante hoy!</item>
         <item>¡Tu sonrisa ilumina el mundo!</item>

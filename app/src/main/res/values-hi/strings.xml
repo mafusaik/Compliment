@@ -25,6 +25,12 @@
     <string name="gender">लिंग</string>
     <string name="every_day">हर दिन</string>
 
+    <string name="rate_app_title">दयालुता वापस साझा करें</string>
+    <string name="rate_app_description">आपको हमसे पहले ही कई दयालु शब्द \uD83D\uDC96 मिले हैं — और हम धीरे-धीरे बेहतर हो रहे हैं।\n\nऐप को रेट करें — इसमें 10 सेकंड लगते हैं और यह वास्तव में हमें प्रेरित करता है ✨</string>
+    <string name="rate_app_button">रेट करें ★</string>
+    <string name="rate_app_later">बाद में याद दिलाएं</string>
+    <string name="rate_app">ऐप को रेट करें</string>
+
     <string-array name="compliments_women">
         <item>आज आप बिल्कुल शानदार दिख रही हैं!</item>
         <item>आपकी मुस्कान दुनिया को रोशन कर देती है!</item>

@@ -35,6 +35,12 @@
     <string name="gender">Gender</string>
     <string name="every_day">Every day</string>
 
+    <string name="rate_app_title">Share the kindness back</string>
+    <string name="rate_app_description">You\'ve already received \uD83D\uDC96 many kind words from us — and we\'re slowly getting better.\n\nRate the app — it takes 10 seconds and really inspires us ✨</string>
+    <string name="rate_app_button">Rate ★</string>
+    <string name="rate_app_later">Remind me later</string>
+    <string name="rate_app">Rate app</string>
+
     <string-array name="compliments_women">
         <item>You look absolutely stunning today!</item>
         <item>Your smile lights up the world!</item>

@@ -4,15 +4,12 @@ package com.glazer.compliment.ui.settings
 
 import android.app.Activity
 import android.app.AlarmManager
+import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.os.Build
-import android.provider.Settings
 import android.util.Log
-import androidx.activity.compose.ManagedActivityResultLauncher
 import androidx.activity.compose.rememberLauncherForActivityResult
-import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
@@ -22,17 +19,17 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExposedDropdownMenuAnchorType
 import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.MenuAnchorType
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -50,15 +47,22 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.net.toUri
 import com.glazer.compliment.R
 import com.glazer.compliment.data.sharedprefs.PrefsManager
 import com.glazer.compliment.extensions.langCodeToLang
 import com.glazer.compliment.extensions.langToLangCode
 import com.glazer.compliment.extensions.setAppLocale
+import com.glazer.compliment.models.Language
 import com.glazer.compliment.models.SettingsEvent
 import com.glazer.compliment.models.SettingsUiState
 import com.glazer.compliment.ui.elements.CustomSwitch
+import com.glazer.compliment.ui.rating.RateAppDialog
+import com.glazer.compliment.ui.theme.MyAppTheme
 import com.glazer.compliment.utils.Constants
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.persistentListOf
+import kotlinx.collections.immutable.toImmutableList
 import org.koin.androidx.compose.koinViewModel
 import org.koin.core.parameter.parametersOf
 
@@ -92,11 +96,10 @@ fun SettingsScreen(
     val selectedLanguage by remember { mutableStateOf(uiState.selectedLanguage) }
     val startLanguage = selectedLanguage.langCodeToLang(context)
 
-    val genders = listOf(stringResource(R.string.for_women), stringResource(R.string.for_men))
-    val languages = remember(context) {
-        com.glazer.compliment.models.Language.entries.map { lang ->
-            "${lang.flagEmoji} ${context.getString(lang.nameResId)}"
-        }
+    val genders = persistentListOf(stringResource(R.string.for_women), stringResource(R.string.for_men))
+
+    val languages = Language.entries.map { lang ->
+        "${lang.flagEmoji} ${stringResource(lang.nameResId)}"
     }
 
     val labelLang = stringResource(R.string.language)
@@ -150,10 +153,39 @@ fun SettingsScreen(
             onEvent(SettingsEvent.SelectGender(value))
         }
 
-        ValueSelector(labelLang, startLanguage, languages) { language ->
+        ValueSelector(labelLang, startLanguage, languages.toImmutableList()) { language ->
             val languageCode = language.langToLangCode(context)
             context.setAppLocale(languageCode)
             onEvent(SettingsEvent.SelectLanguage(languageCode))
+        }
+
+        ClickableSettingsItem(stringResource(R.string.rate_app)) {
+            onEvent(SettingsEvent.RateAppClicked)
+        }
+
+        if (uiState.showRateDialog) {
+            RateAppDialog(
+                onRateClicked = {
+                    val packageName = context.packageName
+                    try {
+                        val intent = Intent(Intent.ACTION_VIEW, "market://details?id=$packageName".toUri()).apply {
+                            setPackage("com.android.vending")
+                        }
+                        context.startActivity(intent)
+                    } catch (_: ActivityNotFoundException) {
+                        context.startActivity(
+                            Intent(
+                                Intent.ACTION_VIEW,
+                                "https://play.google.com/store/apps/details?id=$packageName".toUri()
+                            )
+                        )
+                    }
+                    onEvent(SettingsEvent.DismissRateDialog)
+                },
+                onDismiss = {
+                    onEvent(SettingsEvent.DismissRateDialog)
+                }
+            )
         }
 
         if (uiState.showPermissionDialog) {
@@ -204,48 +236,39 @@ fun SettingsItem(
 }
 
 @Composable
-fun PermissionDialog(
-    context: Context,
-    launcher: ManagedActivityResultLauncher<Intent, ActivityResult>,
-    onDismiss: () -> Unit,
+fun ClickableSettingsItem(
+    title: String,
+    onClick: () -> Unit
 ) {
-    val openSettings: () -> Unit = {
-        openAlarmSettings(context, launcher)
-        onDismiss()
+    Button(
+        onClick = onClick,
+        shape = RoundedCornerShape(16.dp),
+        colors = ButtonColors(
+            MaterialTheme.colorScheme.primary,
+            MaterialTheme.colorScheme.primary,
+            MaterialTheme.colorScheme.primary,
+            MaterialTheme.colorScheme.primary
+        ),
+        modifier = Modifier
+            .fillMaxWidth(),
+    ) {
+        Text(
+            text = title,
+            fontSize = 20.sp,
+            style = MaterialTheme.typography.bodyLarge,
+            color = MaterialTheme.colorScheme.onPrimary,
+            textAlign = TextAlign.Center
+        )
     }
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        title = {
-            Text(
-                text = stringResource(R.string.permission_needed),
-                color = MaterialTheme.colorScheme.onSecondary
-            )
-        },
-        text = { Text(stringResource(R.string.text_permission_exact_alarm)) },
-        confirmButton = {
-            TextButton(onClick = openSettings) {
-                Text(
-                    text = stringResource(R.string.go_settings),
-                    color = MaterialTheme.colorScheme.onSecondary
-                )
-            }
-        },
-        dismissButton = {
-            TextButton(onClick = onDismiss) {
-                Text(
-                    text = stringResource(R.string.cancel),
-                    color = MaterialTheme.colorScheme.onSecondary
-                )
-            }
-        }
-    )
 }
+
+
 
 @Composable
 fun ValueSelector(
     label: String,
     startValue: String,
-    listValues: List<String>,
+    listValues: ImmutableList<String>,
     onValueChange: (String) -> Unit
 ) {
     var isDropdownExpanded by remember { mutableStateOf(false) }
@@ -290,7 +313,7 @@ fun ValueSelector(
             },
             textStyle = TextStyle.Default.copy(fontSize = 20.sp),
             modifier = Modifier
-                .menuAnchor(MenuAnchorType.PrimaryNotEditable)
+                .menuAnchor(ExposedDropdownMenuAnchorType.PrimaryNotEditable)
                 .fillMaxWidth()
         )
 
@@ -324,21 +347,11 @@ fun ValueSelector(
     }
 }
 
-private fun openAlarmSettings(
-    context: Context,
-    launcher: ManagedActivityResultLauncher<Intent, ActivityResult>
-) {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-        val intent = Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM).apply {
-            data = Uri.fromParts("package", context.packageName, null)
-        }
-        launcher.launch(intent)
-    }
-}
-
 
 @Preview(showBackground = true)
 @Composable
 fun PreviewSettingsScreen() {
-    SettingsScreen()
+    MyAppTheme(isDarkTheme = false) {
+        SettingsScreen()
+    }
 }

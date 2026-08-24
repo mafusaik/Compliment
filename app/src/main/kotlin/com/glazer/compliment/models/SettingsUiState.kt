@@ -9,5 +9,6 @@ data class SettingsUiState(
     val selectedGender: String = "",
     val showPermissionDialog: Boolean = false,
     val selectedLanguage: String = "en",
-    val restartRequired: Boolean = false
+    val restartRequired: Boolean = false,
+    val showRateDialog: Boolean = false
 )

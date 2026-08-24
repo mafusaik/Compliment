@@ -57,6 +57,14 @@ class SettingsViewModel(
             is SettingsEvent.ResetRestartFlag -> {
                 _uiState.update { it.copy(restartRequired = false) }
             }
+
+            is SettingsEvent.RateAppClicked -> {
+                _uiState.update { it.copy(showRateDialog = true) }
+            }
+
+            is SettingsEvent.DismissRateDialog -> {
+                _uiState.update { it.copy(showRateDialog = false) }
+            }
         }
     }
 

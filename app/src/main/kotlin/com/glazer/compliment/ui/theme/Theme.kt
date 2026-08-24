@@ -1,13 +1,12 @@
 package com.glazer.compliment.ui.theme
 
-import android.app.Activity
+import androidx.activity.compose.LocalActivity
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
-import androidx.compose.ui.platform.LocalContext
 import androidx.core.view.WindowCompat
 
 @Composable
@@ -16,7 +15,7 @@ fun MyAppTheme(
     content: @Composable () -> Unit
 ) {
     val colors = if (isDarkTheme) DarkColorScheme else LightColorScheme
-    val window = (LocalContext.current as? Activity)?.window
+    val window = LocalActivity.current?.window
 
     SideEffect {
         window?.let {
@@ -46,7 +45,8 @@ private val DarkColorScheme = darkColorScheme(
     tertiary = DarkBlueLight,
     surfaceContainer = DarkBlueLight,
     inverseSurface = DarkBlueLight,
-    inverseOnSurface = Grey
+    inverseOnSurface = Grey,
+    surfaceVariant = DarkBlue
 )
 
 private val LightColorScheme = lightColorScheme(
@@ -61,5 +61,6 @@ private val LightColorScheme = lightColorScheme(
     tertiary = Grey,
     surfaceContainer = WhiteEgg,
     inverseSurface = GreyLight,
-    inverseOnSurface = WhiteBackground
+    inverseOnSurface = WhiteBackground,
+    surfaceVariant = MutedRoseBrown
 )

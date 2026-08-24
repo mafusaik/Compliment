@@ -25,6 +25,12 @@
     <string name="gender">Пол</string>
     <string name="every_day">Каждый день</string>
 
+    <string name="rate_app">Оценить приложение</string>
+    <string name="rate_app_title">Поделитесь добротой в ответ</string>
+    <string name="rate_app_description">Вы уже получили от нас \uD83D\uDC96 немало добрых слов — а мы потихоньку становимся лучше.\n\nОцените приложение — это занимает 10 секунд и очень нас вдохновляет ✨</string>
+    <string name="rate_app_button">Оценить ★</string>
+    <string name="rate_app_later">Напомнить позже</string>
+
     <string-array name="compliments_women">
         <item>Ты сегодня выглядишь просто великолепно!</item>
         <item>Твоя улыбка озаряет весь мир!</item>

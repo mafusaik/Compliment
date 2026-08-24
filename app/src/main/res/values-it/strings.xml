@@ -25,6 +25,13 @@
     <string name="gender">Genere</string>
     <string name="every_day">Ogni giorno</string>
 
+    <string name="rate_app">Valuta l\'app</string>
+
+    <string name="rate_app_title">Ricambia la gentilezza</string>
+    <string name="rate_app_description">Hai già ricevuto da noi \uD83D\uDC96 molte parole gentili — e stiamo migliorando piano piano.\n\nValuta l\'app — richiede solo 10 secondi e ci ispira molto ✨</string>
+    <string name="rate_app_button">Valuta ★</string>
+    <string name="rate_app_later">Ricordamelo più tardi</string>
+
     <string-array name="compliments_women">
         <item>Oggi sei assolutamente splendida!</item>
         <item>Il tuo sorriso illumina il mondo!</item>

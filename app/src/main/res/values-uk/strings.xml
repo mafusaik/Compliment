@@ -25,6 +25,12 @@
     <string name="gender">Стать</string>
     <string name="every_day">Щодня</string>
 
+    <string name="rate_app_title">Поділіться добротою у відповідь</string>
+    <string name="rate_app_description">Ви вже отримали від нас багато \uD83D\uDC96 теплих слів — і ми поступово стаємо кращими.\n\nОцініть додаток — це займе 10 секунд і дуже нас надихає ✨</string>
+    <string name="rate_app_button">Оцінити ★</string>
+    <string name="rate_app_later">Нагадати пізніше</string>
+    <string name="rate_app">Оцінити додаток</string>
+
     <string-array name="compliments_women">
         <item>Ти виглядаєш сьогодні просто приголомшливо!</item>
         <item>Твоя усмішка освітлює світ!</item>

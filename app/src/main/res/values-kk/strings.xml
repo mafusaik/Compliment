@@ -25,6 +25,13 @@
     <string name="gender">Жыныс</string>
     <string name="every_day">Күн сайын</string>
 
+    <string name="rate_app">Қолданбаны бағалау</string>
+
+    <string name="rate_app_title">Жауап ретінде мейірімділікпен бөлісіңіз</string>
+    <string name="rate_app_description">Сіз бізден көптеген жылы сөздер алдыңыз \uD83D\uDC96 — біз де біртіндеп жақсарып келеміз.\n\nҚосымшаны бағалаңыз — бұл 10 секундты алады және бізді қатты шабыттандырады ✨</string>
+    <string name="rate_app_button">Бағалау ★</string>
+    <string name="rate_app_later">Кейінірек еске салу</string>
+
     <string-array name="compliments_women">
         <item>Бүгін сен керемет көрінесің!</item>
         <item>Сенің күлкің әлемді нұрландырады!</item>

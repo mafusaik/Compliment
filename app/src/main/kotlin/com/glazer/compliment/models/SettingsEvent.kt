@@ -15,4 +15,6 @@ sealed class SettingsEvent {
     @Immutable
     data class SelectLanguage(val language: String) : SettingsEvent()
     data object ResetRestartFlag : SettingsEvent()
+    data object RateAppClicked : SettingsEvent()
+    data object DismissRateDialog : SettingsEvent()
 }

@@ -25,6 +25,12 @@
     <string name="gender">Geschlecht</string>
     <string name="every_day">Jeden Tag</string>
 
+    <string name="rate_app">App bewerten</string>
+    <string name="rate_app_title">Teilen Sie die Freundlichkeit zurück</string>
+    <string name="rate_app_description">Sie haben bereits viele nette Worte von uns erhalten \uD83D\uDC96 — und wir werden langsam besser.\n\nBewerten Sie die App — es dauert 10 Sekunden und inspiriert uns wirklich ✨</string>
+    <string name="rate_app_button">Bewerten ★</string>
+    <string name="rate_app_later">Später erinnern</string>
+
     <string-array name="compliments_women">
         <item>Du siehst heute absolut umwerfend aus!</item>
         <item>Dein Lächeln bringt die Welt zum Leuchten!</item>
