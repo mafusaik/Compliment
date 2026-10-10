@@ -42,313 +42,312 @@
     <string name="rate_app">Rate app</string>
 
     <string-array name="compliments_women">
-        <item>You look absolutely stunning today!</item>
-        <item>Your smile lights up the world!</item>
-        <item>You are incredibly talented!</item>
-        <item>It’s always a pleasure to talk to you!</item>
-        <item>Your kindness makes the world a better place!</item>
-        <item>You have amazing strength!</item>
-        <item>You inspire everyone around you!</item>
-        <item>Being with you makes me want to be better!</item>
-        <item>You make the world brighter!</item>
-        <item>You know how to support in tough moments!</item>
-        <item>Your energy is so uplifting!</item>
-        <item>You always know how to cheer people up!</item>
-        <item>You are a true star!</item>
-        <item>Your style is amazing!</item>
-        <item>You have an exceptional sense of humor!</item>
-        <item>Being with you makes me laugh until I cry!</item>
-        <item>You are unique and one of a kind!</item>
-        <item>You are so caring and attentive!</item>
-        <item>Your kindness knows no bounds!</item>
-        <item>You are the perfect example of feminine strength and beauty!</item>
-        <item>You light up everything around you just by being there!</item>
-        <item>Your eyes shine like stars!</item>
-        <item>Your confidence is inspiring!</item>
-        <item>You are the embodiment of tenderness and beauty!</item>
-        <item>You are a true muse to all of us!</item>
-        <item>Your smile can warm even the coldest day!</item>
-        <item>With you, any task feels easy!</item>
-        <item>Your presence makes the world a better place!</item>
-        <item>You are the epitome of elegance and grace!</item>
-        <item>Your ideas are always so creative and unique!</item>
-        <item>You inspire greatness in others!</item>
-        <item>You are beautiful not only on the outside but on the inside too!</item>
-        <item>You are full of surprises and mysteries!</item>
-        <item>You harmoniously combine strength and tenderness!</item>
-        <item>You have a unique ability to find positivity in any situation!</item>
-        <item>Being with you is always interesting and fun!</item>
-        <item>You bring so much joy into this world!</item>
-        <item>You are a true role model!</item>
-        <item>You are a true queen!</item>
-        <item>Your sense of style is impeccable!</item>
-        <item>You always see the best in people!</item>
-        <item>You are incredibly wise and insightful!</item>
-        <item>You are a wonderful listener and conversationalist!</item>
-        <item>You inspire others to act in the best way possible!</item>
-        <item>You turn ordinary moments into something magical!</item>
-        <item>You always bring light to any group you’re in!</item>
-        <item>You make the world cozier and warmer!</item>
-        <item>You see the beauty in the little things!</item>
-        <item>With you, every event becomes a celebration!</item>
-        <item>You have incredible magnetism!</item>
-        <item>You are the embodiment of harmony and coziness!</item>
-        <item>Being with you is easy and pleasant!</item>
-        <item>Your bravery is inspiring!</item>
-        <item>You possess a special grace!</item>
-        <item>Your eyes are so expressive!</item>
-        <item>You are always so charming!</item>
-        <item>You know how to create comfort around you!</item>
-        <item>You are the sweetest person I know!</item>
-        <item>Your voice is like music to the ears!</item>
-        <item>You have a strong and kind heart!</item>
-        <item>Your love for life is inspiring!</item>
-        <item>With you, I feel truly alive!</item>
-        <item>You find joy in the little things!</item>
-        <item>You are a true miracle!</item>
-        <item>You radiate so much warmth!</item>
-        <item>You are a true romantic!</item>
-        <item>Your smile brightens my world!</item>
-        <item>You deserve only the best in life!</item>
-        <item>You fill the world with light!</item>
-        <item>You make my days brighter!</item>
-        <item>You always find joy in every day!</item>
-        <item>You are an inspiration!</item>
-        <item>You are a source of light and joy!</item>
-        <item>With you, I feel happy!</item>
-        <item>You can make any day better with just one look!</item>
-        <item>You have the power to change the world for the better!</item>
-        <item>You bring so much happiness to everyone around you!</item>
-        <item>You carry an immense inner strength within you!</item>
-        <item>Your smile makes everything around you brighter!</item>
-        <item>Every moment with you is unique!</item>
-        <item>You are the epitome of coziness and warmth!</item>
-        <item>You give me inspiration!</item>
-        <item>You are full of surprises and unexpected delights!</item>
-        <item>You make me happier every day!</item>
-        <item>You are an amazing person!</item>
-        <item>You are my muse!</item>
-        <item>You are like a ray of sunshine on a cloudy day!</item>
-        <item>You are full of incredible strength and grace!</item>
-        <item>You always find a way out of any situation!</item>
-        <item>You bring so much happiness into this world!</item>
-        <item>You have true feminine wisdom!</item>
-        <item>You always look stylish and fashionable!</item>
-        <item>You make the world a little bit better!</item>
-        <item>You are always caring and attentive!</item>
-        <item>You radiate confidence!</item>
-        <item>You are my pride and joy!</item>
-        <item>You light up my life with your smile!</item>
-        <item>You give my life meaning!</item>
-        <item>Every day with you is special!</item>
-        <item>You are a true diamond that shines in the dark!</item>
-        <item>You possess a unique charm!</item>
-        <item>Your passion for life is inspiring!</item>
-        <item>You always find the right words!</item>
-        <item>You make me feel important!</item>
-        <item>You have a fine sense of tact!</item>
-        <item>With you, the world feels calmer!</item>
-        <item>You turn challenges into opportunities!</item>
-        <item>You are my brightest star!</item>
-        <item>Your love for people is impressive!</item>
-        <item>You always understand me without words!</item>
-        <item>You make my life fuller!</item>
-        <item>You bring me joy with every word you say!</item>
-        <item>You always support me when I need it!</item>
-        <item>You have exquisite taste!</item>
-        <item>You notice the beauty even in ordinary things!</item>
-        <item>You add magic to every moment!</item>
-        <item>With you, I can truly be myself!</item>
-        <item>You are a true rarity in this world!</item>
-        <item>You make every meeting unforgettable!</item>
-        <item>You know how to give warmth just because!</item>
-        <item>Your generosity of spirit is amazing!</item>
-        <item>You always find the strength for a new victory!</item>
-        <item>You make the world better just by being here!</item>
-        <item>You inspire me to become better!</item>
-        <item>You are so extraordinary and interesting!</item>
-        <item>Every day with you is filled with meaning!</item>
-        <item>You are truly a unique person!</item>
-        <item>You know how to listen and understand!</item>
-        <item>You are like a sunbeam on a cloudy day!</item>
-        <item>You inspire me to be braver!</item>
-        <item>You are like music for the soul!</item>
-        <item>You bring harmony to my life!</item>
-        <item>Your advice is always so wise and helpful!</item>
-        <item>You are a true gift from fate!</item>
-        <item>Your tenderness and strength are a unique combination!</item>
-        <item>Being with you is always easy and pleasant!</item>
-        <item>You always find the best in every person!</item>
-        <item>You are like a cozy place that I always want to return to!</item>
-        <item>You always know how to support!</item>
-        <item>You are so sweet and caring!</item>
-        <item>You bring happiness into the lives of everyone around you!</item>
-        <item>You are an amazing creation of nature!</item>
-        <item>You are a true beauty!</item>
-        <item>You deserve only the best!</item>
-        <item>You always look incredible!</item>
-        <item>You radiate warmth and care!</item>
-        <item>You are truly a heroine in my life!</item>
-        <item>You are the embodiment of perfection!</item>
-        <item>You are amazing: your sincerity and strength of character make every moment spent with you awe-inspiring.</item>
-        <item>You are like a bright star that lights up the darkest path and helps believe in the best.</item>
-        <item>When you are near, I feel that I can overcome any difficulties — your faith in me lifts me up!</item>
-        <item>Your kindness knows no bounds, and that makes you truly unique!</item>
-        <item>You notice the little things that most would miss, and that quality of yours makes the world special.</item>
-        <item>Every conversation with you is like a real adventure — you perceive everything around you so subtly and wisely!</item>
-        <item>You bring harmony and peace wherever you go, like a breath of fresh air in the hustle of the day.</item>
-        <item>You have a magical ability to listen — with you, I feel heard and understood like never before.</item>
-        <item>Each of your smiles lights up the day and seems to invite into a world full of warmth and sincerity.</item>
-        <item>With you, I feel more alive, inspired, and full of ideas — your energy is contagious to everyone around.</item>
-        <item>Your strength and tenderness blend so harmoniously that it sometimes feels like you are a work of art.</item>
-        <item>You can show beauty even in the simplest things, making me look at the world differently.</item>
-        <item>You are one of those people with whom it\'s enough to just be silent and enjoy the moment.</item>
-        <item>You create comfort wherever you are, and that is a rare and beautiful quality.</item>
-        <item>Every word you say is filled with kindness and warmth, and I always feel better after talking to you.</item>
-        <item>You are the embodiment of harmony and tenderness, and looking at you, I want to be kinder and more attentive to the world.</item>
-        <item>Your confidence inspires me to become better and reach new heights.</item>
-        <item>You bring a sense of coziness and comfort into my life that cannot be faked — it\'s your true gift.</item>
-        <item>Your support is invaluable to me: you are like a bridge that always leads to the right decision.</item>
-        <item>You are amazingly wise, and I am always curious to know your perspective on any situation — it\'s full of insights.</item>
-        <item>When I\'m with you, I always feel sincerity and purity, which are so lacking in the modern world.</item>
-        <item>You know how to inspire, and that inspiration comes from the heart — your sincerity always wins people over.</item>
-        <item>You are like a spring sunbeam, bringing warmth and hope even on the gloomiest days.</item>
-        <item>With you, time flies unnoticed, because every minute is filled with sincerity and joy.</item>
-        <item>You have a special talent for creating real connections with people, and that is priceless.</item>
-        <item>Your kindness and care make the world a better place, and I am proud to know you.</item>
-        <item>You are one of those people who leave a mark on hearts — your soul is incredibly beautiful.</item>
-        <item>With you, I can talk about anything, and I always feel that our connection is special.</item>
-        <item>You are the embodiment of femininity and wisdom, and I often wonder how you manage to combine everything so harmoniously.</item>
-        <item>You bring so much meaning and joy into my life that every day spent with you becomes a celebration.</item>
-        <item>Your smile is like the sun after rain, always bringing warmth and light.</item>
-        <item>You have an incredible ability to create a world around you full of peace and comfort.</item>
-        <item>Your energy charges others with positivity, and I never get tired of being around you.</item>
-        <item>You know how to see light in the simplest things, and that makes me believe in miracles.</item>
-        <item>You are an inspiration to many, and I am happy that you are in my life.</item>
-        <item>Your faith in the best always inspires me to overcome all difficulties and keep moving forward.</item>
-        <item>You know how to give joy so sincerely that it\'s impossible not to notice.</item>
-        <item>You remind me that everything is possible in this world if you keep the faith and stay true to yourself.</item>
-        <item>Your generosity of soul has no limits, and I cherish every moment spent with you.</item>
-        <item>You are the kind of person who inspires belief in good and light in this world.</item>
-        <item>Your eyes shine like stars, and every glance fills the soul with warmth and tranquility.</item>
-        <item>You have a special gift of being truly honest and open — that is a rare quality.</item>
-        <item>With you, I can dream about anything and not fear that my dreams won’t come true.</item>
-        <item>You are like a guiding star, always leading me to the brightest path.</item>
-        <item>You are so beautiful not only on the outside but also on the inside, and that makes you truly amazing.</item>
-        <item>Your words always support and inspire, and that is a gift not given to everyone.</item>
-        <item>You create an atmosphere of warmth and coziness even in the most mundane situations.</item>
-        <item>You are always sincere and open, and I feel truly happy being with you.</item>
-        <item>You know how to support and inspire, even when everything around seems complicated and confusing.</item>
-        <item>You are the brightest person I know, and that fills my life with meaning and joy.</item>
+        <item>You look amazing today.</item>
+        <item>Your smile fixes my whole day.</item>
+        <item>You\'re really good at what you do.</item>
+        <item>Talking to you is always a pleasure.</item>
+        <item>You\'re such a kind person. It shows in everything you do.</item>
+        <item>You\'re stronger than you think.</item>
+        <item>People around you want to do better. Funny how that works.</item>
+        <item>I\'m a better person when I\'m around you.</item>
+        <item>Everything feels brighter when you\'re around.</item>
+        <item>You always know how to help when things get tough.</item>
+        <item>Your energy is contagious.</item>
+        <item>You can cheer up anyone, even on a bad day.</item>
+        <item>You have great style.</item>
+        <item>You\'ve got an awesome sense of humor.</item>
+        <item>I can\'t stop laughing when I\'m with you.</item>
+        <item>There\'s nobody quite like you.</item>
+        <item>You notice what other people miss, and it means a lot.</item>
+        <item>Your kindness is the real thing.</item>
+        <item>You\'re beautiful, and not just on the outside.</item>
+        <item>You make hard things look easy.</item>
+        <item>Your ideas are always so creative.</item>
+        <item>You turn ordinary days into something fun.</item>
+        <item>You always see the best in people.</item>
+        <item>You\'re so smart. I love hearing your take on things.</item>
+        <item>You\'re a great listener.</item>
+        <item>Any group is better with you in it.</item>
+        <item>You make everything cozier.</item>
+        <item>You find the good in small things.</item>
+        <item>Even a boring evening is fun with you.</item>
+        <item>When you walk in, people notice.</item>
+        <item>I love how brave you are.</item>
+        <item>Your eyes say everything.</item>
+        <item>You\'re easy to be around.</item>
+        <item>Your voice is so calming.</item>
+        <item>You love life, and it\'s catching.</item>
+        <item>With you I can be completely myself.</item>
+        <item>You deserve every good thing coming your way.</item>
+        <item>One look from you can turn my day around.</item>
+        <item>I\'m proud of you.</item>
+        <item>You always find a way out, no matter what.</item>
+        <item>You make me smile for no reason.</item>
+        <item>You always find the right words.</item>
+        <item>You get me without me having to explain.</item>
+        <item>You\'re always there when I need you.</item>
+        <item>You have great taste.</item>
+        <item>You make normal moments feel special.</item>
+        <item>You\'re one of a kind, seriously.</item>
+        <item>You have a big heart.</item>
+        <item>I\'m so lucky to know you.</item>
+        <item>Time with you is the best part of my week.</item>
+        <item>You\'re the first person I want to tell good news to.</item>
+        <item>You make me want to try new things.</item>
+        <item>You\'re way more talented than you give yourself credit for.</item>
+        <item>Your laugh is my favorite sound.</item>
+        <item>You never make anyone feel small.</item>
+        <item>You have a calm that rubs off on everyone.</item>
+        <item>I love how much you care about people.</item>
+        <item>You make me feel like I matter.</item>
+        <item>You always make time for the people you love.</item>
+        <item>You remember the little things, and I love that.</item>
+        <item>Whatever you do, you do it with heart.</item>
+        <item>You handle pressure better than anyone I know.</item>
+        <item>Time flies when I\'m with you.</item>
+        <item>You make a simple coffee feel like a date.</item>
+        <item>You look great even in sweatpants.</item>
+        <item>You\'re the reason I\'m in a good mood.</item>
+        <item>You\'re smarter than you let on.</item>
+        <item>Your hugs fix everything.</item>
+        <item>You\'re a real friend.</item>
+        <item>You make people feel welcome.</item>
+        <item>I admire how you keep going.</item>
+        <item>You\'re fun to be around.</item>
+        <item>You make people feel heard.</item>
+        <item>You bring out the best in me.</item>
+        <item>I love your sense of adventure.</item>
+        <item>You light up a room without even trying.</item>
+        <item>You\'re honest, and I respect that.</item>
+        <item>You make the world feel a little softer.</item>
+        <item>I\'m glad you\'re in my life.</item>
+        <item>Your curiosity is so attractive.</item>
+        <item>You inspire me, and I mean it.</item>
+        <item>I feel safe with you.</item>
+        <item>You\'re gorgeous when you laugh.</item>
+        <item>You deserve a day off and a big hug.</item>
+        <item>You\'re doing better than you think.</item>
+        <item>I love the way you think.</item>
+        <item>You make everything better just by showing up.</item>
+        <item>You\'re really something.</item>
+        <item>Thank you for being you.</item>
+        <item>You\'re the brightest person I know.</item>
+        <item>You make every day a little better.</item>
+        <item>You\'ve got something special, and I can\'t put my finger on it.</item>
+        <item>Your smile could melt anyone.</item>
+        <item>I love how you light up when you talk about things you care about.</item>
+        <item>You\'re my favorite person to text.</item>
+        <item>You make me feel calm, even on messy days.</item>
+        <item>You\'re like sunshine on a gray day.</item>
+        <item>You always know what to say to make me feel better.</item>
+        <item>You\'ve got such a warm heart.</item>
+        <item>You\'re a queen, and you don\'t even know it.</item>
+        <item>You make everyone feel like they belong.</item>
+        <item>You\'re a miracle, honestly.</item>
+        <item>You\'re my little bit of magic.</item>
+        <item>I love how real you are.</item>
+        <item>You make being brave look natural.</item>
+        <item>You\'re gentle and strong at the same time.</item>
+        <item>You\'re elegant without trying.</item>
+        <item>Your style is effortless.</item>
+        <item>You make my heart feel full.</item>
+        <item>I\'d choose a quiet evening with you over any party.</item>
+        <item>You\'re a star, and it\'s not even a stretch.</item>
+        <item>Everything you touch turns out better.</item>
+        <item>You\'re full of surprises, and I love it.</item>
+        <item>You\'re the best part of my day.</item>
+        <item>You\'re rare, and I know it.</item>
+        <item>You\'re like a warm blanket on a cold day.</item>
+        <item>You turn problems into plans.</item>
+        <item>You make me believe in myself.</item>
+        <item>You\'re the one who makes things feel okay.</item>
+        <item>You\'ve got that special spark.</item>
+        <item>Your kindness never runs out.</item>
+        <item>You give so much without asking for anything.</item>
+        <item>Your voice makes me feel at home.</item>
+        <item>You find beauty in things I\'d walk past.</item>
+        <item>You\'re a gem, and I mean it.</item>
+        <item>You\'re wise beyond your years.</item>
+        <item>You\'re so good with people.</item>
+        <item>You make me feel like I can do anything.</item>
+        <item>You\'ve got serious charm.</item>
+        <item>You carry yourself so well.</item>
+        <item>You\'re my safe place.</item>
+        <item>I like who I am when I\'m with you.</item>
+        <item>Nobody makes me feel as relaxed as you do.</item>
+        <item>You make me proud to know you.</item>
+        <item>You deserve a little celebration today.</item>
+        <item>You\'ve got a rare kind of warmth.</item>
+        <item>Your optimism is contagious.</item>
+        <item>You always turn a bad day into a good story.</item>
+        <item>You\'re the kind of person people remember.</item>
+        <item>You leave everyone in a better mood.</item>
+        <item>You\'re so thoughtful. It never goes unnoticed.</item>
+        <item>Your honesty is refreshing.</item>
+        <item>I could listen to you talk for hours.</item>
+        <item>You make life more fun.</item>
+        <item>You\'re beautiful when you\'re focused.</item>
+        <item>You\'ve got a great heart, and people can tell.</item>
+        <item>You always bring good vibes.</item>
+        <item>You\'re braver than you realize.</item>
+        <item>You make the ordinary feel special.</item>
+        <item>You\'ve got a gift for making people comfortable.</item>
+        <item>You\'re the kind of friend everyone wishes they had.</item>
+        <item>I love the little things you do.</item>
+        <item>You make waiting feel easy.</item>
+        <item>You make me want to slow down and enjoy things.</item>
+        <item>You\'re full of life.</item>
+        <item>You make me feel like the luckiest person around.</item>
+        <item>You deserve to be happy.</item>
+        <item>You\'re kind to everyone, even when it\'s hard.</item>
+        <item>You\'ve got a beautiful mind.</item>
+        <item>Your presence is calming.</item>
+        <item>You always give your best.</item>
+        <item>You\'re so patient. I admire that.</item>
+        <item>You see the good in every situation.</item>
+        <item>I\'m grateful for you.</item>
+        <item>You make my world a better place.</item>
+        <item>Your hugs feel like home.</item>
+        <item>You\'ve got a way of making things right.</item>
+        <item>You make me feel understood.</item>
+        <item>You\'re inspiring without even trying.</item>
+        <item>You\'ve got more strength than you realize.</item>
+        <item>You\'re so easy to love.</item>
+        <item>Your eyes are so expressive.</item>
+        <item>Your confidence is beautiful.</item>
+        <item>You\'re gentle with people, and that says a lot.</item>
+        <item>You\'re the person I want next to me.</item>
+        <item>You\'ve got great energy today.</item>
+        <item>You make hard days softer.</item>
+        <item>You\'re truly lovely.</item>
+        <item>You\'re always kind, even to strangers.</item>
+        <item>You\'ve got a talent for making people smile.</item>
+        <item>I love your laugh. I mean it.</item>
+        <item>Your wisdom surprises me every time.</item>
+        <item>You\'re so genuine.</item>
+        <item>You make me feel appreciated.</item>
+        <item>You make me believe good things happen.</item>
+        <item>You\'re the calm in my storm.</item>
+        <item>You\'re a true friend and a great person.</item>
+        <item>I couldn\'t ask for someone better.</item>
+        <item>You\'re a wonderful surprise.</item>
+        <item>I\'m lucky I get to see your smile.</item>
+        <item>You\'ve got so much to be proud of.</item>
+        <item>You\'re the kind of person who makes a place feel like home.</item>
+        <item>You make me happier than you know.</item>
+        <item>You\'re radiant today.</item>
+        <item>You always make me feel welcome.</item>
+        <item>You\'re my favorite kind of person.</item>
+        <item>You\'re wonderful, just as you are.</item>
     </string-array>
 
     <string-array name="compliments_men">
-        <item>You\'re handsome!</item>
-        <item>You\'re a real man!</item>
-        <item>You\'re amazing!</item>
-        <item>You\'re awesome!</item>
-        <item>You look great!</item>
-        <item>You\'re a real hero!</item>
-        <item>You\'re just cool!</item>
-        <item>You\'re the best!</item>
-        <item>You\'re strong and confident!</item>
-        <item>You\'re simply stunning!</item>
-        <item>You\'re a smart one!</item>
-        <item>You\'re chic!</item>
-        <item>You\'re fire!</item>
-        <item>You\'re the king!</item>
-        <item>You\'re a great guy!</item>
-        <item>You\'re my hero!</item>
-        <item>You\'re just class!</item>
-        <item>You\'re a handsome guy!</item>
-        <item>You\'re simply fantastic!</item>
-        <item>You have a strength that inspires.</item>
-        <item>Your confidence makes this world better.</item>
-        <item>With you, I can always count on support.</item>
-        <item>You inspire great deeds.</item>
-        <item>Your kindness makes you truly strong.</item>
-        <item>You know how to find a way out of any situation.</item>
-        <item>Your strength lies in calmness and confidence.</item>
-        <item>You bring confidence and light to any moment.</item>
-        <item>With you, it\'s always interesting and easy.</item>
-        <item>You\'re a role model.</item>
-        <item>Your care for others knows no bounds.</item>
-        <item>You always remain true to yourself.</item>
-        <item>Your words are always full of meaning and strength.</item>
-        <item>With you, it\'s easy and comfortable to be myself.</item>
-        <item>You give confidence just by being there.</item>
-        <item>You always know what needs to be done at the right moment.</item>
-        <item>Your energy inspires success in others.</item>
-        <item>You know how to support in the toughest moments.</item>
-        <item>You\'re someone who always inspires to do more.</item>
-        <item>You have a rare combination of strength and gentleness.</item>
-        <item>With you, it\'s not scary to move forward.</item>
-        <item>You\'re the embodiment of masculine wisdom.</item>
-        <item>You know how to be sincere in any situation.</item>
-        <item>Your confidence always inspires admiration.</item>
-        <item>You\'re an example of how to be strong and kind at the same time.</item>
-        <item>Your energy always creates an atmosphere of comfort.</item>
-        <item>You always know how to make a moment special.</item>
-        <item>Thank you for being in my life — with you, the world becomes brighter and more confident.</item>
-        <item>I\'m grateful that I can count on you.</item>
-        <item>Thank you for being here.</item>
+        <item>You look great today.</item>
+        <item>You\'re a good guy. Really.</item>
+        <item>You\'re impressive, you know that?</item>
+        <item>You\'re really good at what you do.</item>
+        <item>You\'re strong, and not just physically.</item>
+        <item>You stay calm when everything\'s falling apart.</item>
+        <item>I can always count on you.</item>
+        <item>You make hard things look easy.</item>
+        <item>You\'ve got great taste.</item>
+        <item>You\'re a great guy to have around.</item>
+        <item>You make me want to do better.</item>
+        <item>You always know what to do.</item>
+        <item>You\'re easy to talk to.</item>
+        <item>You\'re funny, and you don\'t even try.</item>
+        <item>You keep your word. That matters.</item>
+        <item>You\'ve got a big heart.</item>
+        <item>You\'re stronger than you think.</item>
+        <item>I feel safe with you.</item>
+        <item>You set a good example for others.</item>
+        <item>You care about people, and it shows.</item>
+        <item>You stay yourself no matter what.</item>
+        <item>People listen when you speak.</item>
+        <item>You\'re a great listener.</item>
+        <item>Your confidence is attractive.</item>
+        <item>You always find a way.</item>
+        <item>You make hard days easier.</item>
+        <item>Being around you is easy.</item>
+        <item>You\'re smart, and you don\'t make a show of it.</item>
+        <item>I trust you.</item>
+        <item>You make me laugh like nobody else.</item>
+        <item>You show up when it matters.</item>
+        <item>You\'re tough and gentle at the same time. Rare combo.</item>
+        <item>I\'m proud of you.</item>
+        <item>You\'ve got a great sense of humor.</item>
+        <item>You make everyone around you feel more relaxed.</item>
+        <item>You never give up.</item>
+        <item>You\'ve got great energy.</item>
+        <item>You\'re a real friend.</item>
+        <item>You have my back, and I have yours.</item>
+        <item>Thanks for always being there.</item>
+        <item>Thank you for believing in me.</item>
+        <item>I\'m lucky to have you.</item>
+        <item>I\'m glad we met.</item>
+        <item>You make my life better.</item>
+        <item>Time flies when I\'m with you.</item>
+        <item>I can be myself around you.</item>
+        <item>You give great advice.</item>
+        <item>You\'re dependable.</item>
+        <item>You work hard, and I notice.</item>
+        <item>You\'ve got great style.</item>
+        <item>You make a plan and actually follow through.</item>
+        <item>You\'re brave.</item>
+        <item>You don\'t need to prove anything. You\'re already enough.</item>
+        <item>You keep it together better than most people.</item>
+        <item>You\'re thoughtful. I notice the little things you do.</item>
+        <item>You\'re fun to be around.</item>
+        <item>You\'ve got a good heart.</item>
+        <item>Talking with you always leaves me in a better mood.</item>
+        <item>You make me feel understood.</item>
+        <item>You\'re the kind of person everyone wants on their team.</item>
+        <item>You make everyone around you better.</item>
+        <item>You\'re generous, and you never make a big deal of it.</item>
+        <item>I love your sense of humor.</item>
+        <item>You\'re a rock.</item>
+        <item>You make me want to be a better person.</item>
+        <item>You\'re smart about people.</item>
+        <item>You always say the right thing.</item>
+        <item>You\'re doing great. Don\'t forget it.</item>
+        <item>You make me feel like anything is possible.</item>
+        <item>You\'re one of the good ones.</item>
+        <item>You\'re a legend.</item>
+        <item>Thanks for being you.</item>
+        <item>You\'re a great partner.</item>
+        <item>I admire how you handle things.</item>
+        <item>You\'re simply the best.</item>
+        <item>You look sharp today.</item>
+        <item>You\'re a strong guy, inside and out.</item>
+        <item>You\'re my hero.</item>
+        <item>You\'re awesome, no question.</item>
+        <item>You carry yourself with confidence.</item>
+        <item>You make me feel like I\'ve got someone in my corner.</item>
+        <item>You\'re a king in your own way.</item>
+        <item>You\'re cool without trying.</item>
+        <item>You\'re kind, and that takes real strength.</item>
+        <item>You always know how to calm things down.</item>
+        <item>You\'re wise, and I like hearing your opinion.</item>
+        <item>You\'re smooth under pressure.</item>
+        <item>You make me feel safe and relaxed.</item>
+        <item>You make every plan more fun.</item>
+        <item>You\'re dependable, and that\'s rare.</item>
+        <item>You make the best of every situation.</item>
+        <item>You\'re handsome, and you know it.</item>
+        <item>You\'re an inspiration to those around you.</item>
+        <item>You make me braver.</item>
+        <item>You see the good in people.</item>
+        <item>You\'re quietly impressive.</item>
+        <item>You\'ve got a great heart behind that tough exterior.</item>
+        <item>You never let people down.</item>
         <item>Thank you for being mine.</item>
-        <item>I\'m so grateful to fate that I met you.</item>
-        <item>With you, I feel safe — thank you for your confidence and care.</item>
-        <item>Thank you for your love and belief in me — you make this world better for me.</item>
-        <item>I appreciate every moment spent with you — thank you for being in my life.</item>
-        <item>Thank you for filling my life with meaning — you are truly a special person.</item>
-        <item>I am happy to be close to someone like you — thank you for your love and care.</item>
-        <item>You are incredibly strong: your determination and confidence inspire me and make me admire every one of your actions.</item>
-        <item>You are like a reliable anchor that stabilizes me and brings confidence in the toughest moments.</item>
-        <item>When you\'re around, I feel like I can overcome any obstacle — your support gives me strength and belief in myself!</item>
-        <item>Your kindness and care are immeasurable, and that makes you a true man I can trust.</item>
-        <item>You notice details that others might miss, and your attentiveness makes you unique in my eyes.</item>
-        <item>Every conversation with you is a new experience, you take everything around you so easily and confidently, and I always learn something!</item>
-        <item>You bring peace and confidence to any situation, like a support you can always rely on.</item>
-        <item>You have the gift of listening and understanding, with you I always feel heard and valued.</item>
-        <item>Your smile always warms me and reminds me that there is room for warmth and sincerity in life.</item>
-        <item>With you by my side, I feel more confident, stronger, and full of ideas — your energy is contagious to everyone around.</item>
-        <item>You are a combination of strength and masculine tenderness, and that makes you special in my eyes.</item>
-        <item>You can see the merits even in simple things, and you make me see the world from a different angle.</item>
-        <item>You are one of those people with whom you just want to sit in silence and enjoy the moment, you bring peace and serenity.</item>
-        <item>You create an atmosphere of comfort and safety wherever you are, and that is a true gift to me.</item>
-        <item>Every word you say is full of strength and meaning, and after talking to you, I always feel better and inspired.</item>
-        <item>You are the embodiment of masculine confidence and kindness, and next to you, I want to be the best version of myself.</item>
-        <item>Your confidence inspires me to reach new heights and achieve more with you.</item>
-        <item>You bring confidence and calm into my life that cannot be faked — it\'s your true gift.</item>
-        <item>Your support is invaluable to me: you are like a stone wall that I can always shelter behind and feel safe.</item>
-        <item>You are incredibly wise, and your view of the world is always full of depth and meaning — I am always interested to learn your perspective.</item>
-        <item>Next to you, there is always sincerity and reliability, things that are so lacking in everyday life.</item>
-        <item>You know how to inspire, and that inspiration comes from your inner calmness — your confidence always commands respect.</item>
-        <item>You are like the winter sun, bringing light and warmth even on the coldest days, it\'s always easier with you by my side.</item>
-        <item>Time flies unnoticed with you, because every minute is filled with energy, joy, and meaning.</item>
-        <item>You have a unique ability to establish real connections with people, and that is invaluable to me.</item>
-        <item>Your kindness and care make this world better, and I am proud to know you and be close to you.</item>
-        <item>You are one of those people who leaves a deep mark on the soul — your strength and wisdom mesmerize me.</item>
-        <item>With you, I can talk about anything, and I always feel that our connection is special and meaningful.</item>
-        <item>You embody masculine strength and intellect, and I often wonder how you manage to combine these qualities so harmoniously.</item>
-        <item>You bring so much meaning and inspiration into my life that every day spent with you becomes an important event for me.</item>
-        <item>Your smile is like a light in a dark tunnel, it always brings warmth and confidence when I need it.</item>
-        <item>You have an incredible ability to create an atmosphere of confidence and comfort around you, which makes me calm next to you.</item>
-        <item>Your energy fills me with positivity, and I never get tired of being around you — you are my source of inspiration.</item>
-        <item>You know how to find light even in the simplest things, and that makes me believe in the best.</item>
-        <item>You are an inspiration to many, and I am proud to be close to such an amazing person like you.</item>
-        <item>Your belief in the best always inspires me to move forward despite all the difficulties, because with you, it\'s easier to do.</item>
-        <item>You know how to give joy so sincerely that it cannot be ignored — it\'s always warm and fun with you.</item>
-        <item>You remind me that everything is possible in life if you keep the faith and stay true to yourself, and with you, I become stronger too.</item>
-        <item>Your generosity of soul knows no bounds, and I cherish every minute spent with you, it is priceless to me.</item>
-        <item>You are a person who inspires belief in goodness and light in this world, and I am proud to be a part of your world.</item>
-        <item>Your gaze fills my soul with warmth and calm — with you, I feel at ease.</item>
-        <item>You have a rare gift of being sincere and open — this is a true treasure for me, I feel I can be myself with you.</item>
-        <item>With you, I can dream about anything and not fear that dreams won\'t come true — with you, I believe in the future.</item>
-        <item>You are like a guiding star, always leading me to the better, and I am not afraid to follow you.</item>
-        <item>You are so beautiful not only on the outside but also on the inside, and that makes you truly amazing to me.</item>
-        <item>Your words always support and inspire, and that is a true gift, for which I am grateful.</item>
-        <item>You create an atmosphere of confidence and comfort even in the most ordinary situations, and I always feel at peace with you.</item>
-        <item>You are always sincere and open, and I feel truly happy with you by my side — you are my source of joy.</item>
-        <item>You know how to support and inspire, even when everything around seems confusing, you are always there, and I appreciate you for that.</item>
-        <item>You are the brightest person I know, and this fills my life with joy and meaning, it is always easy with you.</item>
+        <item>Thank you for caring.</item>
+        <item>I\'m grateful to have you in my life.</item>
+        <item>You\'re the kind of man I\'d trust with anything.</item>
+        <item>You make ordinary days better.</item>
+        <item>You\'ve got a quiet kind of strength.</item>
+        <item>I love how steady you are.</item>
+        <item>You\'re an amazing guy.</item>
     </string-array>
 
 

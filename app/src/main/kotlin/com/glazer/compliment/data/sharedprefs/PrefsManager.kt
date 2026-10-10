@@ -40,6 +40,12 @@ class PrefsManager(context:Context) {
             prefs.edit { putString(KEY_GENDER, value) }
         }
 
+    var isRatingShown: Boolean
+        get() = prefs.getBoolean(KEY_RATING_SHOWN, false)
+        set(value) {
+            prefs.edit { putBoolean(KEY_RATING_SHOWN, value) }
+        }
+
     private companion object{
         private const val PREFERENCES_NAME_TOKEN = "setting_storage_token"
         private const val KEY_RECENT_COMPLIMENTS = "key_recent_compliments"
@@ -47,5 +53,6 @@ class PrefsManager(context:Context) {
         private const val KEY_DARK_THEME = "key_dark_theme"
         private const val KEY_LANGUAGE = "key_current_language"
         private const val KEY_GENDER = "key_gender"
+        private const val KEY_RATING_SHOWN = "key_rating_shown"
     }
 }

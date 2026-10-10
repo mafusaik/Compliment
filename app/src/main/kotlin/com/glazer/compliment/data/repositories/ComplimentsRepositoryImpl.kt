@@ -68,6 +68,14 @@ internal class ComplimentsRepositoryImpl(newContext: Context) : ComplimentsRepos
         currentCompliment.value = compliment
     }
 
+    override fun shouldShowRating(): Boolean {
+        return !prefsManager.isRatingShown && prefsManager.recentCompliments.size > 50
+    }
+
+    override fun markRatingShown() {
+        prefsManager.isRatingShown = true
+    }
+
     override suspend fun restoreCompliments() {
         val recentCompliments = prefsManager.recentCompliments
         if (recentCompliments.isNotEmpty()) complimentSet.addAll(recentCompliments)

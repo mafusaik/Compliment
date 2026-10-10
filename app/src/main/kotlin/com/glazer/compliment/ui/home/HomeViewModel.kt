@@ -22,17 +22,25 @@ class HomeViewModel(
 ) : ViewModel() {
 
     private val _isTextVisible = MutableStateFlow(true)
+    private val _showRatingDialog = MutableStateFlow(false)
 
-    val state: StateFlow<HomeState> = _isTextVisible
-        .combine(repository.currentCompliment().distinctUntilChanged()) { isTextVisible, compliment ->
-            Log.i("RecompositionTracker", "viewmodel state $compliment")
-            HomeState(isTextVisible, compliment)
-        }
+    val state: StateFlow<HomeState> = combine(
+        _isTextVisible,
+        _showRatingDialog,
+        repository.currentCompliment().distinctUntilChanged()
+    ) { isTextVisible, showRatingDialog, compliment ->
+        Log.i("RecompositionTracker", "viewmodel state $compliment")
+        HomeState(isTextVisible, compliment, showRatingDialog)
+    }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(stopTimeoutMillis = 5000), HomeState.Initial)
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
             repository.restoreCompliments()
+            if (repository.shouldShowRating()) {
+                _showRatingDialog.value = true
+                repository.markRatingShown()
+            }
         }
     }
 
@@ -52,6 +60,10 @@ class HomeViewModel(
 
     fun setInitCompliment(compliment: String) {
       repository.setCompliment(compliment)
+    }
+
+    fun onDismissRatingDialog() {
+        _showRatingDialog.value = false
     }
 
 }

@@ -16,4 +16,8 @@ interface ComplimentsRepository {
    suspend fun changeComplimentLang(newContext: Context)
 
   fun setCompliment(compliment: String)
+
+  fun shouldShowRating(): Boolean
+
+  fun markRatingShown()
 }

@@ -6,13 +6,15 @@ import androidx.compose.runtime.Immutable
 data class HomeState(
     val isTextVisible: Boolean,
     val compliment: String,
+    val showRatingDialog: Boolean = false,
 ) {
 
     companion object {
 
         val Initial = HomeState(
             isTextVisible = true,
-            compliment = ""
+            compliment = "",
+            showRatingDialog = false
         )
     }
 }

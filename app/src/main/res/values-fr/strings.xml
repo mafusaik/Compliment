@@ -32,313 +32,312 @@
     <string name="rate_app_later">Rappeler plus tard</string>
 
     <string-array name="compliments_women">
-        <item>Tu es absolument ravissante aujourd\'hui !</item>
-        <item>Ton sourire illumine le monde !</item>
-        <item>Tu es incroyablement talentueuse !</item>
-        <item>C\'est toujours un plaisir de te parler !</item>
-        <item>Ta gentillesse rend le monde meilleur !</item>
-        <item>Tu as une force incroyable !</item>
-        <item>Tu inspires tout le monde autour de toi !</item>
-        <item>Être avec toi me donne envie d\'être meilleur !</item>
-        <item>Tu rends le monde plus radieux !</item>
-        <item>Tu sais comment soutenir dans les moments difficiles !</item>
-        <item>Ton énergie est tellement entraînante !</item>
-        <item>Tu sais toujours comment remonter le moral des gens !</item>
-        <item>Tu es une véritable étoile !</item>
-        <item>Ton style est incroyable !</item>
-        <item>Tu as un sens de l\'humour exceptionnel !</item>
-        <item>Être avec toi me fait rire aux larmes !</item>
-        <item>Tu es unique et irremplaçable !</item>
-        <item>Tu es si attentionnée et prévenante !</item>
-        <item>Ta bonté n\'a pas de limites !</item>
-        <item>Tu es le parfait exemple de la force et de la beauté féminines !</item>
-        <item>Tu illumines tout autour de toi par ta simple présence !</item>
-        <item>Tes yeux brillent comme des étoiles !</item>
-        <item>Ta confiance en toi est inspirante !</item>
-        <item>Tu es l\'incarnation de la tendresse et de la beauté !</item>
-        <item>Tu es une véritable muse pour nous tous !</item>
-        <item>Ton sourire peut réchauffer même la journée la plus froide !</item>
-        <item>Avec toi, n\'importe quelle tâche semble facile !</item>
-        <item>Ta présence rend le monde meilleur !</item>
-        <item>Tu es l\'incarnation de l\'élégance et de la grâce !</item>
-        <item>Tes idées sont toujours si créatives et uniques !</item>
-        <item>Tu inspires la grandeur chez les autres !</item>
-        <item>Tu es belle non seulement à l\'extérieur mais aussi à l\'intérieur !</item>
-        <item>Tu es pleine de surprises et de mystères !</item>
-        <item>Tu allies harmonieusement force et tendresse !</item>
-        <item>Tu as une capacité unique à trouver du positif dans n\'importe quelle situation !</item>
-        <item>Être avec toi est toujours intéressant et amusant !</item>
-        <item>Tu apportes tant de joie dans ce monde !</item>
-        <item>Tu es un véritable modèle !</item>
-        <item>Tu es une véritable reine !</item>
-        <item>Ton sens du style est impeccable !</item>
-        <item>Tu vois toujours le meilleur chez les gens !</item>
-        <item>Tu es incroyablement sage et perspicace !</item>
-        <item>Tu es une auditrice et une interlocutrice merveilleuse !</item>
-        <item>Tu inspires les autres à agir de la meilleure façon possible !</item>
-        <item>Tu transformes les moments ordinaires en quelque chose de magique !</item>
-        <item>Tu apportes toujours de la lumière à n\'importe quel groupe où tu te trouves !</item>
-        <item>Tu rends le monde plus accueillant et chaleureux !</item>
-        <item>Tu vois la beauté dans les petites choses !</item>
-        <item>Avec toi, chaque événement devient une fête !</item>
-        <item>Tu as un magnétisme incroyable !</item>
-        <item>Tu es l\'incarnation de l\'harmonie et du confort !</item>
-        <item>Être avec toi est facile et agréable !</item>
-        <item>Ton courage est inspirant !</item>
-        <item>Tu possèdes une grâce particulière !</item>
-        <item>Tes yeux sont si expressifs !</item>
-        <item>Tu es toujours si charmante !</item>
-        <item>Tu sais créer du réconfort autour de toi !</item>
-        <item>Tu es la personne la plus douce que je connaisse !</item>
-        <item>Ta voix est comme une musique aux oreilles !</item>
-        <item>Tu as un cœur fort et bon !</item>
-        <item>Ton amour pour la vie est inspirant !</item>
-        <item>Avec toi, je me sens vraiment vivant !</item>
-        <item>Tu trouves de la joie dans les petites choses !</item>
-        <item>Tu es un véritable miracle !</item>
-        <item>Tu rayonnes de tant de chaleur !</item>
-        <item>Tu es une véritable romantique !</item>
-        <item>Ton sourire illumine mon monde !</item>
-        <item>Tu ne mérites que le meilleur dans la vie !</item>
-        <item>Tu remplis le monde de lumière !</item>
-        <item>Tu rends mes journées plus radieuses !</item>
-        <item>Tu trouves toujours de la joie dans chaque jour !</item>
-        <item>Tu es une inspiration !</item>
-        <item>Tu es une source de lumière et de joie !</item>
-        <item>Avec toi, je me sens heureux !</item>
-        <item>Tu peux rendre n\'importe quelle journée meilleure d\'un simple regard !</item>
-        <item>Tu as le pouvoir de changer le monde en mieux !</item>
-        <item>Tu apportes tant de bonheur à tous ceux qui t\'entourent !</item>
-        <item>Tu portes en toi une immense force intérieure !</item>
-        <item>Ton sourire rend tout ce qui t\'entoure plus brillant !</item>
-        <item>Chaque moment avec toi est unique !</item>
-        <item>Tu es l\'incarnation du confort et de la chaleur !</item>
-        <item>Tu me donnes de l\'inspiration !</item>
-        <item>Tu es pleine de surprises et de délices inattendus !</item>
-        <item>Tu me rends plus heureux chaque jour !</item>
-        <item>Tu es une personne incroyable !</item>
-        <item>Tu es ma muse !</item>
-        <item>Tu es comme un rayon de soleil par jour de pluie !</item>
-        <item>Tu es pleine d\'une force et d\'une grâce incroyables !</item>
-        <item>Tu trouves toujours un moyen de te sortir de n\'importe quelle situation !</item>
-        <item>Tu apportes tant de bonheur dans ce monde !</item>
-        <item>Tu possèdes une véritable sagesse féminine !</item>
-        <item>Tu as toujours l\'air élégante et à la mode !</item>
-        <item>Tu rends le monde un peu meilleur !</item>
-        <item>Tu es toujours attentionnée et prévenante !</item>
-        <item>Tu rayonnes de confiance !</item>
-        <item>Tu es ma fierté et ma joie !</item>
-        <item>Tu illumines ma vie avec ton sourire !</item>
-        <item>Tu donnes un sens à ma vie !</item>
-        <item>Chaque jour avec toi est spécial !</item>
-        <item>Tu es un véritable diamant qui brille dans l\'obscurité !</item>
-        <item>Tu possèdes un charme unique !</item>
-        <item>Ta passion pour la vie est inspirante !</item>
-        <item>Tu trouves toujours les mots justes !</item>
-        <item>Tu me fais me sentir important !</item>
-        <item>Tu as un sens aigu du tact !</item>
-        <item>Avec toi, le monde semble plus calme !</item>
-        <item>Tu transformes les défis en opportunités !</item>
-        <item>Tu es mon étoile la plus brillante !</item>
-        <item>Ton amour pour les gens est impressionnant !</item>
-        <item>Tu me comprends toujours sans mots !</item>
-        <item>Tu rends ma vie plus pleine !</item>
-        <item>Tu m\'apportes de la joie à chaque mot que tu prononces !</item>
-        <item>Tu me soutiens toujours quand j\'en ai besoin !</item>
-        <item>Tu as un goût exquis !</item>
-        <item>Tu remarques la beauté même dans les choses ordinaires !</item>
-        <item>Tu ajoutes de la magie à chaque instant !</item>
-        <item>Avec toi, je peux vraiment être moi-même !</item>
-        <item>Tu es une véritable rareté dans ce monde !</item>
-        <item>Tu rends chaque rencontre inoubliable !</item>
-        <item>Tu sais donner de la chaleur juste comme ça !</item>
-        <item>Ta générosité d\'esprit est étonnante !</item>
-        <item>Tu trouves toujours la force pour une nouvelle victoire !</item>
-        <item>Tu rends le monde meilleur juste en étant là !</item>
-        <item>Tu m\'inspires à devenir meilleur !</item>
-        <item>Tu es si extraordinaire et intéressante !</item>
-        <item>Chaque jour avec toi est rempli de sens !</item>
-        <item>Tu es vraiment une personne unique !</item>
-        <item>Tu sais écouter et comprendre !</item>
-        <item>Tu es comme un rayon de soleil par temps nuageux !</item>
-        <item>Tu m\'inspires à être plus courageux !</item>
-        <item>Tu es comme une musique pour l\'âme !</item>
-        <item>Tu apportes l\'harmonie dans ma vie !</item>
-        <item>Tes conseils sont toujours si sages et utiles !</item>
-        <item>Tu es un véritable cadeau du destin !</item>
-        <item>Ta tendresse et ta force sont une combinaison unique !</item>
-        <item>Être avec toi est toujours facile et agréable !</item>
-        <item>Tu trouves toujours le meilleur en chaque personne !</item>
-        <item>Tu es comme un endroit douillet où j\'ai toujours envie de revenir !</item>
-        <item>Tu sais toujours comment soutenir !</item>
-        <item>Tu es si douce et attentionnée !</item>
-        <item>Tu apportes le bonheur dans la vie de tous ceux qui t\'entourent !</item>
-        <item>Tu es une création étonnante de la nature !</item>
-        <item>Tu es une véritable beauté !</item>
-        <item>Tu ne mérites que le meilleur !</item>
-        <item>Tu as toujours l\'air incroyable !</item>
-        <item>Tu rayonnes de chaleur et de bienveillance !</item>
-        <item>Tu es vraiment une héroïne dans ma vie !</item>
-        <item>Tu es l\'incarnation de la perfection !</item>
-        <item>Tu es incroyable : ta sincérité et ta force de caractère font de chaque moment passé avec toi un émerveillement.</item>
-        <item>Tu es comme une étoile brillante qui éclaire le chemin le plus sombre et aide à croire au meilleur.</item>
-        <item>Quand tu es près de moi, je sens que je peux surmonter n\'importe quelle difficulté — ta foi en moi me transporte !</item>
-        <item>Ta gentillesse n\'a pas de limites, et cela te rend vraiment unique !</item>
-        <item>Tu remarques les petites choses que la plupart manqueraient, et cette qualité rend le monde spécial.</item>
-        <item>Chaque conversation avec toi est comme une véritable aventure — tu perçois tout autour de toi avec tant de subtilité et de sagesse !</item>
-        <item>Tu apportes l\'harmonie et la paix partout où tu vas, comme un souffle d\'air frais dans le tumulte de la journée.</item>
-        <item>Tu as une capacité magique à écouter — avec toi, je me sens écouté et compris comme jamais auparavant.</item>
-        <item>Chacun de tes sourires illumine la journée et semble inviter dans un monde plein de chaleur et de sincérité.</item>
-        <item>Avec toi, je me sens plus vivant, inspiré et plein d\'idées — ton énergie est contagieuse pour tout le monde.</item>
-        <item>Ta force et ta tendresse se mélangent si harmonieusement qu\'on a parfois l\'impression que tu es une œuvre d\'art.</item>
-        <item>Tu sais montrer la beauté même dans les choses les plus simples, ce qui me fait regarder le monde différemment.</item>
-        <item>Tu fais partie de ces personnes avec qui il suffit d\'être silencieux et de profiter du moment.</item>
-        <item>Tu crées du confort partout où tu es, et c\'est une qualité rare et magnifique.</item>
-        <item>Chaque parole que tu prononces est remplie de bonté et de chaleur, et je me sens toujours mieux après t\'avoir parlé.</item>
-        <item>Tu es l\'incarnation de l\'harmonie et de la tendresse, et en te regardant, j\'ai envie d\'être plus gentil et plus attentif au monde.</item>
-        <item>Ta confiance en toi m\'inspire à devenir meilleur et à atteindre de nouveaux sommets.</item>
-        <item>Tu apportes à ma vie un sentiment de confort et de bien-être qui ne peut pas être feint — c\'est ton véritable don.</item>
-        <item>Ton soutien m\'est précieux : tu es comme un pont qui mène toujours à la bonne décision.</item>
-        <item>Tu es d\'une sagesse étonnante, et je suis toujours curieux de connaître ton point de vue sur n\'importe quelle situation — il est plein d\'enseignements.</item>
-        <item>Quand je suis avec toi, je ressens toujours une sincérité et une pureté qui manquent tant au monde moderne.</item>
-        <item>Tu sais comment inspirer, et cette inspiration vient du cœur — ta sincérité gagne toujours les gens.</item>
-        <item>Tu es comme un rayon de soleil printanier, apportant chaleur et espoir même les jours les plus sombres.</item>
-        <item>Avec toi, le temps passe inaperçu, car chaque minute est remplie de sincérité et de joie.</item>
-        <item>Tu as un talent spécial pour créer de véritables liens avec les gens, et cela n\'a pas de prix.</item>
-        <item>Ta gentillesse et tes soins rendent le monde meilleur, et je suis fier de te connaître.</item>
-        <item>Tu fais partie de ces personnes qui laissent une trace dans les cœurs — ton âme est incroyablement belle.</item>
-        <item>Avec toi, je peux parler de n\'importe quoi, et je sens toujours que notre connexion est spéciale.</item>
-        <item>Tu es l\'incarnation de la féminité et de la sagesse, et je me demande souvent comment tu réussis à tout combiner si harmonieusement.</item>
-        <item>Tu apportes tant de sens et de joie dans ma vie que chaque jour passé avec toi devient une fête.</item>
-        <item>Ton sourire est comme le soleil après la pluie, apportant toujours chaleur et lumière.</item>
-        <item>Tu as une capacité incroyable à créer un monde autour de toi plein de paix et de confort.</item>
-        <item>Ton énergie charge les autres de positivité, et je ne me lasse jamais d\'être à tes côtés.</item>
-        <item>Tu sais voir la lumière dans les choses les plus simples, et cela me fait croire aux miracles.</item>
-        <item>Tu es une source d\'inspiration pour beaucoup, et je suis heureux que tu sois dans ma vie.</item>
-        <item>Ta foi en le meilleur m\'inspire toujours à surmonter toutes les difficultés et à continuer d\'avancer.</item>
-        <item>Tu sais donner de la joie si sincèrement que c\'est impossible de ne pas le remarquer.</item>
-        <item>Tu me rappelles que tout est possible dans ce monde si l\'on garde la foi et que l\'on reste fidèle à soi-même.</item>
-        <item>La générosité de ton âme n\'a pas de limites, et je chéris chaque moment passé avec toi.</item>
-        <item>Tu es le genre de personne qui inspire la croyance au bien et à la lumière dans ce monde.</item>
-        <item>Tes yeux brillent comme des étoiles, et chaque regard remplit l\'âme de chaleur et de tranquillité.</item>
-        <item>Tu as le don spécial d\'être vraiment honnête et ouverte — c\'est une qualité rare.</item>
-        <item>Avec toi, je peux rêver de n\'importe quoi sans craindre que mes rêves ne se réalisent pas.</item>
-        <item>Tu es comme une étoile conductrice, me menant toujours vers le chemin le plus brillant.</item>
-        <item>Tu es si belle non seulement à l\'extérieur mais aussi à l\'intérieur, ce qui te rend vraiment incroyable.</item>
-        <item>Tes paroles soutiennent et inspirent toujours, et c\'est un don qui n\'est pas donné à tout le monde.</item>
-        <item>Tu crées une atmosphère de chaleur et de confort même dans les situations les plus banales.</item>
-        <item>Tu es toujours sincère et ouverte, et je me sens vraiment heureux d\'être avec toi.</item>
-        <item>Tu sais comment soutenir et inspirer, même quand tout autour semble compliqué et confus.</item>
-        <item>Tu es la personne la plus rayonnante que je connaisse, et cela remplit ma vie de sens et de joie.</item>
+        <item>Tu es magnifique aujourd\'hui.</item>
+        <item>Ton sourire me répare toute la journée.</item>
+        <item>Tu es vraiment douée dans ce que tu fais.</item>
+        <item>C\'est toujours un plaisir de parler avec toi.</item>
+        <item>Tu es tellement gentille, ça se voit dans tout ce que tu fais.</item>
+        <item>Tu es plus forte que tu ne le crois.</item>
+        <item>Près de toi, on a envie de devenir meilleur. C\'est drôle, comme ça marche.</item>
+        <item>Avec toi, tout va mieux dans ma vie.</item>
+        <item>Tout paraît plus lumineux quand tu es là.</item>
+        <item>Tu sais toujours comment aider quand ça devient difficile.</item>
+        <item>Ton énergie est contagieuse.</item>
+        <item>Tu peux remonter le moral de n\'importe qui, même un jour pourri.</item>
+        <item>Tu as un style incroyable.</item>
+        <item>Tu as un super sens de l\'humour.</item>
+        <item>Avec toi, je n\'arrive pas à arrêter de rire.</item>
+        <item>Il n\'y a personne comme toi.</item>
+        <item>Tu remarques ce que les autres ratent, et ça compte énormément.</item>
+        <item>Ta gentillesse est sincère.</item>
+        <item>Tu es belle, et pas seulement à l\'extérieur.</item>
+        <item>Avec toi, le difficile paraît facile.</item>
+        <item>Tu as toujours des idées originales.</item>
+        <item>Tu transformes les jours ordinaires en moments joyeux.</item>
+        <item>Tu vois toujours le meilleur chez les gens.</item>
+        <item>Tu es tellement intelligente. J\'adore entendre ce que tu penses.</item>
+        <item>Tu sais vraiment écouter.</item>
+        <item>Avec toi, n\'importe quel groupe est meilleur.</item>
+        <item>Avec toi, tout devient plus chaleureux.</item>
+        <item>Tu trouves du bon dans les petites choses.</item>
+        <item>Même une soirée ennuyeuse devient drôle avec toi.</item>
+        <item>Quand tu entres, tout le monde le remarque.</item>
+        <item>J\'aime ton courage.</item>
+        <item>Tes yeux disent tout.</item>
+        <item>Avec toi, tout est simple.</item>
+        <item>Ta voix est tellement apaisante.</item>
+        <item>Tu aimes la vie, et c\'est contagieux.</item>
+        <item>Avec toi, je n\'ai pas besoin de faire semblant.</item>
+        <item>Tu mérites tout le bien qui t\'arrive.</item>
+        <item>Un seul de tes regards peut changer ma journée.</item>
+        <item>Tu m\'inspires beaucoup de fierté.</item>
+        <item>Tu trouves toujours une issue, quoi qu\'il arrive.</item>
+        <item>Tu me fais sourire sans raison.</item>
+        <item>Tu trouves toujours les bons mots.</item>
+        <item>Tu me comprends sans que j\'aie à expliquer.</item>
+        <item>Tu es toujours là quand j\'ai besoin de toi.</item>
+        <item>Tu as très bon goût.</item>
+        <item>Avec toi, les moments ordinaires deviennent spéciaux.</item>
+        <item>Tu es unique, vraiment.</item>
+        <item>Tu as un grand cœur.</item>
+        <item>J\'ai tellement de chance de te connaître.</item>
+        <item>Le temps passé avec toi est le meilleur moment de ma semaine.</item>
+        <item>C\'est à toi que j\'ai envie d\'annoncer les bonnes nouvelles en premier.</item>
+        <item>Avec toi, j\'ai envie d\'essayer de nouvelles choses.</item>
+        <item>Tu as plus de talent que tu ne le crois.</item>
+        <item>Ton rire est mon son préféré.</item>
+        <item>Près de toi, personne ne se sent petit.</item>
+        <item>Ton calme se transmet à tout le monde.</item>
+        <item>J\'aime la façon dont tu prends soin des gens.</item>
+        <item>Avec toi, je sens que je compte.</item>
+        <item>Tu trouves toujours du temps pour ceux que tu aimes.</item>
+        <item>Tu te souviens des petits détails, et j\'adore ça.</item>
+        <item>Quoi que tu fasses, tu le fais avec le cœur.</item>
+        <item>Tu gères la pression mieux que personne.</item>
+        <item>Avec toi, le temps passe sans qu\'on s\'en rende compte.</item>
+        <item>Avec toi, un simple café ressemble à un rendez-vous.</item>
+        <item>Tu es superbe même en jogging.</item>
+        <item>C\'est grâce à toi que je suis de bonne humeur.</item>
+        <item>Tu es plus intelligente que tu ne le montres.</item>
+        <item>Tes câlins réparent tout.</item>
+        <item>Tu es une vraie amie.</item>
+        <item>Avec toi, les gens se sentent les bienvenus.</item>
+        <item>J\'admire la façon dont tu ne lâches jamais.</item>
+        <item>Avec toi, on s\'amuse.</item>
+        <item>Près de toi, on se sent écouté.</item>
+        <item>Tu fais ressortir le meilleur de moi.</item>
+        <item>J\'adore ton esprit d\'aventure.</item>
+        <item>Tu illumines une pièce sans même essayer.</item>
+        <item>Tu es honnête, et je respecte ça.</item>
+        <item>Avec toi, le monde paraît un peu plus doux.</item>
+        <item>C\'est bien que tu sois dans ma vie.</item>
+        <item>Ta curiosité est tellement attirante.</item>
+        <item>Tu m\'inspires, et je le pense vraiment.</item>
+        <item>Avec toi, je me sens en sécurité.</item>
+        <item>Tu es magnifique quand tu ris.</item>
+        <item>Il te faut un jour de repos et un gros câlin.</item>
+        <item>Tu t\'en sors mieux que tu ne le penses.</item>
+        <item>J\'aime ta façon de penser.</item>
+        <item>Rien qu\'en étant là, tu rends tout meilleur.</item>
+        <item>Tu es vraiment quelqu\'un de spécial.</item>
+        <item>Merci d\'être comme tu es.</item>
+        <item>Tu es la personne la plus lumineuse que je connaisse.</item>
+        <item>Avec toi, chaque jour est un peu meilleur.</item>
+        <item>Tu as quelque chose de spécial, je ne sais pas dire quoi.</item>
+        <item>Ton sourire ferait fondre n\'importe qui.</item>
+        <item>J\'adore comment tes yeux brillent quand tu parles de ce qui te tient à cœur.</item>
+        <item>Tu es ma personne préférée avec qui échanger des messages.</item>
+        <item>Avec toi, tout est calme, même quand tout part de travers.</item>
+        <item>Tu es comme un rayon de soleil un jour gris.</item>
+        <item>Tu sais toujours quoi dire pour que je me sente mieux.</item>
+        <item>Tu as un cœur si chaleureux.</item>
+        <item>Tu es une reine, et tu ne le sais même pas.</item>
+        <item>Avec toi, chacun se sent à sa place.</item>
+        <item>Tu es un miracle, franchement.</item>
+        <item>Tu es mon petit bout de magie.</item>
+        <item>J\'aime à quel point tu es authentique.</item>
+        <item>Le courage te vient naturellement.</item>
+        <item>Tu es douce et forte à la fois.</item>
+        <item>Tu es élégante sans effort.</item>
+        <item>Ton style est naturel, sans effort.</item>
+        <item>Avec toi, mon cœur se remplit de chaleur.</item>
+        <item>Une soirée tranquille avec toi vaut mieux que n\'importe quelle fête.</item>
+        <item>Tu es une étoile, et ce n\'est pas exagéré.</item>
+        <item>Tout ce que tu touches devient meilleur.</item>
+        <item>Tu es pleine de surprises, et j\'adore ça.</item>
+        <item>Tu es le meilleur moment de ma journée.</item>
+        <item>Des personnes comme toi, il y en a très peu, et je le sais.</item>
+        <item>Tu es comme une couverture bien chaude un jour de froid.</item>
+        <item>Tu transformes les problèmes en plans.</item>
+        <item>Avec toi, je crois en moi.</item>
+        <item>Tu arrives à faire en sorte que tout semble aller bien.</item>
+        <item>Tu as cette étincelle particulière.</item>
+        <item>Ta gentillesse n\'a pas de fin.</item>
+        <item>Tu donnes tant sans rien demander en retour.</item>
+        <item>Ta voix me donne l\'impression d\'être chez moi.</item>
+        <item>Tu vois la beauté là où les autres passent sans regarder.</item>
+        <item>Tu es un trésor, sans blague.</item>
+        <item>Tu es sage pour ton âge.</item>
+        <item>Tu as un vrai don avec les gens.</item>
+        <item>Avec toi, j\'ai l\'impression que tout est possible.</item>
+        <item>Tu as tellement de charme.</item>
+        <item>Tu te tiens avec tellement d\'assurance.</item>
+        <item>Tu es mon refuge.</item>
+        <item>Avec toi, j\'aime simplement être comme je suis.</item>
+        <item>Avec personne je ne suis aussi à l\'aise qu\'avec toi.</item>
+        <item>C\'est une fierté de te connaître.</item>
+        <item>Tu mérites une petite fête aujourd\'hui.</item>
+        <item>Tu as une chaleur rare.</item>
+        <item>Ton optimisme est contagieux.</item>
+        <item>Tu transformes n\'importe quel mauvais jour en bonne histoire.</item>
+        <item>Des personnes comme toi, on ne les oublie pas.</item>
+        <item>Après avoir parlé avec toi, tout le monde est de meilleure humeur.</item>
+        <item>Tu es tellement attentionnée, ça se remarque toujours.</item>
+        <item>Ta franchise fait du bien.</item>
+        <item>Je pourrais t\'écouter pendant des heures.</item>
+        <item>Avec toi, la vie est plus drôle.</item>
+        <item>Tu es belle quand tu es concentrée.</item>
+        <item>Tu as un grand cœur, et les gens le sentent.</item>
+        <item>Tu apportes toujours la bonne ambiance.</item>
+        <item>Tu es plus courageuse que tu ne le crois.</item>
+        <item>Près de toi, l\'ordinaire devient spécial.</item>
+        <item>Tu sais mettre les gens à l\'aise.</item>
+        <item>Tout le monde voudrait avoir une amie comme toi.</item>
+        <item>J\'aime tes petites attentions.</item>
+        <item>Avec toi, même attendre est facile.</item>
+        <item>Avec toi, on a envie de ralentir et de profiter du moment.</item>
+        <item>Tu es pleine de vie.</item>
+        <item>Avec toi, j\'ai l\'impression d\'avoir une chance incroyable.</item>
+        <item>Tu mérites d\'être heureuse.</item>
+        <item>Tu es gentille avec tout le monde, même quand c\'est difficile.</item>
+        <item>Tu as un esprit magnifique.</item>
+        <item>Ta présence apaise.</item>
+        <item>Tu donnes toujours le meilleur de toi-même.</item>
+        <item>Tu es si patiente. Je l\'admire.</item>
+        <item>Tu vois le bon côté de chaque situation.</item>
+        <item>Merci d\'exister.</item>
+        <item>Avec toi, mon monde est meilleur.</item>
+        <item>Tes câlins, c\'est comme être à la maison.</item>
+        <item>Tu sais comment arranger les choses.</item>
+        <item>Tu me comprends comme personne.</item>
+        <item>Tu inspires sans même essayer.</item>
+        <item>Tu as plus de force que tu ne l\'imagines.</item>
+        <item>C\'est si facile de t\'aimer.</item>
+        <item>Tu as des yeux tellement expressifs.</item>
+        <item>Ta confiance en toi est belle.</item>
+        <item>Tu es délicate avec les gens, et ça en dit long.</item>
+        <item>Tu es la personne que je veux à mes côtés.</item>
+        <item>Tu as une énergie superbe aujourd\'hui.</item>
+        <item>Avec toi, les jours difficiles s\'adoucissent.</item>
+        <item>Tu es vraiment adorable.</item>
+        <item>Tu es gentille même avec les inconnus.</item>
+        <item>Tu as le don de faire sourire les gens.</item>
+        <item>J\'adore ton rire. Vraiment.</item>
+        <item>Ta sagesse me surprend à chaque fois.</item>
+        <item>Tu es tellement sincère.</item>
+        <item>Près de toi, on se sent précieux.</item>
+        <item>Grâce à toi, je crois que de bonnes choses arrivent.</item>
+        <item>Tu es mon calme au milieu de la tempête.</item>
+        <item>Tu es une vraie amie et une personne formidable.</item>
+        <item>Je ne pourrais pas rêver mieux.</item>
+        <item>Tu es une merveilleuse surprise.</item>
+        <item>J\'ai de la chance de voir ton sourire.</item>
+        <item>Tu as de quoi être fière.</item>
+        <item>Tu es de ces personnes avec qui n\'importe quel endroit devient un chez-soi.</item>
+        <item>Tu rends ma vie plus belle que tu ne l\'imagines.</item>
+        <item>Tu rayonnes aujourd\'hui.</item>
+        <item>Avec toi, l\'accueil est toujours chaleureux.</item>
+        <item>Tu es mon genre de personne préféré.</item>
+        <item>Tu es merveilleuse, telle que tu es.</item>
     </string-array>
 
     <string-array name="compliments_men">
-        <item>Tu es beau !</item>
-        <item>Tu es un vrai homme !</item>
-        <item>Tu es incroyable !</item>
-        <item>Tu es génial !</item>
-        <item>Tu as fière allure !</item>
-        <item>Tu es un véritable héros !</item>
-        <item>Tu es tout simplement cool !</item>
-        <item>Tu es le meilleur !</item>
-        <item>Tu es fort et confiant !</item>
-        <item>Tu es tout simplement époustouflant !</item>
-        <item>Tu es intelligent !</item>
-        <item>Tu es chic !</item>
-        <item>Tu es un feu !</item>
-        <item>Tu es le roi !</item>
-        <item>Tu es un super gars !</item>
-        <item>Tu es mon héros !</item>
-        <item>Tu as la classe !</item>
-        <item>Tu es un beau gosse !</item>
-        <item>Tu es tout simplement fantastique !</item>
-        <item>Tu as une force qui inspire.</item>
-        <item>Ta confiance rend ce monde meilleur.</item>
-        <item>Avec toi, je peux toujours compter sur un soutien.</item>
-        <item>Tu inspires de grandes actions.</item>
-        <item>Ta gentillesse te rend vraiment fort.</item>
-        <item>Tu sais comment trouver une issue dans n\'importe quelle situation.</item>
-        <item>Ta force réside dans ton calme et ta confiance.</item>
-        <item>Tu apportes confiance et lumière à chaque instant.</item>
-        <item>Avec toi, c\'est toujours intéressant et facile.</item>
-        <item>Tu es un modèle.</item>
-        <item>Ton attention aux autres n\'a pas de limites.</item>
-        <item>Tu restes toujours fidèle à toi-même.</item>
-        <item>Tes paroles sont toujours pleines de sens et de force.</item>
-        <item>Avec toi, c\'est facile et confortable d\'être moi-même.</item>
-        <item>Tu donnes confiance par ta simple présence.</item>
-        <item>Tu sais toujours ce qu\'il faut faire au bon moment.</item>
-        <item>Ton énergie inspire le succès chez les autres.</item>
-        <item>Tu sais soutenir dans les moments les plus difficiles.</item>
-        <item>Tu es quelqu\'un qui inspire toujours à faire plus.</item>
-        <item>Tu as une rare combinaison de force et de douceur.</item>
-        <item>Avec toi, il n\'est pas effrayant d\'avancer.</item>
-        <item>Tu es l\'incarnation de la sagesse masculine.</item>
-        <item>Tu sais être sincère dans n\'importe quelle situation.</item>
-        <item>Ta confiance inspire toujours l\'admiration.</item>
-        <item>Tu es un exemple de la façon d\'être fort et gentil à la fois.</item>
-        <item>Ton énergie crée toujours une atmosphère de confort.</item>
-        <item>Tu sais toujours comment rendre un moment spécial.</item>
-        <item>Merci d\'être dans ma vie — avec toi, le monde devient plus radieux et plus sûr.</item>
-        <item>Je suis reconnaissant de pouvoir compter sur toi.</item>
-        <item>Merci d\'être là.</item>
-        <item>Merci d\'être à moi.</item>
-        <item>Je suis si reconnaissant au destin de t\'avoir rencontré.</item>
-        <item>Avec toi, je me sens en sécurité — merci pour ta confiance et tes soins.</item>
-        <item>Merci pour ton amour et ta foi en moi — tu rends ce monde meilleur pour moi.</item>
-        <item>J\'apprécie chaque moment passé avec toi — merci d\'être dans ma vie.</item>
-        <item>Merci de remplir ma vie de sens — tu es vraiment une personne spéciale.</item>
-        <item>Je suis heureux d\'être proche de quelqu\'un comme toi — merci pour ton amour et tes soins.</item>
-        <item>Tu es incroyablement fort : ta détermination et ta confiance m\'inspirent et me font admirer chacune de tes actions.</item>
-        <item>Tu es comme une ancre fiable qui me stabilise et m\'apporte de la confiance dans les moments les plus difficiles.</item>
-        <item>Quand tu es là, j\'ai l\'impression de pouvoir surmonter n\'importe quel obstacle — ton soutien me donne de la force et de la foi en moi !</item>
-        <item>Ta gentillesse et tes soins sont incommensurables, et cela fait de toi un homme véritable en qui je peux avoir confiance.</item>
-        <item>Tu remarques des détails que d\'autres pourraient manquer, et ton attention te rend unique à mes yeux.</item>
-        <item>Chaque conversation avec toi est une nouvelle expérience, tu prends tout ce qui t\'entoure si facilement et avec confiance, et j\'apprends toujours quelque chose !</item>
-        <item>Tu apportes la paix et la confiance dans n\'importe quelle situation, comme un soutien sur lequel on peut toujours compter.</item>
-        <item>Tu as le don d\'écouter et de comprendre, avec toi je me sens toujours écouté et valorisé.</item>
-        <item>Ton sourire me réchauffe toujours et me rappelle qu\'il y a de la place pour la chaleur et la sincérité dans la vie.</item>
-        <item>Avec toi à mes côtés, je me sens plus confiant, plus fort et plein d\'idées — ton énergie est contagieuse pour tout le monde.</item>
-        <item>Tu es une combinaison de force et de tendresse masculine, et cela te rend spécial à mes yeux.</item>
-        <item>Tu sais voir les mérites même dans les choses simples, et tu me fais voir le monde sous un angle différent.</item>
-        <item>Tu fais partie de ces personnes avec qui l\'on a juste envie de s\'asseoir en silence et de profiter du moment, tu apportes la paix et la sérénité.</item>
-        <item>Tu crées une atmosphère de confort et de sécurité partout où tu es, et c\'est un véritable cadeau pour moi.</item>
-        <item>Chaque mot que tu prononces est plein de force et de sens, et après t\'avoir parlé, je me sens toujours mieux et inspiré.</item>
-        <item>Tu es l\'incarnation de la confiance masculine et de la gentillesse, et à tes côtés, j\'ai envie d\'être la meilleure version de moi-même.</item>
-        <item>Ta confiance m\'inspire à atteindre de nouveaux sommets et à accomplir davantage avec toi.</item>
-        <item>Tu apportes à ma vie une confiance et un calme qui ne peuvent pas être feints — c\'est ton véritable don.</item>
-        <item>Ton soutien m\'est précieux : tu es comme un mur de pierre derrière lequel je peux toujours m\'abriter et me sentir en sécurité.</item>
-        <item>Tu es d\'une sagesse incroyable, et ta vision du monde est toujours pleine de profondeur et de sens — je suis toujours intéressé de connaître ton point de vue.</item>
-        <item>À tes côtés, il y a toujours de la sincérité et de la fiabilité, des choses qui manquent tant dans la vie quotidienne.</item>
-        <item>Tu sais comment inspirer, et cette inspiration vient de ton calme intérieur — ta confiance impose toujours le respect.</item>
-        <item>Tu es comme le soleil d\'hiver, apportant lumière et chaleur même les jours les plus froids, c\'est toujours plus facile avec toi à mes côtés.</item>
-        <item>Le temps passe inaperçu avec toi, car chaque minute est remplie d\'énergie, de joie et de sens.</item>
-        <item>Tu as une capacité unique à établir de véritables liens avec les gens, et cela m\'est précieux.</item>
-        <item>Ta gentillesse et tes soins rendent ce monde meilleur, et je suis fier de te connaître et d\'être proche de toi.</item>
-        <item>Tu fais partie de ces personnes qui laissent une marque profonde dans l\'âme — ta force et ta sagesse me fascinent.</item>
-        <item>Avec toi, je peux parler de n\'importe quoi, et je sens toujours que notre connexion est spéciale et significative.</item>
-        <item>Tu incarnes la force masculine et l\'intellect, et je me demande souvent comment tu réussis à combiner ces qualités si harmonieusement.</item>
-        <item>Tu apportes tant de sens et d\'inspiration dans ma vie que chaque jour passé avec toi devient un événement important pour moi.</item>
-        <item>Ton sourire est comme une lumière dans un tunnel sombre, il apporte toujours chaleur et confiance quand j\'en ai besoin.</item>
-        <item>Tu as une capacité incroyable à créer autour de toi une atmosphère de confiance et de confort, ce qui me calme à tes côtés.</item>
-        <item>Ton énergie me remplit de positivité, et je ne me lasse jamais d\'être près de toi — tu es ma source d\'inspiration.</item>
-        <item>Tu sais trouver la lumière même dans les choses les plus simples, et cela me fait croire au meilleur.</item>
-        <item>Tu es une source d\'inspiration pour beaucoup, et je suis fier d\'être proche d\'une personne aussi incroyable que toi.</item>
-        <item>Ta foi en le meilleur m\'inspire toujours à aller de l\'avant malgré toutes les difficultés, car avec toi, c\'est plus facile à faire.</item>
-        <item>Tu sais comment donner de la joie si sincèrement qu\'on ne peut pas l\'ignorer — c\'est toujours chaleureux et amusant avec toi.</item>
-        <item>Tu me rappelles que tout est possible dans la vie si l\'on garde la foi et que l\'on reste fidèle à soi-même, et avec toi, je deviens plus fort aussi.</item>
-        <item>La générosité de ton âme ne connaît pas de limites, et je chéris chaque minute passée avec toi, c\'est inestimable pour moi.</item>
-        <item>Tu es une personne qui inspire la croyance en la bonté et la lumière dans ce monde, et je suis fier de faire partie de ton monde.</item>
-        <item>Ton regard remplit mon âme de chaleur et de calme — avec toi, je me sens à l\'aise.</item>
-        <item>Tu as le don rare d\'être sincère et ouvert — c\'est un véritable trésor pour moi, je sens que je peux être moi-même avec toi.</item>
-        <item>Avec toi, je peux rêver de n\'importe quoi sans craindre que mes rêves ne se réalisent pas — avec toi, je crois en l\'avenir.</item>
-        <item>Tu es comme une étoile conductrice, me menant toujours vers le mieux, et je n\'ai pas peur de te suivre.</item>
-        <item>Tu es si beau non seulement à l\'extérieur mais aussi à l\'intérieur, ce qui fait de toi une personne vraiment merveilleuse pour moi.</item>
-        <item>Tes paroles soutiennent et inspirent toujours, et c\'est un véritable cadeau pour lequel je suis reconnaissant.</item>
-        <item>Tu crées une atmosphère de confiance et de confort même dans les situations les plus ordinaires, et je me sens toujours en paix avec toi.</item>
-        <item>Tu es toujours sincère et ouvert, et je me sens vraiment heureuse avec toi à mes côtés — tu es ma source de joie.</item>
-        <item>Tu sais comment soutenir et inspirer, même quand tout autour semble confus, tu es toujours là, et je t\'apprécie pour cela.</item>
-        <item>Tu es la personne la plus rayonnante que je connaisse, et cela remplit ma vie de joie et de sens, c\'est toujours facile avec toi.</item>
+        <item>Tu as bonne mine aujourd\'hui.</item>
+        <item>Tu es un mec bien. Vraiment.</item>
+        <item>Tu m\'impressionnes, tu sais ?</item>
+        <item>Tu es vraiment doué dans ce que tu fais.</item>
+        <item>Tu es fort, et pas seulement physiquement.</item>
+        <item>Tu restes calme quand tout s\'effondre.</item>
+        <item>On peut toujours compter sur toi.</item>
+        <item>Avec toi, le difficile paraît facile.</item>
+        <item>Tu as très bon goût.</item>
+        <item>C\'est agréable de t\'avoir près de moi.</item>
+        <item>Près de toi, on a envie de devenir meilleur.</item>
+        <item>Tu sais toujours quoi faire.</item>
+        <item>C\'est facile de parler avec toi.</item>
+        <item>Tu es drôle sans même essayer.</item>
+        <item>Tu tiens parole. Ça compte.</item>
+        <item>Tu as un grand cœur.</item>
+        <item>Tu es plus fort que tu ne le crois.</item>
+        <item>Avec toi, je me sens en sécurité.</item>
+        <item>Tu es un bon exemple pour les autres.</item>
+        <item>Tu te soucies des gens, et ça se voit.</item>
+        <item>Tu restes toi-même, quoi qu\'il arrive.</item>
+        <item>Quand tu parles, les gens écoutent.</item>
+        <item>Tu sais vraiment écouter.</item>
+        <item>Ta confiance en toi est attirante.</item>
+        <item>Tu trouves toujours un moyen.</item>
+        <item>Avec toi, les jours difficiles sont plus faciles.</item>
+        <item>Près de toi, pas besoin de se forcer.</item>
+        <item>Tu es intelligent sans en faire étalage.</item>
+        <item>Je te fais confiance.</item>
+        <item>Personne ne me fait rire comme toi.</item>
+        <item>Tu es là quand ça compte.</item>
+        <item>Tu es solide et doux à la fois. Une combinaison rare.</item>
+        <item>Ce que tu accomplis me remplit de fierté.</item>
+        <item>Tu as un super sens de l\'humour.</item>
+        <item>Avec toi, tout le monde autour est plus détendu.</item>
+        <item>Tu n\'abandonnes jamais.</item>
+        <item>Tu as une énergie géniale.</item>
+        <item>Tu es un vrai ami.</item>
+        <item>Tu me couvres, et moi je te couvre.</item>
+        <item>Merci d\'être toujours là.</item>
+        <item>Merci de croire en moi.</item>
+        <item>J\'ai de la chance de t\'avoir.</item>
+        <item>C\'est bien qu\'on se soit rencontrés.</item>
+        <item>Avec toi, ma vie est meilleure.</item>
+        <item>Avec toi, le temps passe sans qu\'on s\'en rende compte.</item>
+        <item>Avec toi, je peux simplement être comme je suis.</item>
+        <item>Tu donnes de super conseils.</item>
+        <item>Tu es fiable.</item>
+        <item>Tu travailles dur, et je le vois.</item>
+        <item>Tu as beaucoup de style.</item>
+        <item>Tu fais un plan et tu t\'y tiens vraiment.</item>
+        <item>Tu es courageux.</item>
+        <item>Tu n\'as rien à prouver. Tu es déjà assez bien.</item>
+        <item>Tu gardes la tête froide mieux que la plupart des gens.</item>
+        <item>Tu es attentionné. Je remarque les petites choses que tu fais.</item>
+        <item>Avec toi, on s\'amuse.</item>
+        <item>Tu as bon cœur.</item>
+        <item>Après avoir parlé avec toi, je suis toujours de meilleure humeur.</item>
+        <item>Tu me comprends vraiment.</item>
+        <item>Tout le monde voudrait de toi dans son équipe.</item>
+        <item>Près de toi, tout le monde s\'améliore.</item>
+        <item>Tu es généreux et tu n\'en fais jamais toute une histoire.</item>
+        <item>J\'adore ton sens de l\'humour.</item>
+        <item>Tu es un roc.</item>
+        <item>Avec toi, on a envie de grandir.</item>
+        <item>Tu sais t\'y prendre avec les gens.</item>
+        <item>Tu dis toujours ce qu\'il faut.</item>
+        <item>Tu t\'en sors très bien. Ne l\'oublie pas.</item>
+        <item>Avec toi, tout semble possible.</item>
+        <item>Tu fais partie des bons.</item>
+        <item>Tu es une légende.</item>
+        <item>Merci d\'être comme tu es.</item>
+        <item>Tu es un super partenaire.</item>
+        <item>J\'admire ta façon de gérer les choses.</item>
+        <item>Tu es tout simplement le meilleur.</item>
+        <item>Tu es très élégant aujourd\'hui.</item>
+        <item>Tu es fort dedans comme dehors.</item>
+        <item>Tu es mon héros.</item>
+        <item>Tu es génial, sans discussion.</item>
+        <item>Tu te tiens avec assurance.</item>
+        <item>Avec toi, je sais que j\'ai du soutien.</item>
+        <item>Tu es un roi à ta façon.</item>
+        <item>Tu es cool sans même essayer.</item>
+        <item>Tu es bon, et ça demande une vraie force.</item>
+        <item>Tu sais calmer n\'importe quelle situation.</item>
+        <item>Tu es sage, et j\'aime écouter ton avis.</item>
+        <item>Tu ne paniques pas sous la pression.</item>
+        <item>Avec toi, on se sent calme et en sécurité.</item>
+        <item>Avec toi, n\'importe quel plan est plus amusant.</item>
+        <item>Les gens fiables sont rares, et toi tu en es un.</item>
+        <item>Tu tires le meilleur de chaque situation.</item>
+        <item>Tu es beau gosse, et tu le sais.</item>
+        <item>Tu inspires ceux qui t\'entourent.</item>
+        <item>Avec toi, j\'ai moins peur.</item>
+        <item>Tu vois le bon côté des gens.</item>
+        <item>Tu impressionnes sans faire de bruit.</item>
+        <item>Derrière ton air dur, tu as un grand cœur.</item>
+        <item>Tu ne déçois jamais.</item>
+        <item>Merci d\'être à mes côtés.</item>
+        <item>Merci de t\'en soucier.</item>
+        <item>Merci d\'être dans ma vie.</item>
+        <item>On peut te confier n\'importe quoi.</item>
+        <item>Avec toi, les jours ordinaires sont meilleurs.</item>
+        <item>Tu as une force tranquille.</item>
+        <item>J\'aime à quel point tu es stable et posé.</item>
+        <item>Tu es un mec formidable.</item>
     </string-array>
 
 </resources>
